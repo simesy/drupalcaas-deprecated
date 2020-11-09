@@ -1,0 +1,43 @@
+uuid: 73140631-7c81-483b-bada-fafdd8480982
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_subtitle
+    - paragraphs.paragraphs_type.cta
+    - paragraphs.paragraphs_type.subtitle
+  module:
+    - entity_reference_revisions
+id: paragraph.cta.field_subtitle
+field_name: field_subtitle
+entity_type: paragraph
+bundle: cta
+label: Subtitle
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      subtitle: subtitle
+    target_bundles_drag_drop:
+      cards:
+        weight: 6
+        enabled: false
+      cta:
+        weight: 7
+        enabled: false
+      faq:
+        weight: 8
+        enabled: false
+      sequence:
+        weight: 9
+        enabled: false
+      subtitle:
+        enabled: true
+        weight: 10
+field_type: entity_reference_revisions

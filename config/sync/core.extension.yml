@@ -11,10 +11,14 @@ module:
   config: 0
   contact: 0
   contextual: 0
+  ctools: 0
   datetime: 0
   dblog: 0
+  decoupled_router: 0
+  druxt: 0
   dynamic_page_cache: 0
   editor: 0
+  entity_reference_revisions: 0
   field: 0
   field_ui: 0
   file: 0
@@ -24,6 +28,10 @@ module:
   help: 0
   history: 0
   image: 0
+  jsonapi: 0
+  jsonapi_menu_items: 0
+  jsonapi_resources: 0
+  jsonapi_views: 0
   link: 0
   menu_link_content: 0
   menu_ui: 0
@@ -35,16 +43,21 @@ module:
   quickedit: 0
   rdf: 0
   search: 0
+  serialization: 0
   shortcut: 0
   system: 0
   taxonomy: 0
   text: 0
+  token: 0
   toolbar: 0
   tour: 0
   update: 0
   user: 0
   views_ui: 0
+  viewsreference: 0
+  pathauto: 1
   views: 10
+  paragraphs: 11
   standard: 1000
 theme:
   bartik: 0

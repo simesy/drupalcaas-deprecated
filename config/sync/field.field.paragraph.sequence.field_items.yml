@@ -1,0 +1,19 @@
+uuid: 6586a608-a22e-41ee-92d9-1dabea5c7135
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_items
+    - paragraphs.paragraphs_type.sequence
+id: paragraph.sequence.field_items
+field_name: field_items
+entity_type: paragraph
+bundle: sequence
+label: Items
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

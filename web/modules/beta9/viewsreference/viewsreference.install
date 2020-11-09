@@ -1,0 +1,147 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the viewsreference module.
+ */
+
+use Drupal\Core\Entity\Sql\SqlContentEntityStorage;
+
+/**
+ * Update node fields already created with argument field.
+ */
+function viewsreference_update_8100() {
+  viewsreference_update_viewsreference_fields('argument');
+}
+
+/**
+ * Update node fields already created with title field.
+ */
+function viewsreference_update_8101() {
+  viewsreference_update_viewsreference_fields('title');
+}
+
+/**
+ * Update node fields already created with data field.
+ */
+function viewsreference_update_8102() {
+  viewsreference_update_viewsreference_fields('data');
+}
+
+/**
+ * Migrate title and argument columns to the new data field.
+ */
+function viewsreference_update_8103() {
+  // Retrieve list of all viewsreference fields mapped by entity type.
+  $entity_field_manager = \Drupal::service('entity_field.manager');
+  $field_map = $entity_field_manager->getFieldMapByFieldType('viewsreference');
+  foreach ($field_map as $entity_type_id => $fields) {
+    foreach ($fields as $field_name => $field) {
+      // Store the table data since we need to whipe the table to install the
+      // schema updates.
+      $database = \Drupal::database();
+      $tables = [
+        "{$entity_type_id}__$field_name",
+        "{$entity_type_id}_revision__$field_name",
+      ];
+      $existing_data = [];
+      foreach ($tables as $table) {
+        // Get the old data.
+        $existing_data[$table] = $database->select($table)
+          ->fields($table)
+          ->execute()
+          ->fetchAll(PDO::FETCH_ASSOC);
+
+        // Wipe it.
+        $database->truncate($table)->execute();
+      }
+
+      // Install the schema updates.
+      $manager = \Drupal::entityDefinitionUpdateManager();
+      $manager->updateFieldStorageDefinition($manager->getFieldStorageDefinition($field_name, $entity_type_id));
+
+      // Restore and serialize the data.
+      foreach ($tables as $table) {
+        // Unset removed title/argument fields.
+        $table_fields = end($existing_data[$table]);
+        unset($table_fields[$field_name . '_title'], $table_fields[$field_name . '_argument']);
+        if (!empty($table_fields) && is_array($table_fields)) {
+          $insert_query = $database
+            ->insert($table)
+            ->fields(array_keys($table_fields));
+          foreach ($existing_data[$table] as $row) {
+            // Create new data field with serialized data and remove separate
+            // title/argument values.
+            $row[$field_name . '_data'] = serialize([
+              'title' => $row[$field_name . '_title'],
+              'argument' => $row[$field_name . '_argument'],
+            ]);
+            unset($row[$field_name . '_title'], $row[$field_name . '_argument']);
+            $insert_query->values(array_values($row));
+          }
+          $insert_query->execute();
+        }
+      }
+
+      // Update field definition settings to enable the title/argument plugins.
+      foreach ($field['bundles'] as $bundle) {
+        $bundle_fields = $entity_field_manager->getFieldDefinitions($entity_type_id, $bundle);
+        /** @var \Drupal\core\Field\FieldConfigInterface $field_definition */
+        $field_definition = $bundle_fields[$field_name];
+        $settings = $field_definition->getSettings();
+        $settings['enabled_settings'] = [
+          'argument' => 'argument',
+          'offset' => 0,
+          'limit' => 0,
+          'pager' => 0,
+          'title' => 'title',
+        ];
+        $field_definition->setSettings($settings);
+        $field_definition->save();
+      }
+    }
+  }
+}
+
+/**
+ * Update database columns for viewsreference field.
+ *
+ * @param string $new_field_name
+ *   The name of the new field to be added.
+ */
+function viewsreference_update_viewsreference_fields($new_field_name) {
+  // Caches have to be cleared first to ensure new fields are detected in the
+  // code.
+  drupal_flush_all_caches();
+
+  // Retrieve list of all viewsreference fields mapped by entity type.
+  $field_map = \Drupal::service('entity_field.manager')->getFieldMapByFieldType('viewsreference');
+  $manager = \Drupal::entityDefinitionUpdateManager();
+  $schema = \Drupal::database()->schema();
+
+  foreach ($field_map as $entity_type_id => $fields) {
+    foreach (array_keys($fields) as $field_name) {
+      $field_storage_definition = $manager->getFieldStorageDefinition($field_name, $entity_type_id);
+      $storage = \Drupal::entityTypeManager()->getStorage($entity_type_id);
+      if ($storage instanceof SqlContentEntityStorage) {
+        $table_mapping = $storage->getTableMapping([
+          $field_name => $field_storage_definition,
+        ]);
+        $table_names = $table_mapping->getDedicatedTableNames();
+        $columns = $table_mapping->getColumnNames($field_name);
+
+        foreach ($table_names as $table_name) {
+          $field_schema = $field_storage_definition->getSchema();
+
+          $field_exists = $schema->fieldExists($table_name, $columns[$new_field_name]);
+          $table_exists = $schema->tableExists($table_name);
+
+          if (!$field_exists && $table_exists) {
+            $schema->addField($table_name, $columns[$new_field_name], $field_schema['columns'][$new_field_name]);
+          }
+        }
+      }
+      $manager->updateFieldStorageDefinition($field_storage_definition);
+    }
+  }
+}

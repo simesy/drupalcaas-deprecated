@@ -1,0 +1,36 @@
+uuid: 81f09a8a-a006-41a5-8878-a636480a5dba
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.faq.field_items
+    - field.field.paragraph.faq.field_subtitle
+    - paragraphs.paragraphs_type.faq
+  module:
+    - entity_reference_revisions
+id: paragraph.faq.default
+targetEntityType: paragraph
+bundle: faq
+mode: default
+content:
+  field_items:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_subtitle:
+    weight: 2
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_autocomplete
+    region: content
+hidden:
+  created: true
+  status: true

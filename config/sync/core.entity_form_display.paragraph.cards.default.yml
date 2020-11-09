@@ -1,0 +1,38 @@
+uuid: 557de042-2392-496c-8e53-eaef722aa936
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cards.field_items
+    - field.field.paragraph.cards.field_subtitle
+    - paragraphs.paragraphs_type.cards
+  module:
+    - paragraphs
+id: paragraph.cards.default
+targetEntityType: paragraph
+bundle: cards
+mode: default
+content:
+  field_items:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_subtitle:
+    type: entity_reference_paragraphs
+    weight: 2
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    region: content
+hidden:
+  created: true
+  status: true

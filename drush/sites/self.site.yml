@@ -1,0 +1,11 @@
+prod:
+  host: ssh.au.platform.sh
+  user: 7vohgrxjtkvqs-master-7rqtwti--app
+  platformsh-cli-auto-remove: true
+  uri: 'https://www.master-7rqtwti-7vohgrxjtkvqs.au.platformsh.site/'
+  root: /app/web
+  paths:
+    drush-script: /app/vendor/bin/drush
+    files: sites/default/files
+#  ssh:
+#    options: '-i ~/.ssh/id_rsa'

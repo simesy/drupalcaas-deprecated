@@ -1,0 +1,19 @@
+uuid: 1fa58c6c-7474-4622-a73c-69eca6d77260
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_items
+    - paragraphs.paragraphs_type.cta
+id: paragraph.cta.field_items
+field_name: field_items
+entity_type: paragraph
+bundle: cta
+label: Items
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

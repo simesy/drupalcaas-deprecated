@@ -19,8 +19,12 @@
         "drupal/core-composer-scaffold": "^9",
         "drupal/core-project-message": "^9",
         "drupal/core-recommended": "^9",
+        "drupal/druxt": "^0.4.1",
         "drupal/gin": "^3.0@alpha",
         "drupal/gin_login": "^1.0@RC",
+        "drupal/jsonapi_views": "1.x-dev",
+        "drupal/paragraphs": "^1.12",
+        "drupal/pathauto": "^1.8",
         "drupal/redis": "^1.4",
         "drush/drush": "^10.3",
         "platformsh/config-reader": "^2.3"

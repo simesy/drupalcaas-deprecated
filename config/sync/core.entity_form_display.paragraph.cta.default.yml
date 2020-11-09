@@ -1,0 +1,36 @@
+uuid: ed62eedf-c74a-45bb-9eea-e1598b165c64
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cta.field_items
+    - field.field.paragraph.cta.field_subtitle
+    - paragraphs.paragraphs_type.cta
+  module:
+    - entity_reference_revisions
+id: paragraph.cta.default
+targetEntityType: paragraph
+bundle: cta
+mode: default
+content:
+  field_items:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_subtitle:
+    weight: 2
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_autocomplete
+    region: content
+hidden:
+  created: true
+  status: true
