@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: private_files
+label: 'Private Files Directory'
+type: DrupalFiles
+config:
+  directory: 'private://'

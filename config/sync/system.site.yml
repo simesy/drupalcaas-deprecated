@@ -1,0 +1,14 @@
+uuid: efd83454-f2fa-47d8-97cd-85538d2f3d3b
+name: 'L''e Content Hub'
+mail: simon@hobbs.id.au
+slogan: ''
+page:
+  403: ''
+  404: ''
+  front: /node
+admin_compact_mode: false
+weight_select_max: 100
+langcode: en
+default_langcode: en
+_core:
+  default_config_hash: yTxtFqBHnEWxQswuWvkjE8mKw2t8oKuCL1q8KnfHuGE

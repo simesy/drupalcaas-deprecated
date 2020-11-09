@@ -1,0 +1,331 @@
+<?php
+
+/**
+ * @file
+ * Primary hook implementations for Backup Migrate.
+ */
+
+use Drupal\backup_migrate\Core\Main\BackupMigrate;
+use Drupal\backup_migrate\Core\Config\Config;
+use Drupal\backup_migrate\Core\Main\BackupMigrateInterface;
+use Drupal\backup_migrate\Entity\Destination;
+use Drupal\backup_migrate\Entity\Schedule;
+use Drupal\backup_migrate\Entity\Source;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\user\Entity\User;
+use Drupal\Component\Utility\UrlHelper;
+use Drupal\Core\Url;
+use Drupal\Core\Link;
+use Drupal\backup_migrate\Core\Service\TarArchiveReader;
+use Drupal\backup_migrate\Core\Service\TarArchiveWriter;
+use Drupal\backup_migrate\Drupal\Environment\DrupalSetMessageLogger;
+use Drupal\backup_migrate\Drupal\Destination\DrupalBrowserDownloadDestination;
+use Drupal\backup_migrate\Drupal\Destination\DrupalBrowserUploadDestination;
+use Drupal\backup_migrate\Core\Filter\FileNamer;
+use Drupal\backup_migrate\Core\Filter\CompressionFilter;
+use Drupal\backup_migrate\Drupal\Filter\DrupalEncrypt;
+use Drupal\backup_migrate\Drupal\Filter\DrupalUtils;
+use Drupal\backup_migrate\Core\Filter\MetadataWriter;
+use Drupal\backup_migrate\Core\File\TempFileManager;
+use Drupal\backup_migrate\Drupal\File\DrupalTempFileAdapter;
+
+/**
+ * Back up a source to 1 or more destinations.
+ *
+ * @param string $source_id
+ * @param string|array $destination_id
+ * @param array $config
+ */
+function backup_migrate_perform_backup($source_id, $destination_id, array $config = []) {
+  try {
+    // Retrieve the service.
+    $bam = backup_migrate_get_service_object($config);
+
+    // Run the backup.
+    $bam->backup($source_id, $destination_id);
+    \Drupal::messenger()->addMessage(t('Backup Complete.'));
+  }
+  catch (Exception $e) {
+    \Drupal::messenger()->addMessage($e->getMessage(), 'error');
+  }
+}
+
+/**
+ * Restore a source from a destination and file id.
+ *
+ * @param string $source_id
+ * @param string|array $destination_id
+ * @param string $file_id
+ * @param array $config
+ */
+function backup_migrate_perform_restore($source_id, $destination_id, $file_id = NULL, array $config = []) {
+  try {
+    // Retrieve the service.
+    $bam = backup_migrate_get_service_object($config);
+
+    // Run the backup.
+    $bam->restore($source_id, $destination_id, $file_id);
+    \Drupal::messenger()->addMessage(t('Restore Complete.'));
+  }
+  catch (Exception $e) {
+    \Drupal::messenger()->addMessage($e->getMessage(), 'error');
+    return;
+  }
+}
+
+/**
+ * Get a BackupMigrate service object.
+ *
+ * @param array|null $config
+ *   An array of configuration arrays, keyed by plugin id.
+ * @param array|null $options
+ *   A keyed array of options.
+ *
+ * @return \Drupal\backup_migrate\Core\Main\BackupMigrate
+ */
+function backup_migrate_get_service_object($config = [], $options = []) {
+  static $bam = NULL;
+
+  // If the static cached object has not been loaded.
+  if ($bam === NULL) {
+    // Create the service object.
+    $bam = new BackupMigrate();
+
+    // Allow other modules to alter the object.
+    \Drupal::moduleHandler()->alter('backup_migrate_service_object', $bam, $options);
+  }
+
+  // Set the configuration overrides if any were passed in.
+  if ($config) {
+    $bam->setConfig(new Config($config));
+  }
+
+  return $bam;
+}
+
+/**
+ * Implements hook_backup_migrate_service_object_alter().
+ */
+function backup_migrate_backup_migrate_service_object_alter(BackupMigrateInterface &$bam, $options = []) {
+  // Add the core Backup and Migrate plugins to the service object.
+  $sources = $bam->sources();
+  $destinations = $bam->destinations();
+  $plugins = $bam->plugins();
+
+  $services = $bam->services();
+
+  // Add a temp file manager which can access the drupal temp directory.
+  $services->add('TempFileAdapter',
+    new DrupalTempFileAdapter(\Drupal::service('file_system'), 'temporary://', 'bam')
+  );
+
+  $services->add('TempFileManager',
+    new TempFileManager($services->get('TempFileAdapter'))
+  );
+
+  // Add a logger which prints everything to the browser.
+  $services->add('Logger',
+    new DrupalSetMessageLogger()
+  );
+
+  $services->add('ArchiveReader', new TarArchiveReader());
+  $services->add('ArchiveWriter', new TarArchiveWriter());
+
+  // If this is a nobrowser op (cron) then do not add the browser plugins.
+  // @todo Make this better.
+  if (empty($options['nobrowser'])) {
+    // Add a download destination.
+    $user = \Drupal::currentUser();
+    if ($user->hasPermission('access backup files')) {
+      $destinations->add('download', new DrupalBrowserDownloadDestination(new Config(['name' => t('Download')])));
+    }
+    // Add an upload destination.
+    $destinations->add('upload', new DrupalBrowserUploadDestination(new Config(['name' => t('Upload')])));
+  }
+
+  // Add a file naming filter.
+  $plugins->add('namer', new FileNamer());
+
+  // Add a compression filter.
+  $plugins->add('compressor', new CompressionFilter());
+
+  // Add the Encrypt utilities filter.
+  $plugins->add('encrypt', new DrupalEncrypt());
+
+  // Add the Drupal utilities filter.
+  $plugins->add('utils', new DrupalUtils());
+
+  // Add a file metadata filter.
+  $plugins->add('metadata', new MetadataWriter(
+    new Config([
+      'generator' => 'Backup and Migrate for Drupal (https://www.drupal.org/project/backup_migrate)',
+      'generatorurl' => 'https://www.drupal.org/project/backup_migrate',
+      'generatorversion' => backup_migrate_module_version(),
+    ])
+  ));
+
+  // Add the custom configured sources.
+  foreach (Source::loadMultiple() as $source) {
+    $source->getPlugin()->alterBackupMigrate($bam, $source->get('id'), $options);
+  }
+
+  // Add the custom configured destination.
+  foreach (Destination::loadMultiple() as $destination) {
+    $destination->getPlugin()->alterBackupMigrate($bam, $destination->get('id'), $options);
+  }
+}
+
+/**
+ * Implements hook_cron().
+ */
+function backup_migrate_cron() {
+  // Runs all of the enabled schedules.
+  $bam = backup_migrate_get_service_object([], ['nobrowser' => TRUE]);
+
+  $schedules = Schedule::loadMultiple();
+  foreach ($schedules as $schedule) {
+    $schedule->run($bam);
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function backup_migrate_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  // Label the items being deleted on uninstall to make the 'entire site'
+  // listing less terrifying.
+  if ($form_id === 'system_modules_uninstall_confirm_form') {
+    if (isset($form['entity_deletes']['backup_migrate_source'])) {
+      $form['text']['#markup'] .= '<p>' . t('Uninstalling Backup and Migrate will delete any custom Backup and Migrate configuration. <strong>Previously created backups will not be deleted.</strong>') . '</p>';
+    }
+    if (isset($form['entity_deletes']['backup_migrate_source']['#items']['entire_site'])) {
+      $form['entity_deletes']['backup_migrate_source']['#items']['entire_site'] = t('Full Site Backup Source');
+    }
+  }
+}
+
+/**
+ * Implements hook_help().
+ */
+function backup_migrate_help($route_name, RouteMatchInterface $route_match) {
+  if ($route_name == 'help.page.backup_migrate') {
+    $help = [];
+    $user = User::load(\Drupal::currentUser()->id());
+
+    // Creates url objects for backup_migrate routes.
+    $urls = [
+      'restore' => 'backup_migrate.restore',
+      'schedules' => 'entity.backup_migrate_schedule.collection',
+      'manual' => 'backup_migrate.quick_backup',
+      'advanced' => 'backup_migrate.advanced_backup',
+      'settings' => 'entity.backup_migrate_settings.collection',
+      'destination' => 'entity.backup_migrate_destination.collection',
+      'sources' => 'entity.backup_migrate_source.collection',
+      'backups' => 'backup_migrate.backups',
+      'documentation' => 'https://www.drupal.org/docs/8/modules/backup-and-migrate-drupal-8',
+      'phpmyadmin' => 'http://www.phpmyadmin.net',
+      'cron' => 'http://drupal.org/cron',
+    ];
+    foreach ($urls as $key => $destination) {
+      $urls[$key] = UrlHelper::isValid($destination, TRUE)
+        ? Url::fromUri($destination)
+        : Url::fromRoute($destination);
+      $urls[$key]->setOptions(['attributes' => ['target' => '_blank']]);
+    }
+
+    if ($user->hasPermission('perform backups')) {
+      $help['intro'] = [
+        '#markup' => t("<p><strong>Backup and Migrate</strong> makes the task of backing up your Drupal database and migrating data from one Drupal install to another easier. It provides a function to backup the entire database to file or download, and to restore from a previous backup. You can also schedule the backup operation. Compression of backup files is also supported. The database backup files created with this module can be imported into this or any other Drupal installation with the @restore, or you can use a database tool such as @phpmyadmin or the mysql command line command. Access for backup migrate is controlled by module permissions, contact the administrator or any privileged user to get access to full module features.</p>", [
+          '@restore' => Link::fromTextAndUrl(t('restore feature'), $urls['restore'])->toString(),
+          '@phpmyadmin' => Link::fromTextAndUrl(t('phpMyAdmin'), $urls['phpmyadmin'])->toString(),
+        ]),
+      ];
+      $help['manual'] = [
+        '#markup' => t("<h3>@title</h3><p>Use this form to run simple @manual of your database. Visit the @documentation for more help using this module.</p>", [
+          '@title' => Link::fromTextAndUrl(t('Backup Tab - Quick Backup'), $urls['manual'])->toString(),
+          '@manual' => Link::fromTextAndUrl(t('manual backups'), $urls['manual'])->toString(),
+          '@documentation' => Link::fromTextAndUrl(t('documentation page'), $urls['documentation'])->toString(),
+        ]),
+      ];
+      $help['advanced'] = [
+        '#markup' => t("<h3>@title</h3><p>Use this form to run manual backups of your database with more advanced options. If you have any @profile saved you can load those settings. You can save any of the changes you make to these settings as a new settings profile.</p>", [
+          '@title' => Link::fromTextAndUrl(t('Backup Tab - Advanced Backup'), $urls['advanced'])->toString(),
+          '@profile' => Link::fromTextAndUrl(t('settings profiles'), $urls['settings'])->toString(),
+        ]),
+      ];
+    }
+
+    if ($user->hasPermission('restore from backup')) {
+      $help['restore'] = [
+        '#markup' => t("<h3>@title</h3><p>Upload a backup and migrate backup file. The restore function will not work with database dumps from other sources such as @phpmyadmin.</p>", [
+          '@title' => Link::fromTextAndUrl(t('Restore Tab'), $urls['restore'])->toString(),
+          '@phpmyadmin' => Link::fromTextAndUrl(t('phpMyAdmin'), $urls['phpmyadmin'])->toString(),
+        ]),
+      ];
+    }
+
+    if ($user->hasPermission('administer backup and migrate')) {
+      $help['backups'] = [
+        '#markup' => t("<h3>@title</h3><p>Backups are the places you can save your backup files to or them load from.</p><p>Files can be saved to a directory on your web server, downloaded to your desktop or emailed to a specified email account. From the @destination tab you can create, delete and edit destinations or list the files which have already been backed up to the available destinations.</p>", [
+          '@title' => Link::fromTextAndUrl(t('Saved Backups'), $urls['backups'])->toString(),
+          '@destination' => Link::fromTextAndUrl(t('destination'), $urls['destination'])->toString(),
+        ]),
+      ];
+      $help['schedules'] = [
+        '#markup' => t("<h3>@title</h3><p>Automatically backup up your database on a regular schedule using @cron.</p><p>Each schedule will run a maximum of once per cron run, so they will not run more frequently than your cron is configured to run. If you specify a number of backups to keep for a schedule, old backups will be deleted as new ones created. <strong>If specifiy a number of files to keep other backup files in that schedule's @destination will get deleted</strong>.<p>", [
+          '@title' => Link::fromTextAndUrl(t('Shedules Tab'), $urls['schedules'])->toString(),
+          '@cron' => Link::fromTextAndUrl(t('cron'), $urls['cron'])->toString(),
+          '@destination' => Link::fromTextAndUrl(t('destination'), $urls['destination'])->toString(),
+        ]),
+      ];
+      $help['settings'] = [
+        '#markup' => t("<h3>@title</h3><p>Settings are profile. Settings store your table exclusion settings as well as your backup file name, compression and timestamp settings. You can use profiles in @schedules and for @manual.</p><p>You can create new profiles using the add profiles tab or by checking the 'Save these settings' button on the advanced backup page.</p>", [
+          '@title' => Link::fromTextAndUrl(t('Settings Tab - Settings Profiles'), $urls['settings'])->toString(),
+          '@schedules' => Link::fromTextAndUrl(t('schedules'), $urls['schedules'])->toString(),
+          '@manual' => Link::fromTextAndUrl(t('quick backups'), $urls['manual'])->toString(),
+        ]),
+      ];
+      $help['destination'] = [
+        '#markup' => t("<h3>@title</h3><p>Destinations store your custom created destionation settings as backup server folders or external clouds (Clouds destinations are in work, check the module issues lists).</p>", [
+          '@title' => Link::fromTextAndUrl(t('Settings Tab - Destinations'), $urls['destination'])->toString(),
+        ]),
+      ];
+      $help['sources'] = [
+        '#markup' => t("<h3>@title</h3><p>Sources store your source settings you want to backup, for now is available 4 default sources to use. Follow module issues list for new source features.</p>", [
+          '@title' => Link::fromTextAndUrl(t('Settings Tab - Sources'), $urls['sources'])->toString(),
+        ]),
+      ];
+    }
+
+    $output = '';
+    foreach ($help as $key => $value) {
+      $output .= render($value);
+    }
+
+    return $output;
+  }
+}
+
+/**
+ * Track this module's version.
+ *
+ * @return string
+ *   A module version string; defaults to '5.0.x-dev'.
+ */
+function backup_migrate_module_version() {
+  static $version;
+
+  if (is_null($version)) {
+    // The default version string for this release of the module.
+    $version = '5.0.x-dev';
+
+    // If the module's version can be identified, use it instead of the default.
+    $modules = Drupal::service('extension.list.module')->getAllInstalledInfo();
+    if (!empty($modules['backup_migrate']['version'])) {
+      $version = $modules['backup_migrate']['version'];
+    }
+  }
+
+  return $version;
+}

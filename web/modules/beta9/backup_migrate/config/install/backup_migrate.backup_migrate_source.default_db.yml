@@ -1,0 +1,6 @@
+langcode: en
+status: true
+dependencies: {  }
+id: default_db
+label: 'Default Drupal Database'
+type: DefaultDB

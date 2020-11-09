@@ -1,0 +1,215 @@
+backup_migrate.quick_backup:
+  path: '/admin/config/development/backup_migrate'
+  defaults:
+    _form: '\Drupal\backup_migrate\Form\BackupMigrateQuickBackupForm'
+    _title: 'Backup and Migrate'
+  requirements:
+    _permission: 'perform backup'
+
+backup_migrate.advanced_backup:
+  path: '/admin/config/development/backup_migrate/advanced'
+  defaults:
+    _form: '\Drupal\backup_migrate\Form\BackupMigrateAdvancedBackupForm'
+    _title: 'Advanced Backup'
+  requirements:
+    _permission: 'perform backup'
+
+backup_migrate.restore:
+   path: '/admin/config/development/backup_migrate/restore'
+   defaults:
+     _form: '\Drupal\backup_migrate\Form\BackupMigrateRestoreForm'
+     _title: 'Restore'
+   requirements:
+     _permission: 'restore from backup'
+
+
+# Backups
+backup_migrate.backups:
+   path: '/admin/config/development/backup_migrate/backups'
+   defaults:
+     _controller: '\Drupal\backup_migrate\Controller\BackupController::listAll'
+     _title: 'Backups'
+   requirements:
+     _permission: 'access backup files'
+
+
+# Schedule
+entity.backup_migrate_schedule.collection:
+   path: '/admin/config/development/backup_migrate/schedule'
+   defaults:
+     _entity_list: 'backup_migrate_schedule'
+     _title: 'Schedule'
+   requirements:
+     _permission: 'administer backup and migrate'
+
+entity.backup_migrate_schedule.add:
+   path: '/admin/config/development/backup_migrate/schedule/add'
+   defaults:
+     _entity_form: backup_migrate_schedule.default
+     _title: 'Add schedule'
+   requirements:
+     _permission: 'administer backup and migrate'
+
+entity.backup_migrate_schedule.edit_form:
+   path: '/admin/config/development/backup_migrate/schedule/edit/{backup_migrate_schedule}'
+   defaults:
+    _entity_form: backup_migrate_schedule.default
+    _title: 'Edit schedule'
+   requirements:
+     _permission: 'administer backup and migrate'
+
+entity.backup_migrate_schedule.delete_form:
+   path: '/admin/config/development/backup_migrate/schedule/delete/{backup_migrate_schedule}'
+   defaults:
+    _entity_form: backup_migrate_schedule.delete
+    _title: 'Delete schedule'
+   requirements:
+     _permission: 'administer backup and migrate'
+
+
+# Settings Profile
+entity.backup_migrate_settings.collection:
+   path: '/admin/config/development/backup_migrate/settings'
+   defaults:
+     _entity_list: 'backup_migrate_settings'
+     _title: 'Settings'
+   requirements:
+     _permission: 'administer backup and migrate'
+
+entity.backup_migrate_settings.add:
+   path: '/admin/config/development/backup_migrate/settings/add'
+   defaults:
+     _entity_form: backup_migrate_settings.default
+     _title: 'Add settings profile'
+   requirements:
+     _permission: 'administer backup and migrate'
+
+entity.backup_migrate_settings.edit_form:
+   path: '/admin/config/development/backup_migrate/settings/edit/{backup_migrate_settings}'
+   defaults:
+    _entity_form: backup_migrate_settings.default
+    _title: 'Edit settings profile'
+   requirements:
+     _permission: 'administer backup and migrate'
+
+entity.backup_migrate_settings.delete_form:
+   path: '/admin/config/development/backup_migrate/settings/delete/{backup_migrate_settings}'
+   defaults:
+    _entity_form: backup_migrate_settings.delete
+    _title: 'Delete settings profile'
+   requirements:
+     _permission: 'administer backup and migrate'
+
+
+# Backup Destination
+entity.backup_migrate_destination.collection:
+   path: '/admin/config/development/backup_migrate/settings/destination'
+   defaults:
+     _entity_list: 'backup_migrate_destination'
+     _title: 'Backup Destination'
+   requirements:
+     _permission: 'administer backup and migrate'
+
+entity.backup_migrate_destination.add_form:
+   path: '/admin/config/development/backup_migrate/settings/destination/add'
+   defaults:
+     _entity_form: backup_migrate_destination.default
+     _title: 'Add destination'
+   requirements:
+     _permission: 'administer backup and migrate'
+
+entity.backup_migrate_destination.edit_form:
+   path: '/admin/config/development/backup_migrate/settings/destination/edit/{backup_migrate_destination}'
+   defaults:
+    _entity_form: backup_migrate_destination.default
+    _title: 'Edit destination'
+   requirements:
+     _permission: 'administer backup and migrate'
+
+entity.backup_migrate_destination.delete_form:
+   path: '/admin/config/development/backup_migrate/settings/destination/delete/{backup_migrate_destination}'
+   defaults:
+     _entity_form: backup_migrate_destination.delete
+     _title: 'Delete destination'
+   requirements:
+     _permission: 'administer backup and migrate'
+
+entity.backup_migrate_destination.backups:
+   path: '/admin/config/development/backup_migrate/settings/destination/backups/{backup_migrate_destination}'
+   defaults:
+     _controller: '\Drupal\backup_migrate\Controller\BackupController::listDestinationEntityBackups'
+     _title_callback: '\Drupal\backup_migrate\Controller\BackupController::listDestinationEntityBackupsTitle'
+   requirements:
+     _permission: 'administer backup and migrate'
+   options:
+     parameters:
+       backup_migrate_destination:
+         type: entity:backup_migrate_destination
+
+entity.backup_migrate_destination.backup_delete:
+   path: '/admin/config/development/backup_migrate/settings/destination/backups/{backup_migrate_destination}/delete/{backup_id}'
+   defaults:
+      _form: '\Drupal\backup_migrate\Form\BackupDeleteForm'
+   requirements:
+     _permission: 'administer backup and migrate'
+   options:
+     parameters:
+       backup_migrate_destination:
+         type: entity:backup_migrate_destination
+
+entity.backup_migrate_destination.backup_download:
+   path: '/admin/config/development/backup_migrate/settings/destination/backups/{backup_migrate_destination}/download/{backup_id}'
+   defaults:
+     _controller: '\Drupal\backup_migrate\Controller\BackupController::download'
+     _title: 'Downlod Backup'
+   requirements:
+     _permission: 'administer backup and migrate'
+   options:
+     parameters:
+       backup_migrate_destination:
+         type: entity:backup_migrate_destination
+
+entity.backup_migrate_destination.backup_restore:
+   path: '/admin/config/development/backup_migrate/settings/destination/backups/{backup_migrate_destination}/restore/{backup_id}'
+   defaults:
+      _form: '\Drupal\backup_migrate\Form\BackupRestoreForm'
+   requirements:
+     _permission: 'administer backup and migrate'
+   options:
+     parameters:
+       backup_migrate_destination:
+         type: entity:backup_migrate_destination
+
+
+# Backup Source
+entity.backup_migrate_source.collection:
+   path: '/admin/config/development/backup_migrate/settings/source'
+   defaults:
+     _entity_list: 'backup_migrate_source'
+     _title: 'Backup sources'
+   requirements:
+     _permission: 'administer backup and migrate'
+
+entity.backup_migrate_source.add_form:
+   path: '/admin/config/development/backup_migrate/settings/source/add'
+   defaults:
+     _entity_form: backup_migrate_source.default
+     _title: 'Add Backup Source'
+   requirements:
+     _permission: 'administer backup and migrate'
+
+entity.backup_migrate_source.edit_form:
+   path: '/admin/config/development/backup_migrate/settings/source/edit/{backup_migrate_source}'
+   defaults:
+    _entity_form: backup_migrate_source.default
+    _title: 'Edit source'
+   requirements:
+     _permission: 'administer backup and migrate'
+
+entity.backup_migrate_source.delete_form:
+   path: '/admin/config/development/backup_migrate/settings/source/delete/{backup_migrate_source}'
+   defaults:
+    _entity_form: backup_migrate_source.delete
+    _title: 'Delete source'
+   requirements:
+     _permission: 'administer backup and migrate'

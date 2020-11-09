@@ -1,0 +1,23 @@
+entity.backup_migrate_schedule.add:
+  route_name: 'entity.backup_migrate_schedule.add'
+  title: 'Add Schedule'
+  appears_on:
+    - entity.backup_migrate_schedule.collection
+
+entity.backup_migrate_settings.add_form:
+  route_name: 'entity.backup_migrate_settings.add'
+  title: 'Add Settings Profile'
+  appears_on:
+    - entity.backup_migrate_settings.collection
+
+entity.backup_migrate_destination.add_form:
+  route_name: 'entity.backup_migrate_destination.add_form'
+  title: 'Add Backup Destination'
+  appears_on:
+    - entity.backup_migrate_destination.collection
+
+entity.backup_migrate_source.add_form:
+  route_name: 'entity.backup_migrate_source.add_form'
+  title: 'Add Backup Source'
+  appears_on:
+    - entity.backup_migrate_source.collection

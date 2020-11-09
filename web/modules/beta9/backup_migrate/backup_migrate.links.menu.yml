@@ -1,0 +1,33 @@
+backup_migrate.quick_backup:
+  title: Backup and Migrate
+  description: 'Create or import backups of your project database or files'
+  parent: system.admin_config_development
+  route_name: backup_migrate.quick_backup
+
+backup_migrate.restore:
+  title: Restore
+  description: ''
+  parent: backup_migrate.quick_backup
+  route_name: backup_migrate.restore
+  weight: 1
+
+backup_migrate.backups:
+  title: Saved Backups
+  description: ''
+  parent: backup_migrate.quick_backup
+  route_name: backup_migrate.backups
+  weight: 2
+
+backup_migrate.schedule:
+  title: Schedule
+  description: ''
+  parent: backup_migrate.quick_backup
+  route_name: entity.backup_migrate_schedule.collection
+  weight: 3
+
+backup_migrate.settings:
+  title: Settings
+  description: ''
+  parent: backup_migrate.quick_backup
+  route_name: entity.backup_migrate_settings.collection
+  weight: 4

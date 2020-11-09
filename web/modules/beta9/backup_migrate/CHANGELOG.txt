@@ -1,0 +1,167 @@
+Backup and Migrate 5.0.0-rc2, 2020-09-28
+----------------------------------------
+#3158790 by devad, raman.b, karolus, robcarr, DamienMcKenna, endless_wander,
+  Bagz, jhnnsbstnbch, abdul_azeez_drusys, celia_ccs: Unable to add schedules and
+  profiles.
+#3169301 by devad, snehalgaikwad, DamienMcKenna: Unable to add backup source.
+#3173623 by DamienMcKenna: Add test coverage for running a backup through cron
+  in the UI.
+#3164263 by devad, DamienMcKenna, bigmonmulgrew: Incompatible PluginManager
+  ::call() declaration.
+#3173582 by DamienMcKenna: Replace BACKUP_MIGRATE_MODULE_VERSION constant with
+  the module's actual version.
+#3154715 by DamienMcKenna, xmacinfo: Add an update script to clear the caches
+  for upgrading to 5.0.x.
+
+
+Backup and Migrate 5.0.0-rc1, 2020-06-12
+----------------------------------------
+#3051092 by DamienMcKenna, vuil, rpayanm, waverate: Drupal 9 compatibility.
+#3065017 by DamienMcKenna, dercheffe, Promo-IL: Restore emoji unicode characters
+  not possible.
+#3143651 by DamienMcKenna: Ignore cache_page by default.
+#3143652 by DamienMcKenna: Coding standards improvements.
+#3143652 by DamienMcKenna: Rename class methods that start with an underscore.
+#3124193 by vsujeetkumar, DamienMcKenna, Neslee Canil Pinto: t() calls should be
+  avoided in classes.
+#3159638 by DamienMcKenna, endless_wander, snehalgaikwad, kvantstudio,
+  naresh_bavaskar: Error when saving destination.
+
+
+Backup and Migrate 8.x-4.x-dev, xxxx-xx-xx
+------------------------------------------
+#3121797 by paulocs, thalles, RenatoG, Neslee Canil Pinto: Update support.source
+  link in composer.json.
+#3104422 by peterkokot, DamienMcKenna: PHP 7.4 deprecated reverse order of glue
+  and pieces in implode.
+#3121309 by DamienMcKenna, Neslee Canil Pinto: Compatibility with Drupal 9.
+#3128371 by solideogloria: info.yml "dependencies" spelled wrong.
+#3130772 by DamienMcKenna: Remove dependencies from info.yml file.
+#3131711 by douggreen: 'label' key defined twice for backup_migrate.profile.*
+  config_entity schema in backup_migrate.schema.yml.
+
+
+Backup and Migrate 8.x-4.1, 2019-12-20
+--------------------------------------
+#2975065 by Dinu Rodnitchi, Alex Andrascu: Add encryption support.
+#3041404 by DamienMcKenna: Add CHANGELOG.txt.
+#2947276 by liliancatanoi90, rajeshwari10, minakshiPh, Elaman, emartoni,
+  DamienMcKenna, alonaoneill: Missing module help.
+#2947219 by bryrock, PhilY, Alex Andrascu: Timestamp no more uses site timezone.
+#2962548 by mattshoaf, Alex Andrascu: Depends on Core Entity module.
+#2992448 by Pasqualle, riddhi.addweb: Warning after install.
+#2935402 by DamienMcKenna, ikit-claw: Further improve coding standards
+  compliance.
+#2935402 by DamienMcKenna: Further improve coding standards compliance.
+#3028984 by i-trokhanenko, Roman Dyn: Replace deprecated REQUEST_TIME.
+#2925371 by tibezh: Usable menu items in Administration menu.
+#2950887 by liliancatanoi90: Admin menu item is missing a description.
+#3013182 by RoshniPatel.addweb: 'label' key defined twice for
+  backup_migrate.profile.* config_entity schema in backup_migrate.schema.yml.
+#3047223 by DamienMcKenna: Temporarily remove NodeSquirrel integration.
+#3047798 by trustypelletgun, cosmicdreams: Corrected typo in MySQLi extension
+  error message.
+#3053127 by DamienMcKenna, JonMcL: Added README.md note about the new B&M
+  Flysystem module.
+#2998626 by frob, DamienMcKenna, JonMcL: Bad logic halts functionality if the
+  uncompressed file is too large.
+#3006542 by ashlewis, DamienMcKenna, cl.choong, jacklee0410, maki3000, TedWS:
+  Failed to connect to MySQL server.
+
+
+Backup and Migrate 8.x-4.0, 2018-03-29
+--------------------------------------
+#2937840 by hugronaphor: Avoid "Unable to find the wrapper "private"" error.
+
+
+Backup and Migrate 8.x-4.0-rc1, 2018-02-21
+------------------------------------------
+#2945253 by liliancatanoi90, mlahde, Dinu Rodnitchi: Restoring wrong type of
+  file gives "Restore Complete."
+#2931261 by Dinu Rodnitchi, yukare, liliancatanoi90: Wrong settings profile in
+  schedule edit.
+#2939721 by gaurav.kapoor: Variable $out declared but not being used anywhere.
+#2930752 by DamienMcKenna, Venkatesh Rajan.J: Fix coding standards compliance
+  bugs.
+#2912460 by DamienMcKenna: Removed two unused permissions, fixed backup download
+  access, test improvements.
+#2912460 by Dinu Rodnitchi: Add tests for all basic functionality (D8).
+By Alex Andrascu: Removing tests from lib folder. This will be refactored and
+  reintroduced in a later version.
+
+
+Backup and Migrate 8.x-4.0-beta3, 2017-10-12
+--------------------------------------------
+#2913362 by Dinu Rodnitchi, fietserwin, zheleong, Alex Andrascu, paolo m.: The
+  destination upload does not exist.
+
+
+Backup and Migrate 8.x-4.0-beta2, 2017-10-04
+--------------------------------------------
+#2913362 by fietserwin: The destination upload does not exist
+By Alex Andrascu: Fix for #2913021
+
+
+Backup and Migrate 8.x-4.0-beta1, 2017-09-29
+--------------------------------------------
+#2912153 by Alex Andrascu: Roadmap.
+#2831297 by szeidler, Alex Andrascu: Exclude cache table contents by default
+By Alex Andrascu: Coding standards ammends.
+#2912153 by Alex Andrascu: Roadmap\n - MySQL autocommit support for faster
+  restores of larger db. Config options for this tweak still to be added.
+#2878538 by pankajxenix, Alex Andrascu, Eugen Andrasescu: Warning: ZipArchive::
+ getNameIndex(): Invalid or unitialized Zip object in BackupMigrate\n- Fixes
+ filesize for all compressed files.
+#2135827 by Alex Andrascu: The Download method should be related to the role
+  permissions.
+#2826108 by PushaMD: Use tokens to create file names for backups.
+#2877008 by Dinu Rodnitchi: Ability to order the Saved Backups by Name, Date and
+  Size.
+#2905381 by smk-ka: composer.json does not contain valid JSON
+#2803371 by Alex Andrascu, HongPong, couturier: Uninstall "entire site" config
+  message looks terrifying.
+By Ronan: Remove composer cruft. Move to Symfony autoloader.
+By Ronan: Add limits and more link to backups tab.
+#2875686 by Alex Andrascu: Split Source and Destination into two separate forms.
+#2862618 by couturier: Add field to "Schedule" for number of backups to keep.
+By Ronan: Fix issue with file timestamps not saving.
+#2723963 by jojyja: Removing unused imports in code.
+#2692931 by pashupathi nath gajawada: Removed urlInfo() deprecated method from
+  code base.
+#2869821 by harsha012: fix the coding standards.
+#2817045 by Dinu Rodnitchi: 'The backup file could not be saved to
+  'private://backup_migrate/' because it does not exist.'
+#2848869: Destination not saved with schedule.
+#2851741 by vibrasphere: 'UTF8 is not supported by the MySQL server' - When
+  database port was not set.
+#2732195 by szeidler: Fatal error: Call to a member function create() on a non-
+  object in backup_migrate\vendor\Drupal\backup_migrate\Core\src\Source\MySQLiSource.php
+  on line 48.
+By Ronan: Put in a check for mysqli extension.
+#2865949 by Dinu Rodnitchi, pmunch: Add Backup Destination: "Directory Path"
+  field is gone.
+#2687555 by Znak, dhruveshdtripathi: Add a link to configurations page.
+
+
+Backup and Migrate 8.x-4.0-alpha2, 2017-04-04
+---------------------------------------------
+#2809965 by szeidler: Restore - nothing happens
+#2833245: Error: Call to undefined method confSet() - prevents backup
+#2741245 by tobiberlin: On restore page: Notice: Undefined index: groups in
+  Drupal\backup_migrate\Drupal\Config\DrupalConfigHelper::addFieldsFromSchema().
+#2741301 noise on destination page.
+#2820911 Web server detection failing for IIS.
+#2826107 by szeidler: Error msgs on settings page.
+#2741265 by szeidler: Backups not gzipped.
+#2834178 by pifagor: Notice: Undefined index: settings_profile_id.
+#2741257 by tobiberlin: On schedule page:Strict warning: Declaration of
+  Drupal\backup_migrate\Controller\ScheduleListBuilder::buildRow() should be
+  compatible with.
+By Ronan: Updated dependencies.
+#2749885 by szeidler: Database irreversibly corrupted after export and restore -
+  Encoding issues with non ASCIII texts.
+
+
+Backup and Migrate 8.x-4.0-alpha1, 2016-05-09
+---------------------------------------------
+By Ronan: First release for Drupal 8.

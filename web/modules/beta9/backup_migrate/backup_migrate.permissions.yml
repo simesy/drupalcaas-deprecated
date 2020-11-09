@@ -1,0 +1,19 @@
+'perform backup':
+  'title': 'Perform a backup'
+  'description': 'Back up any of the available sources.'
+  restrict access: true
+
+'access backup files':
+  'title': 'Access backup files'
+  'description': 'Access and download the previously created backup files.'
+  restrict access: true
+
+'restore from backup':
+  'title': 'Restore the site'
+  'description': 'Restore the site''s database from a backup file.'
+  restrict access: true
+
+'administer backup and migrate':
+  'title': 'Administer Backup and Migrate'
+  'description': 'Edit Backup and Migrate profiles, schedules and destinations.'
+  restrict access: true
