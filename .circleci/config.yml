@@ -25,7 +25,7 @@ commands:
           command: |
             cd /root/project
             cp .circleci/phpunit.xml phpunit.xml
-            cp .circleci/circleci.settings.php web/sites/default/includes/local.settings.php
+            cp .circleci/circleci.settings.php web/sites/default/local.settings.php
             composer install
             drush si standard --db-url=mysql://root:lilengine@127.0.0.1/default --account-pass="admin"
 jobs:
@@ -36,7 +36,7 @@ jobs:
       - checkout
       - prepare_environment
       - run: cd /root/project && composer install
-      - run: phpcs web/themes/contrib/gin
+      - run: phpcs --standard="Drupal,DrupalPractice" --extensions="php,module,inc,install,test,profile,theme" web/modules/contrib/admin_toolbar/
   checking_phpunit:
     executor:
       name: default
