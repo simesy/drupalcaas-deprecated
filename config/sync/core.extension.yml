@@ -1,16 +1,25 @@
 module:
+  admin_toolbar: 0
+  admin_toolbar_links_access_filter: 0
+  admin_toolbar_tools: 0
+  allowed_formats: 0
   big_pipe: 0
   block: 0
   block_content: 0
   breakpoint: 0
+  chosen: 0
+  chosen_field: 0
+  chosen_lib: 0
   ckeditor: 0
   comment: 0
   config: 0
   contextual: 0
   ctools: 0
   datetime: 0
+  datetime_range: 0
   dblog: 0
   decoupled_router: 0
+  diff: 0
   druxt: 0
   dynamic_page_cache: 0
   editor: 0
@@ -19,6 +28,8 @@ module:
   field_ui: 0
   file: 0
   filter: 0
+  geofield: 0
+  geofield_map: 0
   gin_login: 0
   gin_toolbar: 0
   image: 0
@@ -27,8 +38,11 @@ module:
   jsonapi_resources: 0
   jsonapi_views: 0
   link: 0
+  media: 0
+  media_library: 0
   menu_link_content: 0
   menu_ui: 0
+  metatag: 0
   node: 0
   options: 0
   page_cache: 0
@@ -36,11 +50,14 @@ module:
   path_alias: 0
   quickedit: 0
   rdf: 0
+  redis: 0
   search: 0
   serialization: 0
   shortcut: 0
+  stage_file_proxy: 0
   system: 0
   taxonomy: 0
+  telephone: 0
   text: 0
   token: 0
   toolbar: 0
@@ -48,6 +65,9 @@ module:
   user: 0
   views_ui: 0
   viewsreference: 0
+  workbench: 0
+  workbench_access: 0
+  workflows: 0
   pathauto: 1
   views: 10
   paragraphs: 11

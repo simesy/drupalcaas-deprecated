@@ -21,6 +21,9 @@ console/
 /update.php
 /web.config
 
+# Assets.
+web/sites/default/files
+
 # Development.
 local.settings.php
 local.services.yml
