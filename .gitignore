@@ -1,4 +1,4 @@
-# Composer.
+# Composer / scaffold.
 /drush/contrib/
 /vendor/
 /web/core/
@@ -7,6 +7,19 @@
 /web/profiles/contrib/
 /web/libraries/
 console/
+/.csslintrc
+/.eslintignore
+/.eslintrc.json
+/.ht.router.php
+/.htaccess
+/INSTALL.txt
+/README.txt
+/autoload.php
+/example.gitignore
+/index.php
+/robots.txt
+/update.php
+/web.config
 
 # Development.
 local.settings.php
