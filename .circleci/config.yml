@@ -1,0 +1,67 @@
+version: 2.1
+executors:
+  default:
+    docker:
+      - image: drupal:9.0.7-apache
+      - image: mysql:5.7
+        environment:
+          MYSQL_DATABASE: default
+          MYSQL_ROOT_PASSWORD: lilengine
+      - image: selenium/standalone-chrome
+commands:
+  prepare_environment:
+    description: "Prepare tooling, setup path for environment"
+    steps:
+      - run:
+          command: |
+            apt update && apt install git -y
+            echo "export PATH=$PATH:$HOME/project/vendor/bin" >> $BASH_ENV
+            rm -rf /var/www/html
+            ln -s /root/project/web/ /var/www/html
+  install_fully_drupal_site:
+    description: "Install Drupal instance ready for testing"
+    steps:
+      - run:
+          command: |
+            cd /root/project
+            cp .circleci/phpunit.xml phpunit.xml
+            cp .circleci/circleci.settings.php web/sites/default/includes/local.settings.php
+            composer install
+            drush si standard --db-url=mysql://root:lilengine@127.0.0.1/default --account-pass="admin"
+jobs:
+  checking_coding_standard:
+    executor:
+      name: default
+    steps:
+      - checkout
+      - prepare_environment
+      - run: cd /root/project && composer install
+      - run: phpcs web/themes/contrib/gin
+  checking_phpunit:
+    executor:
+      name: default
+    steps:
+      - checkout
+      - prepare_environment
+      - install_fully_drupal_site
+      - run: chown -R www-data:www-data /root/project
+      - run: chmod -R 755 /root
+      - run: /etc/init.d/apache2 start
+      - run: cd /root/project && drush cr
+      - run: phpunit web/modules/contrib/admin_toolbar
+workflows:
+  version: 2
+  testing:
+    jobs:
+      - checking_coding_standard
+      - checking_phpunit
+
+
+
+
+
+
+
+
+
+
