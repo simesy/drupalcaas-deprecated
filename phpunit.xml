@@ -1,0 +1,18 @@
+<phpunit bootstrap="web/core/tests/bootstrap.php" colors="true"
+         beStrictAboutTestsThatDoNotTestAnything="true"
+         beStrictAboutOutputDuringTests="true"
+         beStrictAboutChangesToGlobalState="true"
+         printerClass="\Drupal\Tests\Listeners\HtmlOutputPrinter">
+  <php>
+    <ini name="error_reporting" value="32767"/>
+    <ini name="memory_limit" value="-1"/>
+    <env name="SIMPLETEST_BASE_URL" value="http://lecapi.lndo.site"/>
+    <env name="SIMPLETEST_DB" value="mysql://drupal9:drupal9@localhost/drupal9"/>
+    <env name="BROWSERTEST_OUTPUT_DIRECTORY" value="/app/web/sites/simpletest"/>
+  </php>
+  <testsuites>
+    <testsuite name="entityitems">
+      <directory>web/modules/custom/entityitems/tests</directory>
+    </testsuite>
+  </testsuites>
+</phpunit>
