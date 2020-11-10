@@ -39,3 +39,5 @@ default.settings.php
 /web/sites/simpletest
 /.idea/
 /.env
+.DS_Store
+
