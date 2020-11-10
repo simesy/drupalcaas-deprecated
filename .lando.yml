@@ -1,4 +1,4 @@
-name: lech
+name: lecapi
 recipe: drupal8
 config:
   webroot: web
