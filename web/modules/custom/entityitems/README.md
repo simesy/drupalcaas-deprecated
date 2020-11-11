@@ -17,40 +17,45 @@ The module author has issues with this...
 
 ## The principles
 
-This module is built on the philosophy that many website builds could
-do with a "field_collections" approach to "sub items" but that the solutions
-available for this can create a lot of abstraction.
-
-Say, if you have "Cards" component, and multiple "Card items", what fields will those
-sub items have? Subtitle, body, link. Maybe some media. It's usually the same
-stuff every time in a component based approach.
-
-The is module just provides a generic compound field with a bunch of standard
+The `entityitems` module provides a generic compound field with a bunch of standard
 elements which you can switch on and off.
 
-The result is neatness in:
+This module is built on the philosophy that many website builds could
+do with a "field_collections" approach to "sub items". The solutions
+available to solve this problem can create a lot of abstraction, and in fact
+be a little too powerful causing significant tech debt in a content model.
+
+However the pattern is pretty simple. You have "Cards" component, and it needs
+multiple "Card items", what fields will you need? It's usually the same types
+of fields for most components.
+
+- bubtitle
+- body
+- link
+- image
+
+By having a defined field, with some widget flexibility, you can create a
+re-usable pattern that improves things like:
+
 - tables
-- re-usable patterns
 - accessing field values
 - twig templating
 - jsonapi meta
 - tokens
+- re-architecting IA
 - etc etc etc
-
-It also creates a lot of fluidity later if you need get that annoying extra
-requirement for a field in your component.
 
 ## Tips
 
 This field doesn't and shouldn't solve every problem! If you find yourself
-fighting this module, and the fields it provides don't cut it for you, then
+fighting this module, and the fields it provides don't work for you, then
 build your own thing.
 
 If you call your field `field_items`, and reuse it across all of your components
 you may get significant DX benefits in the databasea, tokens and on your APIs.
 All of your entities will have a repeating pattern of `$entity->field_items[0]->some_value`.
 
-If you follow the above approach it make make it easy to retrospectively change
+If you follow the above approach it may make it easy to retrospectively change
 a component type using a set of SQL updates. (Some would argue that such updates
 are better done through the entity APIs.)
 
