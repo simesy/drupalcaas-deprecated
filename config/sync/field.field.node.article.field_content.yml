@@ -1,0 +1,54 @@
+uuid: 4a20c04b-539e-4c91-9bcb-14982ea7ce21
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_content
+    - node.type.article
+    - paragraphs.paragraphs_type.cards
+    - paragraphs.paragraphs_type.cta
+    - paragraphs.paragraphs_type.faq
+    - paragraphs.paragraphs_type.markup
+    - paragraphs.paragraphs_type.sequence
+  module:
+    - entity_reference_revisions
+id: node.article.field_content
+field_name: field_content
+entity_type: node
+bundle: article
+label: Content
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      cards: cards
+      cta: cta
+      faq: faq
+      markup: markup
+      sequence: sequence
+    target_bundles_drag_drop:
+      cards:
+        enabled: true
+        weight: 7
+      cta:
+        enabled: true
+        weight: 8
+      faq:
+        enabled: true
+        weight: 9
+      markup:
+        enabled: true
+        weight: 10
+      sequence:
+        enabled: true
+        weight: 11
+      subtitle:
+        weight: 12
+        enabled: false
+field_type: entity_reference_revisions
