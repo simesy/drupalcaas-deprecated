@@ -7,7 +7,7 @@ dependencies:
 _core:
   default_config_hash: WNeK5FbcY8pXgEpbD_KgRzlF1-5PL3BJXwqaBctPTqw
 name: 'Full HTML'
-format: full_html
+format: full
 weight: 2
 filters:
   filter_align:

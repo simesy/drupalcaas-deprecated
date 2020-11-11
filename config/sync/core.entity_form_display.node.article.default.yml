@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.article.field_site
     - node.type.article
   module:
+    - chosen_field
     - paragraphs
     - path
 _core:
@@ -25,16 +26,17 @@ content:
   field_content:
     weight: 1
     settings:
-      title: Paragraph
-      title_plural: Paragraphs
-      edit_mode: open
-      add_mode: dropdown
-      form_display_mode: default
-      default_paragraph_type: ''
-      closed_mode: summary
+      title: Content
+      title_plural: Content
+      edit_mode: closed
+      closed_mode: preview
       autocollapse: none
       closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: markup
       features:
+        add_above: '0'
         collapse_edit_all: collapse_edit_all
         duplicate: duplicate
     third_party_settings: {  }
@@ -42,13 +44,9 @@ content:
     region: content
   field_site:
     weight: 26
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
-    type: entity_reference_autocomplete
+    type: chosen_select
     region: content
   path:
     type: path

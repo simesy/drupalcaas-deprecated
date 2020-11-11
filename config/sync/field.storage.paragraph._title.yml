@@ -1,11 +1,11 @@
-uuid: 48e39708-745b-474b-b63b-471686a7c532
+uuid: f2f51d3c-7944-4f39-823c-fde20a4136a4
 langcode: en
 status: true
 dependencies:
   module:
     - paragraphs
-id: paragraph.field_items
-field_name: field_items
+id: paragraph._title
+field_name: _title
 entity_type: paragraph
 type: string
 settings:
@@ -14,7 +14,7 @@ settings:
   case_sensitive: false
 module: core
 locked: false
-cardinality: -1
+cardinality: 1
 translatable: true
 indexes: {  }
 persist_with_no_fields: false

@@ -41,7 +41,14 @@
         "drupal/workbench_access": "^1.0@beta",
         "drush/drush": "^10.3",
         "platformsh/config-reader": "^2.3",
-        "predis/predis": "^1.1"
+        "predis/predis": "^1.1",
+        "zaporylie/composer-drupal-optimizations": "^1"
+    },
+    "require-dev": {
+        "drupal/core-dev": "^9",
+        "grasmash/drupal-security-warning": "^1.1",
+        "previousnext/phpunit-finder": "^1",
+        "weitzman/drupal-test-traits": "^1"
     },
     "conflict": {
         "drupal/drupal": "*"

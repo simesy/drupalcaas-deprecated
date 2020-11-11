@@ -40,4 +40,5 @@ default.settings.php
 /.idea/
 /.env
 .DS_Store
+.phpunit.result.cache
 

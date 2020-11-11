@@ -3,12 +3,12 @@ langcode: en
 status: true
 dependencies:
   config:
-    - filter.format.basic_html
+    - filter.format.basic
   module:
     - ckeditor
 _core:
   default_config_hash: AqlPmO16LvJI4D0Ih6u4GFQIzqr5OnLgAUSjcUGWk2g
-format: basic_html
+format: basic
 editor: ckeditor
 settings:
   toolbar:
