@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.cards.field_subtitle
+    - field.field.paragraph.cards.items
     - paragraphs.paragraphs_type.cards
   module:
     - entity_reference_revisions
@@ -14,11 +15,20 @@ mode: default
 content:
   field_subtitle:
     type: entity_reference_revisions_entity_view
-    weight: 2
-    label: above
+    weight: 0
+    label: hidden
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
+    region: content
+  items:
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
     region: content
 hidden: {  }
