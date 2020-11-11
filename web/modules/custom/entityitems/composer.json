@@ -1,0 +1,25 @@
+{
+    "name": "drupal/entityitems",
+    "description": "Provides a general and reusable set of fields for components, with minimal abstraction.",
+    "type": "drupal-module",
+    "homepage": "http://drupal.org/project/dynamic_entity_reference",
+    "authors": [
+        {
+            "name": "Si Hobbs",
+            "homepage": "https://www.drupal.org/u/sime",
+            "role": "Maintainer"
+        },
+    ],
+    "support": {
+        "issues": "http://drupal.org/project/entityitems",
+        "source": "http://cgit.drupalcode.org/entityitems"
+    },
+    "license": "GPL-2.0-or-later",
+    "minimum-stability": "dev",
+    "require": {
+        "drupal/core": "^8.7.7 || ^9"
+    },
+    "require-dev": {
+        "drupal/diff": "1.x-dev"
+    }
+}

@@ -1,0 +1,12 @@
+name: Entity items
+description: Provides a general and reusable set of fields for components, with minimal abstraction.
+package: Field types
+
+type: module
+core_version_requirement: ^8.8.0 || ^9.0
+
+dependencies:
+  - drupal:field
+test_dependencies:
+  - drupal:field_ui
+  - drupal:node
