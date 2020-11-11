@@ -3,9 +3,11 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.event.field_content
     - field.field.node.event.field_site
     - node.type.event
   module:
+    - entity_reference_revisions
     - path
 id: node.event.default
 targetEntityType: node
@@ -18,6 +20,16 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_content:
+    weight: 122
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_autocomplete
+    region: content
   field_site:
     weight: 121
     settings:
