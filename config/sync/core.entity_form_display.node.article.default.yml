@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.article.field_content
+    - field.field.node.article.field_site
     - node.type.article
   module:
     - paragraphs
@@ -32,6 +33,16 @@ content:
       default_paragraph_type: ''
     third_party_settings: {  }
     type: entity_reference_paragraphs
+    region: content
+  field_site:
+    weight: 26
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
     region: content
   path:
     type: path
