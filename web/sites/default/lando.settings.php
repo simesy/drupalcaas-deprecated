@@ -33,6 +33,3 @@ ini_set('display_startup_errors', TRUE);
 $settings['update_free_access'] = FALSE;
 $settings['rebuild_access'] = TRUE;
 $settings['skip_permissions_hardening'] = TRUE;
-
-$config['system.logging']['error_level'] = 'verbose';
-
