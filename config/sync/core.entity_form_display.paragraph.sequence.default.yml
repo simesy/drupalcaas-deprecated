@@ -3,7 +3,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.sequence.field_items
     - field.field.paragraph.sequence.field_subtitle
     - paragraphs.paragraphs_type.sequence
   module:
@@ -13,14 +12,6 @@ targetEntityType: paragraph
 bundle: sequence
 mode: default
 content:
-  field_items:
-    weight: 1
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
-    region: content
   field_subtitle:
     weight: 2
     settings:
