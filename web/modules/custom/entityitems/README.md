@@ -21,12 +21,12 @@ This module is built on the philosophy that many website builds could
 do with a "field_collections" approach to "sub items" but that the solutions
 available for this can create a lot of abstraction.
 
-Say if you have "Cards" component, and multiple "Card items", what will those
-sub items have? Subtitle, body, link. Maybe some media. In a component based
-approach these fields are always the same.
+Say, if you have "Cards" component, and multiple "Card items", what fields will those
+sub items have? Subtitle, body, link. Maybe some media. It's usually the same
+stuff every time in a component based approach.
 
-The is module just provides a generic field with a bunch of standard elements
-which you can switch on and off.
+The is module just provides a generic compound field with a bunch of standard
+elements which you can switch on and off.
 
 The result is neatness in:
 - tables
