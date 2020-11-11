@@ -1,0 +1,8 @@
+uuid: 543703df-83b9-4a8f-9bc9-768bdb072481
+langcode: en
+status: true
+dependencies: {  }
+id: component
+label: Component
+revision: 0
+description: ''

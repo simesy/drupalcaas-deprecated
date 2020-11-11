@@ -1,0 +1,41 @@
+uuid: f88c7b58-357d-4e58-87cf-3840eb7fbda2
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.component
+    - field.field.block_content.component.field_content
+  module:
+    - paragraphs
+id: block_content.component.default
+targetEntityType: block_content
+bundle: component
+mode: default
+content:
+  field_content:
+    type: paragraphs
+    weight: 1
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      features:
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+    region: content
+  info:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }
