@@ -4,23 +4,14 @@ status: true
 dependencies:
   config:
     - block_content.type.component
-    - field.field.block_content.component.body
     - field.field.block_content.component.field_content
   module:
     - entity_reference_revisions
-    - text
 id: block_content.component.default
 targetEntityType: block_content
 bundle: component
 mode: default
 content:
-  body:
-    label: hidden
-    type: text_default
-    weight: 0
-    settings: {  }
-    third_party_settings: {  }
-    region: content
   field_content:
     type: entity_reference_revisions_entity_view
     weight: 1
