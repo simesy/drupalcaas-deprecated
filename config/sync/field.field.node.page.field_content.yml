@@ -8,6 +8,7 @@ dependencies:
     - paragraphs.paragraphs_type.cards
     - paragraphs.paragraphs_type.cta
     - paragraphs.paragraphs_type.faq
+    - paragraphs.paragraphs_type.markup
     - paragraphs.paragraphs_type.sequence
   module:
     - entity_reference_revisions
@@ -30,6 +31,7 @@ settings:
       cta: cta
       faq: faq
       sequence: sequence
+      markup: markup
     target_bundles_drag_drop:
       cards:
         enabled: true
@@ -40,6 +42,12 @@ settings:
       faq:
         enabled: true
         weight: 8
+      item:
+        weight: 11
+        enabled: false
+      markup:
+        enabled: true
+        weight: 12
       sequence:
         enabled: true
         weight: 9

@@ -5,4 +5,4 @@ dependencies: {  }
 id: component
 label: Component
 revision: 0
-description: ''
+description: 'Ability to add a content component as a block.'
