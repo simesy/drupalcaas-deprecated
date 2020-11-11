@@ -84,5 +84,11 @@
             "web/libraries/{$name}": ["type:drupal-library", "type:bower-asset", "type:npm-asset"],
             "drush/contrib/{$name}": ["type:drupal-drush"]
         }
+    },
+    "require-dev": {
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
+        "drupal/core-dev": "^9.0",
+        "phpcompatibility/php-compatibility": "^9.3",
+        "weitzman/drupal-test-traits": "^1.5"
     }
 }

@@ -34,5 +34,5 @@ $settings['update_free_access'] = FALSE;
 $settings['rebuild_access'] = TRUE;
 $settings['skip_permissions_hardening'] = TRUE;
 
-$config['system.logging']['error_level'] = 'verbose';
-
+$config['stage_file_proxy.settings']['origin'] = 'https://content.lilengine.co';
+$config['stage_file_proxy.settings']['hotlink'] = TRUE;
