@@ -7,7 +7,7 @@ dependencies:
 _core:
   default_config_hash: P8ddpAIKtawJDi5SzOwCzVnnNYqONewSTJ6Xn0dW_aQ
 name: 'Basic HTML'
-format: basic_html
+format: basic
 weight: 0
 filters:
   filter_html:
