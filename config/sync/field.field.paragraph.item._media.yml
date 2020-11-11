@@ -3,11 +3,11 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.field_media
+    - field.storage.paragraph._media
     - media.type.image
     - paragraphs.paragraphs_type.item
-id: paragraph.item.field_media
-field_name: field_media
+id: paragraph.item._media
+field_name: _media
 entity_type: paragraph
 bundle: item
 label: Media

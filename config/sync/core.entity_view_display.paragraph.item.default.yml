@@ -3,10 +3,10 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.item.field_link
-    - field.field.paragraph.item.field_markup
-    - field.field.paragraph.item.field_media
-    - field.field.paragraph.item.field_title
+    - field.field.paragraph.item._link
+    - field.field.paragraph.item._markup
+    - field.field.paragraph.item._media
+    - field.field.paragraph.item._title
     - paragraphs.paragraphs_type.item
   module:
     - link
@@ -16,7 +16,7 @@ targetEntityType: paragraph
 bundle: item
 mode: default
 content:
-  field_link:
+  _link:
     weight: 2
     label: above
     settings:
@@ -28,14 +28,14 @@ content:
     third_party_settings: {  }
     type: link
     region: content
-  field_markup:
+  _markup:
     weight: 1
     label: above
     settings: {  }
     third_party_settings: {  }
     type: text_default
     region: content
-  field_media:
+  _media:
     type: entity_reference_entity_view
     weight: 3
     label: above
@@ -44,7 +44,7 @@ content:
       link: false
     third_party_settings: {  }
     region: content
-  field_title:
+  _title:
     weight: 0
     label: above
     settings:

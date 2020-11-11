@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.field_markup
+    - field.storage.paragraph._markup
     - paragraphs.paragraphs_type.item
   module:
     - allowed_formats
@@ -11,8 +11,8 @@ dependencies:
 third_party_settings:
   allowed_formats:
     plain_text: '0'
-id: paragraph.item.field_markup
-field_name: field_markup
+id: paragraph.item._markup
+field_name: _markup
 entity_type: paragraph
 bundle: item
 label: Markup

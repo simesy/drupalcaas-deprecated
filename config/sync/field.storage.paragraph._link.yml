@@ -5,8 +5,8 @@ dependencies:
   module:
     - link
     - paragraphs
-id: paragraph.field_link
-field_name: field_link
+id: paragraph._link
+field_name: _link
 entity_type: paragraph
 type: link
 settings: {  }
