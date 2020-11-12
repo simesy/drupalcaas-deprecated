@@ -1,6 +1,6 @@
 uuid: 3654b966-3dc8-4021-8a56-d0557afe7676
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - core.entity_form_mode.paragraph.sequence

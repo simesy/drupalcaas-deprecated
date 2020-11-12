@@ -1,38 +1,29 @@
-uuid: 0726a0df-95f4-4e37-9c9e-780857417523
+uuid: c534a854-7ab1-4d19-a36b-99cef1566d38
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_form_mode.paragraph.faq
     - field.field.paragraph.item._heading
     - field.field.paragraph.item._link
     - field.field.paragraph.item._markup
     - field.field.paragraph.item._media
     - paragraphs.paragraphs_type.item
   module:
-    - link
-    - media_library
     - text
-id: paragraph.item.default
+id: paragraph.item.faq
 targetEntityType: paragraph
 bundle: item
-mode: default
+mode: faq
 content:
   _heading:
+    type: string_textfield
     weight: 0
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
-  _link:
-    weight: 2
-    settings:
-      placeholder_url: ''
-      placeholder_title: ''
-    third_party_settings: {  }
-    type: link_default
-    region: content
   _markup:
     weight: 1
     settings:
@@ -41,13 +32,8 @@ content:
     third_party_settings: {  }
     type: text_textarea
     region: content
-  _media:
-    type: media_library_widget
-    weight: 3
-    settings:
-      media_types: {  }
-    third_party_settings: {  }
-    region: content
 hidden:
+  _link: true
+  _media: true
   created: true
   status: true

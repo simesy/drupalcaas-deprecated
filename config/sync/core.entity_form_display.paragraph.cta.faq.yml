@@ -1,6 +1,6 @@
 uuid: 79835c6a-5a34-4f7d-bce4-0ba5e2fe97a3
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - core.entity_form_mode.paragraph.faq

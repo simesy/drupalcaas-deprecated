@@ -1,29 +1,29 @@
-uuid: bb72b375-8def-4056-aaaf-b46d3e0963bc
+uuid: 168f9584-00ed-4d21-bc28-d462dbea2aea
 langcode: en
-status: false
+status: true
 dependencies:
   config:
     - core.entity_form_mode.paragraph.cta
-    - field.field.paragraph.cta._heading
-    - field.field.paragraph.cta._link
-    - field.field.paragraph.cta._markup
-    - field.field.paragraph.cta._media
-    - paragraphs.paragraphs_type.cta
+    - field.field.paragraph.item._heading
+    - field.field.paragraph.item._link
+    - field.field.paragraph.item._markup
+    - field.field.paragraph.item._media
+    - paragraphs.paragraphs_type.item
   module:
     - link
-id: paragraph.cta.cta
+id: paragraph.item.cta
 targetEntityType: paragraph
-bundle: cta
+bundle: item
 mode: cta
 content:
   _heading:
+    type: string_textfield
     weight: 0
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   _link:
     weight: 1
     settings:
