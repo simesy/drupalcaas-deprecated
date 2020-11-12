@@ -12,7 +12,11 @@ cache:
 
 searchsolr:
   type: solr:8.6
-  disk: 256
+  disk: 1024
   configuration:
-    configsets:
-      mainconfig: !archive "configsets/solr8"
+    cores:
+      collection1:
+        conf_dir: !archive "configsets/solr8"
+    endpoints:
+      solr:
+        core: collection1

@@ -36,6 +36,7 @@ module:
   jsonapi_menu_items: 0
   jsonapi_resources: 0
   jsonapi_views: 0
+  language: 0
   link: 0
   media: 0
   media_library: 0
@@ -51,6 +52,8 @@ module:
   rdf: 0
   redis: 0
   search: 0
+  search_api: 0
+  search_api_solr: 0
   serialization: 0
   shortcut: 0
   stage_file_proxy: 0
