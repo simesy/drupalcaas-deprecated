@@ -1,0 +1,22 @@
+uuid: e24e4e94-a36c-496b-9af0-4587e9d0fe47
+langcode: en
+status: true
+dependencies:
+  theme:
+    - legin
+_core:
+  default_config_hash: Hh01DLj9k7UnNdPpOQXHZHW7GHf2OPNDQyCJF7_R9ac
+id: legin_primary_local_tasks
+theme: legin
+region: header
+weight: 0
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Primary tabs'
+  provider: core
+  label_display: '0'
+  primary: true
+  secondary: false
+visibility: {  }

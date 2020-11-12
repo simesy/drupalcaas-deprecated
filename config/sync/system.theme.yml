@@ -1,4 +1,4 @@
-admin: gin
-default: gin
+admin: legin
+default: legin
 _core:
   default_config_hash: fOjer9hADYYnbCJVZMFZIIM1azTFWyg84ZkFDHfAbUg

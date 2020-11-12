@@ -74,6 +74,7 @@ module:
 theme:
   claro: 0
   gin: 0
+  legin: 0
 profile: minimal
 _core:
   default_config_hash: R4IF-ClDHXxblLcG0L7MgsLvfBIMAvi_skumNFQwkDc
