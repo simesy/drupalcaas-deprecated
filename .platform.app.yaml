@@ -22,6 +22,7 @@ runtime:
 relationships:
     database: 'db:mysql'
     redis: 'cache:redis'
+    solrsearch: 'searchsolr:solr'
 
 # The size of the persistent disk of the application (in MB).
 disk: 2048

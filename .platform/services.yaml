@@ -9,3 +9,7 @@ db:
 
 cache:
     type: redis:6.0
+
+searchsolr:
+  type: solr:8.6
+  disk: 256
