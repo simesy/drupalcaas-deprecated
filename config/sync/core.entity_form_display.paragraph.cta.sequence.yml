@@ -1,8 +1,9 @@
-uuid: ed62eedf-c74a-45bb-9eea-e1598b165c64
+uuid: 3654b966-3dc8-4021-8a56-d0557afe7676
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_form_mode.paragraph.sequence
     - field.field.paragraph.cta._heading
     - field.field.paragraph.cta._link
     - field.field.paragraph.cta._markup
@@ -11,10 +12,10 @@ dependencies:
   module:
     - link
     - text
-id: paragraph.cta.default
+id: paragraph.cta.sequence
 targetEntityType: paragraph
 bundle: cta
-mode: default
+mode: sequence
 content:
   _heading:
     weight: 0

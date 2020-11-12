@@ -1,8 +1,9 @@
-uuid: ed62eedf-c74a-45bb-9eea-e1598b165c64
+uuid: bb72b375-8def-4056-aaaf-b46d3e0963bc
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_form_mode.paragraph.cta
     - field.field.paragraph.cta._heading
     - field.field.paragraph.cta._link
     - field.field.paragraph.cta._markup
@@ -10,11 +11,10 @@ dependencies:
     - paragraphs.paragraphs_type.cta
   module:
     - link
-    - text
-id: paragraph.cta.default
+id: paragraph.cta.cta
 targetEntityType: paragraph
 bundle: cta
-mode: default
+mode: cta
 content:
   _heading:
     weight: 0
@@ -32,24 +32,8 @@ content:
     third_party_settings: {  }
     type: link_default
     region: content
-  _markup:
-    type: text_textarea
-    weight: 3
-    region: content
-    settings:
-      rows: 5
-      placeholder: ''
-    third_party_settings: {  }
-  _media:
-    type: entity_reference_autocomplete
-    weight: 2
-    region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
 hidden:
+  _markup: true
+  _media: true
   created: true
   status: true

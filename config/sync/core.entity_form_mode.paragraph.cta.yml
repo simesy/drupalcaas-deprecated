@@ -1,0 +1,10 @@
+uuid: 7862197e-09e5-47c5-8d1b-6ba778443539
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.cta
+label: 'Callout / CTA'
+targetEntityType: paragraph
+cache: true
