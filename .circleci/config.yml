@@ -67,8 +67,8 @@ workflows:
   testing:
     jobs:
       - coding_standards
-        name: Coding standardd
+          name: Coding standards
       - phpunit_tests
-        name: Tests
-        requires:
-          - coding_standards
+          name: Tests
+          requires:
+            - coding_standards
