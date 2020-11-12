@@ -34,9 +34,9 @@ most situations.
 
 ### IA Cleanliness
 
-There are a few factors that have a huge impact on database and IA cleanliness.
-This impacts the database tables, twig naming, tokens, filters, indexed fields,
-and API endpoints.
+There are a few factors that have a huge impact on the site's IA. These strategies
+impact the database tables, twig naming, tokens, filters, indexed fields, and
+API endpoints. Through experience we feel like we have the balance right.
 
 We have a `content` field through which you can attached components. If you create
 a new node bundle just add this field and select which components are allowed (and
@@ -48,7 +48,7 @@ any entity type is just a matter of creating this field and you'll inherit a lot
 of re-usability in theme, tokens, filters, and so on.
 
 We don't use `field_` prefix on this project because we are really interested in
-the cleanliness of so many things like the
+the cleanliness of so many things. Not using `field_` is a supported core feature.
 
 We have a special `item` paragraph that is re-used whenever we need a re-usable
 set of fields (eg on an accordion or cards component). It comes with a different form
