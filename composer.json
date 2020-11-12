@@ -67,14 +67,19 @@
             "locations": {
                 "web-root": "web/"
             },
-            "excludes": [
-                "robots.txt",
-                "sites/default/default.services.yml",
-                "sites/default/default.settings.php",
-                "sites/example.settings.local.php",
-                "sites/example.sites.php",
-                ".htaccess"
-            ]
+            "file-mapping": {
+                "[web-root]/.htaccess": false,
+                "[web-root]/INSTALL.txt": false,
+                "[web-root]/example.gitignore": false,
+                "[web-root]/update.php": false,
+                "[web-root]/robots.txt": false,
+                "[web-root]/sites/README.txt": false,
+                "[web-root]/sites/development.services.yml": false,
+                "[web-root]/sites/example.sites.php": false,
+                "[web-root]/sites/example.settings.local.php": false,
+                "[web-root]/sites/default/default.settings.php": false,
+                "[web-root]/sites/default/default.services.yml": false
+            }
         },
         "enable-patching": true,
         "installer-types": ["bower-asset", "npm-asset"],
