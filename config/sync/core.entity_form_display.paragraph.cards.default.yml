@@ -3,8 +3,8 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.cards.subtitle
     - field.field.paragraph.cards.items
+    - field.field.paragraph.cards.subtitle
     - paragraphs.paragraphs_type.cards
   module:
     - paragraphs
@@ -23,7 +23,7 @@ content:
       autocollapse: none
       closed_mode_threshold: 0
       add_mode: dropdown
-      form_display_mode: default
+      form_display_mode: card
       default_paragraph_type: item
       features:
         add_above: '0'

@@ -1,9 +1,9 @@
-uuid: 168f9584-00ed-4d21-bc28-d462dbea2aea
+uuid: 8a4d15ec-73bb-415e-ba0f-975b32b7ea3f
 langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_form_mode.paragraph.cta
+    - core.entity_form_mode.paragraph.card
     - field.field.paragraph.item._heading
     - field.field.paragraph.item._link
     - field.field.paragraph.item._markup
@@ -11,29 +11,38 @@ dependencies:
     - paragraphs.paragraphs_type.item
   module:
     - link
-id: paragraph.item.cta
+id: paragraph.item.card
 targetEntityType: paragraph
 bundle: item
-mode: cta
+mode: card
 content:
   _heading:
-    type: string_textfield
     weight: 0
-    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    type: string_textfield
+    region: content
   _link:
-    weight: 1
+    weight: 2
     settings:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
     type: link_default
     region: content
+  _media:
+    type: entity_reference_autocomplete
+    weight: 1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
 hidden:
   _markup: true
-  _media: true
   created: true
   status: true
