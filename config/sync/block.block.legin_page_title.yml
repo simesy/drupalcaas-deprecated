@@ -1,0 +1,20 @@
+uuid: 118e8fe6-9b49-4262-9379-e701b80996f2
+langcode: en
+status: true
+dependencies:
+  theme:
+    - legin
+_core:
+  default_config_hash: HLQY2xgby8K3vN_98hiOSasOhm9pdCsH234-s0duJ8Q
+id: legin_page_title
+theme: legin
+region: header
+weight: -30
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  provider: core
+  label_display: '0'
+visibility: {  }

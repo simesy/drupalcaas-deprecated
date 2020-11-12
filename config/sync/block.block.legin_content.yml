@@ -1,0 +1,22 @@
+uuid: 83189610-73d4-47cf-b893-84b44fb7d7a2
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - legin
+_core:
+  default_config_hash: hBHXB7hC05XU7pDYzETt-GUcpFlogK1gkjyAsg0Ym58
+id: legin_content
+theme: legin
+region: content
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  provider: system
+  label_display: '0'
+visibility: {  }

@@ -1,0 +1,22 @@
+uuid: f8e47804-0e09-40d9-9898-e523e4462e36
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - legin
+_core:
+  default_config_hash: y9X3xgCsO59pQyzNLzY1D3SDJJxCHILLWkpPnmuTJ2E
+id: legin_breadcrumbs
+theme: legin
+region: breadcrumb
+weight: 0
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  provider: system
+  label_display: '0'
+visibility: {  }
