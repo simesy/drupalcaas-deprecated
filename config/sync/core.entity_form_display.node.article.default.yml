@@ -17,12 +17,6 @@ targetEntityType: node
 bundle: article
 mode: default
 content:
-  created:
-    type: datetime_timestamp
-    weight: 3
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   content:
     weight: 1
     settings:
@@ -42,12 +36,12 @@ content:
     third_party_settings: {  }
     type: paragraphs
     region: content
-  site:
-    weight: 26
+  created:
+    type: datetime_timestamp
+    weight: 3
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: chosen_select
-    region: content
   path:
     type: path
     weight: 6
@@ -61,6 +55,12 @@ content:
     weight: 4
     region: content
     third_party_settings: {  }
+  site:
+    weight: 26
+    settings: {  }
+    third_party_settings: {  }
+    type: chosen_select
+    region: content
   status:
     type: boolean_checkbox
     settings:

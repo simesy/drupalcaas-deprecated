@@ -23,6 +23,11 @@ content:
     third_party_settings: {  }
     type: entity_reference_revisions_entity_view
     region: content
+  links:
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   site:
     weight: 101
     label: hidden
@@ -31,9 +36,4 @@ content:
     third_party_settings: {  }
     type: entity_reference_label
     region: content
-  links:
-    weight: 100
-    region: content
-    settings: {  }
-    third_party_settings: {  }
 hidden: {  }

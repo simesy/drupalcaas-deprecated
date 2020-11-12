@@ -3,38 +3,52 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.cta.items
-    - field.field.paragraph.cta.subtitle
+    - field.field.paragraph.cta._heading
+    - field.field.paragraph.cta._link
+    - field.field.paragraph.cta._markup
+    - field.field.paragraph.cta._media
     - paragraphs.paragraphs_type.cta
   module:
-    - entity_reference_revisions
-    - paragraphs
+    - link
+    - text
 id: paragraph.cta.default
 targetEntityType: paragraph
 bundle: cta
 mode: default
 content:
-  subtitle:
+  _heading:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  _link:
+    weight: 1
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  _markup:
     weight: 2
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  _media:
+    weight: 3
     settings:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: entity_reference_revisions_autocomplete
-    region: content
-  items:
-    type: entity_reference_paragraphs
-    weight: 3
-    settings:
-      title: Paragraph
-      title_plural: Paragraphs
-      edit_mode: open
-      add_mode: dropdown
-      form_display_mode: default
-      default_paragraph_type: ''
-    third_party_settings: {  }
+    type: entity_reference_autocomplete
     region: content
 hidden:
   created: true

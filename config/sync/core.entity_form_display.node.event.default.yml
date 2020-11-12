@@ -15,12 +15,6 @@ targetEntityType: node
 bundle: event
 mode: default
 content:
-  created:
-    type: datetime_timestamp
-    weight: 4
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   content:
     weight: 1
     settings:
@@ -40,16 +34,12 @@ content:
     third_party_settings: {  }
     type: paragraphs
     region: content
-  site:
-    weight: 2
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: entity_reference_autocomplete
+  created:
+    type: datetime_timestamp
+    weight: 4
     region: content
+    settings: {  }
+    third_party_settings: {  }
   path:
     type: path
     weight: 7
@@ -63,6 +53,16 @@ content:
     weight: 5
     region: content
     third_party_settings: {  }
+  site:
+    weight: 2
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
   status:
     type: boolean_checkbox
     settings:

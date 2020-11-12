@@ -1,0 +1,28 @@
+uuid: 68fbd48c-97f8-4096-8393-5bbd71ab4961
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph._media
+    - media.type.image
+    - paragraphs.paragraphs_type.cta
+id: paragraph.cta._media
+field_name: _media
+entity_type: paragraph
+bundle: cta
+label: Media
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
