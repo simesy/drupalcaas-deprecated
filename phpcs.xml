@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset name="lecapi">
+  <description>Default PHP CodeSniffer configuration</description>
+
+  <file>./app/modules/custom</file>
+  <file>./app/themes/custom</file>
+
+  <rule ref="DrupalPractice" />
+  <rule ref="Drupal" />
+
+  <arg name="extensions" value="php,module,inc,install,test,profile,theme"/>
+  <arg name="ignore" value="*.css,*.md"/>
+  <arg name="report" value="full"/>
+
+  <config name="installed_paths" value="vendor/drupal/coder/coder_sniffer" />
+  <config name="drupal_core_version" value="8"/>
+
+  <rule ref="Drupal.Commenting.DocComment.MissingShort">
+    <severity>0</severity>
+  </rule>
+  <rule ref="DrupalPractice.CodeAnalysis.VariableAnalysis">
+    <severity>0</severity>
+  </rule>
+  <!-- Class names should already be descriptive enough. -->
+  <rule ref="Drupal.Commenting.ClassComment.Short">
+    <severity>0</severity>
+  </rule>
+  <!-- Picks up too many false positives where a short array makes the line too long. -->
+  <rule ref="Drupal.Arrays.Array.LongLineDeclaration">
+    <severity>0</severity>
+  </rule>
+  <!-- Do not punish someone for trying to communicate an idea. -->
+  <rule ref="Drupal.Files.LineLength.TooLong">
+    <severity>0</severity>
+  </rule>
+
+</ruleset>
