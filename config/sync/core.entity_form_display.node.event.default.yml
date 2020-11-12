@@ -8,8 +8,26 @@ dependencies:
     - node.type.event
   module:
     - chosen_field
+    - field_group
     - paragraphs
     - path
+third_party_settings:
+  field_group:
+    group_workflow:
+      children:
+        - site
+      parent_name: ''
+      weight: 2
+      format_type: details_sidebar
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+        weight: 0
+      label: Workflow
 id: node.event.default
 targetEntityType: node
 bundle: event
@@ -36,13 +54,13 @@ content:
     region: content
   created:
     type: datetime_timestamp
-    weight: 4
+    weight: 5
     region: content
     settings: {  }
     third_party_settings: {  }
   path:
     type: path
-    weight: 7
+    weight: 8
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -50,11 +68,11 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 5
+    weight: 6
     region: content
     third_party_settings: {  }
   site:
-    weight: 2
+    weight: 3
     settings:
       match_operator: CONTAINS
       match_limit: 10
@@ -67,14 +85,14 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 8
+    weight: 9
     region: content
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 6
+    weight: 7
     region: content
     third_party_settings: {  }
   title:
@@ -87,7 +105,7 @@ content:
     third_party_settings: {  }
   uid:
     type: chosen_select
-    weight: 3
+    weight: 4
     settings: {  }
     region: content
     third_party_settings: {  }

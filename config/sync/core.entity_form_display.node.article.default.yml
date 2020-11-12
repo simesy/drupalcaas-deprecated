@@ -8,8 +8,26 @@ dependencies:
     - node.type.article
   module:
     - chosen_field
+    - field_group
     - paragraphs
     - path
+third_party_settings:
+  field_group:
+    group_workflow:
+      children:
+        - site
+      parent_name: ''
+      weight: 8
+      format_type: details_sidebar
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+        weight: 0
+      label: Workflow
 _core:
   default_config_hash: 6VUXB1jTUjK5zjkfMa2Kd2WW4sFUlgfBlfJSx01qLpU
 id: node.article.default
@@ -56,7 +74,7 @@ content:
     region: content
     third_party_settings: {  }
   site:
-    weight: 26
+    weight: 21
     settings: {  }
     third_party_settings: {  }
     type: chosen_select
