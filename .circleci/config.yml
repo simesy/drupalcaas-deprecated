@@ -66,9 +66,9 @@ workflows:
   version: 2
   testing:
     jobs:
-      - coding_standards
+      - coding_standards:
           name: Coding standards
-      - phpunit_tests
+      - phpunit_tests:
           name: Tests
           requires:
             - coding_standards
