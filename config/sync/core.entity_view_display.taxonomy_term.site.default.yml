@@ -1,0 +1,30 @@
+uuid: 708dfcfb-f838-4cae-b227-1b3e3eaa5c9f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.site.key
+    - taxonomy.vocabulary.site
+  module:
+    - text
+id: taxonomy_term.site.default
+targetEntityType: taxonomy_term
+bundle: site
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  key:
+    weight: 1
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }
