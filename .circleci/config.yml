@@ -13,6 +13,7 @@ commands:
     description: "Prepare tooling, setup path for environment"
     steps:
       - run:
+          name: Prepare codebase
           command: |
             apt update && apt install git -y
             echo "export PATH=$PATH:$HOME/project/vendor/bin" >> $BASH_ENV
