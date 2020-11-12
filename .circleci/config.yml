@@ -41,7 +41,7 @@ commands:
             chmod -R 755 /root
             /etc/init.d/apache2 start
 jobs:
-  checking_coding_standard:
+  coding_standards:
     executor:
       name: default
     steps:
@@ -50,7 +50,7 @@ jobs:
       - run:
           name: Test coding standards
           command: phpcs
-  checking_phpunit:
+  phpunit_tests:
     executor:
       name: default
     steps:
@@ -61,18 +61,14 @@ jobs:
       - run:
           name: Run PHPUnit tests
           command: phpunit -c ./phpunit.xml
+
 workflows:
   version: 2
   testing:
     jobs:
-      - checking_coding_standard
-      - checking_phpunit
-
-
-
-
-
-
-
-
-
+      - coding_standards
+        name: Coding standardd
+      - phpunit_tests
+        name: Tests
+        requires:
+          - coding_standards
