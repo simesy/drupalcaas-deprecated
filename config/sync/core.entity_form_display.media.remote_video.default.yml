@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.media.remote_video.field_media_oembed_video
+    - field.field.media.remote_video.media_oembed_video
     - media.type.remote_video
   module:
     - media
@@ -21,7 +21,7 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_media_oembed_video:
+  media_oembed_video:
     type: oembed_textfield
     weight: 0
     settings:

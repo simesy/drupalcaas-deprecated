@@ -3,8 +3,8 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.article.field_content
-    - field.field.node.article.field_site
+    - field.field.node.article.content
+    - field.field.node.article.site
     - node.type.article
   module:
     - chosen_field
@@ -23,7 +23,7 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_content:
+  content:
     weight: 1
     settings:
       title: Content
@@ -42,7 +42,7 @@ content:
     third_party_settings: {  }
     type: paragraphs
     region: content
-  field_site:
+  site:
     weight: 26
     settings: {  }
     third_party_settings: {  }

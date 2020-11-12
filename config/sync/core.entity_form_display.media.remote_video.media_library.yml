@@ -4,7 +4,7 @@ status: true
 dependencies:
   config:
     - core.entity_form_mode.media.media_library
-    - field.field.media.remote_video.field_media_oembed_video
+    - field.field.media.remote_video.media_oembed_video
     - media.type.remote_video
 _core:
   default_config_hash: TBgPW-uaXRaICBwLaVc16rXpRiLSknDIdF9q0XL7qso
@@ -15,7 +15,7 @@ mode: media_library
 content: {  }
 hidden:
   created: true
-  field_media_oembed_video: true
+  media_oembed_video: true
   name: true
   path: true
   status: true

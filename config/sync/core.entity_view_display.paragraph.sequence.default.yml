@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.sequence.field_subtitle
+    - field.field.paragraph.sequence.subtitle
     - field.field.paragraph.sequence.items
     - paragraphs.paragraphs_type.sequence
   module:
@@ -13,7 +13,7 @@ targetEntityType: paragraph
 bundle: sequence
 mode: default
 content:
-  field_subtitle:
+  subtitle:
     weight: 2
     label: hidden
     settings:

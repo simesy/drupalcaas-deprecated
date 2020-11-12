@@ -4,7 +4,7 @@ status: true
 dependencies:
   config:
     - block_content.type.component
-    - field.field.block_content.component.field_content
+    - field.field.block_content.component.content
   module:
     - paragraphs
 id: block_content.component.default
@@ -12,7 +12,7 @@ targetEntityType: block_content
 bundle: component
 mode: default
 content:
-  field_content:
+  content:
     type: paragraphs
     weight: 1
     settings:

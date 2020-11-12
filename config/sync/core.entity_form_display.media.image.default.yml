@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.media.image.field_media_image
+    - field.field.media.image.media_image
     - image.style.thumbnail
     - media.type.image
   module:
@@ -22,7 +22,7 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_media_image:
+  media_image:
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail

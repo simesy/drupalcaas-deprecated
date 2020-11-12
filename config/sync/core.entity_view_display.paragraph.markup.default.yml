@@ -3,8 +3,8 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.markup.field_markup
-    - field.field.paragraph.markup.field_subtitle
+    - field.field.paragraph.markup.markup
+    - field.field.paragraph.markup.subtitle
     - paragraphs.paragraphs_type.markup
   module:
     - entity_reference_revisions
@@ -14,14 +14,14 @@ targetEntityType: paragraph
 bundle: markup
 mode: default
 content:
-  field_markup:
+  markup:
     weight: 1
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
     region: content
-  field_subtitle:
+  subtitle:
     weight: 0
     label: hidden
     settings:

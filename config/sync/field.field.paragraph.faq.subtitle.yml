@@ -1,0 +1,43 @@
+uuid: b037797c-afdb-48d3-938f-d892a25d2e2f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.subtitle
+    - paragraphs.paragraphs_type.faq
+    - paragraphs.paragraphs_type.subtitle
+  module:
+    - entity_reference_revisions
+id: paragraph.faq.subtitle
+field_name: subtitle
+entity_type: paragraph
+bundle: faq
+label: Subtitle
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      subtitle: subtitle
+    target_bundles_drag_drop:
+      cards:
+        weight: 6
+        enabled: false
+      cta:
+        weight: 7
+        enabled: false
+      faq:
+        weight: 8
+        enabled: false
+      sequence:
+        weight: 9
+        enabled: false
+      subtitle:
+        enabled: true
+        weight: 10
+field_type: entity_reference_revisions

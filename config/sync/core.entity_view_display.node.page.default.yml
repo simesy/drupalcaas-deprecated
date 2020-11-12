@@ -3,8 +3,8 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.page.field_content
-    - field.field.node.page.field_site
+    - field.field.node.page.content
+    - field.field.node.page.site
     - node.type.page
   module:
     - entity_reference_revisions
@@ -16,7 +16,7 @@ targetEntityType: node
 bundle: page
 mode: default
 content:
-  field_content:
+  content:
     type: entity_reference_revisions_entity_view
     weight: 102
     label: above
@@ -25,7 +25,7 @@ content:
       link: ''
     third_party_settings: {  }
     region: content
-  field_site:
+  site:
     weight: 103
     label: above
     settings:
