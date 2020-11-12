@@ -13,3 +13,6 @@ cache:
 searchsolr:
   type: solr:8.6
   disk: 256
+  configuration:
+    configsets:
+      mainconfig: !archive "configsets/solr8"
