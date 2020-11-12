@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.cta.items
-    - field.field.paragraph.cta.subtitle
     - paragraphs.paragraphs_type.cta
   module:
     - entity_reference_revisions
@@ -21,15 +20,6 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    region: content
-  subtitle:
-    weight: 2
-    label: above
-    settings:
-      view_mode: default
-      link: ''
-    third_party_settings: {  }
-    type: entity_reference_revisions_entity_view
     region: content
 hidden:
   items: true

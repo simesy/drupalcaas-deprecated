@@ -25,6 +25,9 @@ content:
       link: ''
     third_party_settings: {  }
     region: content
+  links:
+    weight: 101
+    region: content
   site:
     weight: 103
     label: above
@@ -32,8 +35,5 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
-    region: content
-  links:
-    weight: 101
     region: content
 hidden: {  }
