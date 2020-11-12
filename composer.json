@@ -68,7 +68,6 @@
                 "web-root": "web/"
             },
             "file-mapping": {
-                "[web-root]/.htaccess": false,
                 "[web-root]/INSTALL.txt": false,
                 "[web-root]/example.gitignore": false,
                 "[web-root]/update.php": false,
