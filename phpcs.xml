@@ -2,8 +2,8 @@
 <ruleset name="lecapi">
   <description>Default PHP CodeSniffer configuration</description>
 
-  <file>./app/modules/custom</file>
-  <file>./app/themes/custom</file>
+  <file>./web/modules/custom</file>
+  <file>./web/themes/custom</file>
 
   <rule ref="DrupalPractice" />
   <rule ref="Drupal" />
