@@ -1,41 +1,78 @@
-# Drupal 9 for Platform.sh
+# Lil Engine Content API
 
-<p align="center">
-<a href="https://console.platform.sh/projects/create-project?template=https://raw.githubusercontent.com/platformsh/template-builder/master/templates/drupal9/.platform.template.yaml&utm_content=drupal9&utm_source=github&utm_medium=button&utm_campaign=deploy_on_platform">
-    <img src="https://platform.sh/images/deploy/lg-blue.svg" alt="Deploy on Platform.sh" width="180px" />
-</a>
-</p>
+This (will soon be) a live project which Lil Engine use to run content for various headless
+sites. It's a public project for a few reasons:
 
-This template builds Drupal 9 using the "Drupal Recommended" Composer project.  It is pre-configured to use MariaDB and Redis for caching.  The Drupal installer will skip asking for database credentials as they are already provided.
+* We can! There is nothing sensitive in the code.
+* We think the IA is good practice for paragraphs/components.
+* We can use this for demos and blogs.
+* We use it as a model for Platform.sh and Lando setup.
+* There are not enough public Drupal code bases.
 
-Drupal is a flexible and extensible PHP-based CMS framework.
+If you want you can clone this site and modify it to your taste whether or not you are
+building a headless site. Intentionally, the custom code is kept to a minimum. There
+is no profile. It's just Drupal and a bunch of (hopefully you'll agree) lean config.
 
-## Features
+## Key features
 
-* PHP 7.4
-* MariaDB 10.4
-* Redis 5
-* Drush included
-* Automatic TLS certificates
-* Composer-based build
+### Components
 
-## Post-install
+Components / paragraphs are designed to be semantic, intuitive and reusable. If we
+can use this IA for multiple websites then you are likely to find them practical
+for any small to medium build.
 
-Run through the Drupal installer as normal.  You will not be asked for database credentials as those are already provided.
+After a lot of projects we have settled on some default primary components which cover
+most situations.
 
-## Customizations
+- faq - Accordions, FAQs
+- sequence - Timelines, Steppers
+- cards - Card style components
+- cta - Callouts and CTAs
+- markup - A HTML block
+- view - An embedded view
+- block - An embedded content block
 
-The following changes have been made relative to Drupal 9 "Recommended" project as it is downloaded from Drupal.org or Packagist.  If using this project as a reference for your own existing project, replicate the changes below to your project.
+### IA Cleanliness
 
-* The `.platform.app.yaml`, `.platform/services.yaml`, and `.platform/routes.yaml` files have been added.  These provide Platform.sh-specific configuration and are present in all projects on Platform.sh.  You may customize them as you see fit.
-* An additional Composer library, [`platformsh/config-reader`](https://github.com/platformsh/config-reader-php), has been added.  It provides convenience wrappers for accessing the Platform.sh environment variables.
-* Drush and Drupal Console have been pre-included in `composer.json`.  You are free to remove one or both if you do not wish to use them.  (Note that the default cron and deploy hooks make use of Drush commands, however.)
-* The Drupal Redis module comes pre-installed.  The placeholder module is not pre-installed, but it is enabled via `settings.platformsh.php` out of the box.
-* The `settings.platformsh.php` file contains Platform.sh-specific code to map environment variables into Drupal configuration. You can add to it as needed. See the documentation for more examples of common snippets to include here.  It uses the Config Reader library.
-* The `settings.php` file has been heavily customized to only define those values needed for both Platform.sh and local development.  It calls out to `settings.platformsh.php` if available.  You can add additional values as documented in `default.settings.php` as desired.  It is also setup such that when you install Drupal on Platform.sh the installer will not ask for database credentials as they will already be defined.
+There are a few factors that have a huge impact on the site's IA. These strategies
+impact the database tables, twig naming, tokens, filters, indexed fields, and
+API endpoints. Through experience we feel like we have the balance right.
 
-## References
+We have a `content` field through which you can attached components. If you create
+a new node bundle just add this field and select which components are allowed (and
+update the form display to match the other instances of the field).
 
-* [Drupal](https://www.drupal.org/)
-* [Drupal on Platform.sh](https://docs.platform.sh/frameworks/drupal8.html)
-* [PHP on Platform.sh](https://docs.platform.sh/languages/php.html)
+Following the same pattern, there is a `component` custom block type, and that has
+a `content` field too. By using this method it means that attaching components to
+any entity type is just a matter of creating this field and you'll inherit a lot
+of re-usability in theme, tokens, filters, and so on.
+
+We don't use `field_` prefix on this project because we are really interested in
+the cleanliness of so many things. Not using `field_` is a supported core feature.
+
+We have a special `item` paragraph that is re-used whenever we need a re-usable
+set of fields (eg on an accordion or cards component). It comes with a different form
+display for wherever it's being used. (An item inside a Cards can have a different
+form to an item inside an Accordion.)
+
+Because Paragraphs (and item paragraphs) are so re-used it has a massive impact
+on all areas of editor and developer usability and re-usability.
+
+### Workflow
+
+User access to editing content is controlled via a Sites taxonomy and Workbench
+Access module.
+
+### Custom code
+
+There is a very thin theme wrapper around Gin. This is so we can control some twig for
+content previews and paragraph previews. If you are making a non-headless Drupal
+site you can check out the theme for some nice twig naming tips.
+
+## Feature requests
+
+This project is fork-and-go. There is nothing to upstream here. If you decided you
+want to use this as a boilerplate site for new projects then you might pop in some
+feature requests but you might also just create a fork. Be mindful that we are not
+trying to abstract things like the Platform.sh settings - there is heaps that you
+will want to customise if you copy this project.
