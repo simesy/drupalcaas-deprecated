@@ -1,0 +1,6 @@
+name: Le Content API
+type: module
+description: Generic code for the platform.
+package: lecapi
+core: 8.x
+php: 7.3
