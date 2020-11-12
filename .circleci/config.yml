@@ -25,6 +25,7 @@ commands:
       - run:
           command: |
             cd /root/project
+            cp .circleci/phpunit.xml phpunit.xml
             cp .circleci/circleci.settings.php web/sites/default/local.settings.php
             composer install
             drush si minimal --db-url=mysql://root:lilengine@127.0.0.1/default --account-pass="admin"
@@ -47,7 +48,7 @@ jobs:
       - run: chmod -R 755 /root
       - run: /etc/init.d/apache2 start
       - run: cd /root/project && drush cr
-      - run: phpunit -c .circleci/phpunit.xml
+      - run: phpunit -c ./phpunit.xml
 workflows:
   version: 2
   testing:
