@@ -4,7 +4,7 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.media.media_library
-    - field.field.media.audio.field_media_audio_file
+    - field.field.media.audio.media_audio_file
     - image.style.thumbnail
     - media.type.audio
   module:
@@ -27,6 +27,6 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
-  field_media_audio_file: true
+  media_audio_file: true
   name: true
   uid: true

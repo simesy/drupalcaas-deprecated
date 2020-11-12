@@ -3,8 +3,8 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.markup.field_markup
-    - field.field.paragraph.markup.field_subtitle
+    - field.field.paragraph.markup.markup
+    - field.field.paragraph.markup.subtitle
     - paragraphs.paragraphs_type.markup
   module:
     - paragraphs
@@ -14,7 +14,7 @@ targetEntityType: paragraph
 bundle: markup
 mode: default
 content:
-  field_markup:
+  markup:
     weight: 1
     settings:
       rows: 5
@@ -22,7 +22,7 @@ content:
     third_party_settings: {  }
     type: text_textarea
     region: content
-  field_subtitle:
+  subtitle:
     weight: 0
     settings:
       title: Subtitle

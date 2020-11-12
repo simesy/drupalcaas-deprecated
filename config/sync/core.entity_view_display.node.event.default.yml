@@ -3,8 +3,8 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.event.field_content
-    - field.field.node.event.field_site
+    - field.field.node.event.content
+    - field.field.node.event.site
     - node.type.event
   module:
     - entity_reference_revisions
@@ -14,7 +14,7 @@ targetEntityType: node
 bundle: event
 mode: default
 content:
-  field_content:
+  content:
     weight: 102
     label: hidden
     settings:
@@ -23,7 +23,7 @@ content:
     third_party_settings: {  }
     type: entity_reference_revisions_entity_view
     region: content
-  field_site:
+  site:
     weight: 101
     label: hidden
     settings:

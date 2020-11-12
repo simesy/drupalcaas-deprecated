@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.cards.field_subtitle
+    - field.field.paragraph.cards.subtitle
     - field.field.paragraph.cards.items
     - paragraphs.paragraphs_type.cards
   module:
@@ -13,7 +13,7 @@ targetEntityType: paragraph
 bundle: cards
 mode: default
 content:
-  field_subtitle:
+  subtitle:
     type: entity_reference_revisions_entity_view
     weight: 0
     label: hidden

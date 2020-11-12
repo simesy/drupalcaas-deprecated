@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.media.video.field_media_video_file
+    - field.field.media.video.media_video_file
     - media.type.video
   module:
     - file
@@ -14,7 +14,7 @@ targetEntityType: media
 bundle: video
 mode: default
 content:
-  field_media_video_file:
+  media_video_file:
     type: file_video
     weight: 0
     label: visually_hidden

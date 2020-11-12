@@ -3,8 +3,8 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.event.field_content
-    - field.field.node.event.field_site
+    - field.field.node.event.content
+    - field.field.node.event.site
     - node.type.event
   module:
     - chosen_field
@@ -21,7 +21,7 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_content:
+  content:
     weight: 1
     settings:
       title: Content
@@ -40,7 +40,7 @@ content:
     third_party_settings: {  }
     type: paragraphs
     region: content
-  field_site:
+  site:
     weight: 2
     settings:
       match_operator: CONTAINS

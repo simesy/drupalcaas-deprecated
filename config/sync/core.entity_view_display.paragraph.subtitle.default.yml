@@ -3,15 +3,15 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.subtitle.field_anchor
-    - field.field.paragraph.subtitle.field_heading
+    - field.field.paragraph.subtitle.anchor
+    - field.field.paragraph.subtitle.heading
     - paragraphs.paragraphs_type.subtitle
 id: paragraph.subtitle.default
 targetEntityType: paragraph
 bundle: subtitle
 mode: default
 content:
-  field_anchor:
+  anchor:
     weight: 1
     label: above
     settings:
@@ -19,7 +19,7 @@ content:
     third_party_settings: {  }
     type: string
     region: content
-  field_heading:
+  heading:
     weight: 0
     label: above
     settings:

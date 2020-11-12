@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.faq.field_subtitle
+    - field.field.paragraph.faq.subtitle
     - field.field.paragraph.faq.items
     - paragraphs.paragraphs_type.faq
   module:
@@ -13,7 +13,7 @@ targetEntityType: paragraph
 bundle: faq
 mode: default
 content:
-  field_subtitle:
+  subtitle:
     weight: 2
     label: hidden
     settings:
