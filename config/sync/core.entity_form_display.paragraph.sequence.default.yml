@@ -3,8 +3,8 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.sequence.subtitle
     - field.field.paragraph.sequence.items
+    - field.field.paragraph.sequence.subtitle
     - paragraphs.paragraphs_type.sequence
   module:
     - paragraphs
@@ -23,7 +23,7 @@ content:
       autocollapse: none
       closed_mode_threshold: 0
       add_mode: dropdown
-      form_display_mode: default
+      form_display_mode: sequence
       default_paragraph_type: item
       features:
         add_above: '0'

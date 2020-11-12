@@ -1,8 +1,9 @@
-uuid: ed62eedf-c74a-45bb-9eea-e1598b165c64
+uuid: 79835c6a-5a34-4f7d-bce4-0ba5e2fe97a3
 langcode: en
-status: true
+status: false
 dependencies:
   config:
+    - core.entity_form_mode.paragraph.faq
     - field.field.paragraph.cta._heading
     - field.field.paragraph.cta._link
     - field.field.paragraph.cta._markup
@@ -11,10 +12,10 @@ dependencies:
   module:
     - link
     - text
-id: paragraph.cta.default
+id: paragraph.cta.faq
 targetEntityType: paragraph
 bundle: cta
-mode: default
+mode: faq
 content:
   _heading:
     weight: 0
