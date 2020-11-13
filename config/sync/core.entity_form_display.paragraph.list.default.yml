@@ -3,14 +3,14 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.faq.items
-    - field.field.paragraph.faq.subtitle
-    - paragraphs.paragraphs_type.faq
+    - field.field.paragraph.list.items
+    - field.field.paragraph.list.subtitle
+    - paragraphs.paragraphs_type.list
   module:
     - lecapi_admin
-id: paragraph.faq.default
+id: paragraph.list.default
 targetEntityType: paragraph
-bundle: faq
+bundle: list
 mode: default
 content:
   items:
@@ -23,7 +23,7 @@ content:
       autocollapse: none
       closed_mode_threshold: '0'
       add_mode: dropdown
-      form_display_mode: faq
+      form_display_mode: list
       default_paragraph_type: item
       features:
         duplicate: duplicate

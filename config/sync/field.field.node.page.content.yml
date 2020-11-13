@@ -7,7 +7,7 @@ dependencies:
     - node.type.page
     - paragraphs.paragraphs_type.cards
     - paragraphs.paragraphs_type.cta
-    - paragraphs.paragraphs_type.faq
+    - paragraphs.paragraphs_type.list
     - paragraphs.paragraphs_type.markup
     - paragraphs.paragraphs_type.sequence
   module:
@@ -29,7 +29,7 @@ settings:
     target_bundles:
       cards: cards
       cta: cta
-      faq: faq
+      list: list
       sequence: sequence
       markup: markup
     target_bundles_drag_drop:
@@ -39,7 +39,7 @@ settings:
       cta:
         enabled: true
         weight: 7
-      faq:
+      list:
         enabled: true
         weight: 8
       item:

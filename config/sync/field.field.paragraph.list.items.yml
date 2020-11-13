@@ -1,18 +1,18 @@
-uuid: b037797c-afdb-48d3-938f-d892a25d2e2f
+uuid: 5221a709-6112-4419-bd2b-42dbc8c83333
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.subtitle
-    - paragraphs.paragraphs_type.faq
-    - paragraphs.paragraphs_type.subtitle
+    - field.storage.paragraph.items
+    - paragraphs.paragraphs_type.list
+    - paragraphs.paragraphs_type.item
   module:
     - entity_reference_revisions
-id: paragraph.faq.subtitle
-field_name: subtitle
+id: paragraph.list.items
+field_name: items
 entity_type: paragraph
-bundle: faq
-label: Subtitle
+bundle: list
+label: Items
 description: ''
 required: false
 translatable: true
@@ -23,21 +23,27 @@ settings:
   handler_settings:
     negate: 0
     target_bundles:
-      subtitle: subtitle
+      item: item
     target_bundles_drag_drop:
       cards:
-        weight: 6
-        enabled: false
-      cta:
-        weight: 7
-        enabled: false
-      faq:
         weight: 8
         enabled: false
-      sequence:
+      cta:
         weight: 9
         enabled: false
-      subtitle:
-        enabled: true
+      list:
         weight: 10
+        enabled: false
+      item:
+        enabled: true
+        weight: 11
+      markup:
+        weight: 12
+        enabled: false
+      sequence:
+        weight: 13
+        enabled: false
+      subtitle:
+        weight: 14
+        enabled: false
 field_type: entity_reference_revisions

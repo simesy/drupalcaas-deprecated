@@ -31,7 +31,7 @@ settings:
       cta:
         weight: 9
         enabled: false
-      faq:
+      list:
         weight: 10
         enabled: false
       item:

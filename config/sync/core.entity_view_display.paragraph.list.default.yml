@@ -3,14 +3,14 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.faq.items
-    - field.field.paragraph.faq.subtitle
-    - paragraphs.paragraphs_type.faq
+    - field.field.paragraph.list.items
+    - field.field.paragraph.list.subtitle
+    - paragraphs.paragraphs_type.list
   module:
     - entity_reference_revisions
-id: paragraph.faq.default
+id: paragraph.list.default
 targetEntityType: paragraph
-bundle: faq
+bundle: list
 mode: default
 content:
   items:

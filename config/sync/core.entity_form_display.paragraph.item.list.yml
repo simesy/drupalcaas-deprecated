@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_form_mode.paragraph.faq
+    - core.entity_form_mode.paragraph.list
     - field.field.paragraph.item._heading
     - field.field.paragraph.item._link
     - field.field.paragraph.item._markup
@@ -11,10 +11,10 @@ dependencies:
     - paragraphs.paragraphs_type.item
   module:
     - text
-id: paragraph.item.faq
+id: paragraph.item.list
 targetEntityType: paragraph
 bundle: item
-mode: faq
+mode: list
 content:
   _heading:
     type: string_textfield

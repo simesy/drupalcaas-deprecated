@@ -4,7 +4,7 @@ status: true
 dependencies:
   module:
     - paragraphs
-id: paragraph.faq
+id: paragraph.list
 label: 'Accordion / FAQ'
 targetEntityType: paragraph
 cache: true
