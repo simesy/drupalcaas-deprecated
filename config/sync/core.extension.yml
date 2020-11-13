@@ -38,7 +38,6 @@ module:
   jsonapi_resources: 0
   jsonapi_views: 0
   lecapi: 0
-  lecapi_admin: 0
   link: 0
   media: 0
   media_library: 0
