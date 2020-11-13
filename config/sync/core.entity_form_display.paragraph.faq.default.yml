@@ -7,6 +7,7 @@ dependencies:
     - field.field.paragraph.faq.subtitle
     - paragraphs.paragraphs_type.faq
   module:
+    - lecapi_admin
     - paragraphs
 id: paragraph.faq.default
 targetEntityType: paragraph
@@ -21,16 +22,16 @@ content:
       edit_mode: open
       closed_mode: preview
       autocollapse: none
-      closed_mode_threshold: 0
+      closed_mode_threshold: '0'
       add_mode: dropdown
       form_display_mode: faq
       default_paragraph_type: item
       features:
-        add_above: '0'
-        collapse_edit_all: collapse_edit_all
         duplicate: duplicate
+        collapse_edit_all: collapse_edit_all
+        add_above: 0
     third_party_settings: {  }
-    type: paragraphs
+    type: lecapi_paragraphs
     region: content
   subtitle:
     weight: 2

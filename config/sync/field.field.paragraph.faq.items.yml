@@ -1,4 +1,4 @@
-uuid: 43af9fd5-d11b-4949-994e-1ebe86fe4a54
+uuid: 5221a709-6112-4419-bd2b-42dbc8c8e15a
 langcode: en
 status: true
 dependencies:
@@ -14,7 +14,7 @@ entity_type: paragraph
 bundle: faq
 label: Items
 description: ''
-required: true
+required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''

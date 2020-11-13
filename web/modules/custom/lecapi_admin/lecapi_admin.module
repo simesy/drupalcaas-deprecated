@@ -1,0 +1,25 @@
+<?php
+
+/**
+ * @file
+ * Main module for lecapi_admin.
+ */
+
+use Drupal\Core\Render\Element;
+
+///**
+// * Implements hook_theme_suggestions_HOOK_alter().
+// */
+//function lecapi_admin_theme_suggestions_container_alter(array &$suggestions, array &$variables) {
+//  if (isset($variables['element']['#paragraph_type'])) {
+//    $element = $variables['element'];
+//    if (isset($element['#paragraph_form_mode'])) {
+//      array_unshift($suggestions, 'container_paragraphs_subform__' . $element['#paragraph_form_mode'] . '_' . $element['#paragraph_type']);
+//    }
+//    array_unshift($suggestions, 'container_paragraphs_subform__' . $element['#paragraph_type']);
+//    array_unshift($suggestions, 'container_paragraphs_subform');
+//  }
+//
+//}
+//
+//

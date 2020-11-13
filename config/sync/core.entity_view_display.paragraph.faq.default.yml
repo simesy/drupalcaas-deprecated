@@ -3,8 +3,8 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.faq.subtitle
     - field.field.paragraph.faq.items
+    - field.field.paragraph.faq.subtitle
     - paragraphs.paragraphs_type.faq
   module:
     - entity_reference_revisions
@@ -15,7 +15,7 @@ mode: default
 content:
   items:
     weight: 3
-    label: hidden
+    label: above
     settings:
       view_mode: default
       link: ''

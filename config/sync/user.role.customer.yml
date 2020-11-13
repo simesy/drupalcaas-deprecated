@@ -1,0 +1,22 @@
+uuid: 6d93aa3f-89ef-4019-8fbc-391801bcda81
+langcode: en
+status: true
+dependencies: {  }
+id: customer
+label: customer
+weight: 3
+is_admin: null
+permissions:
+  - 'access toolbar'
+  - 'access workbench'
+  - 'create article content'
+  - 'create audio media'
+  - 'create document media'
+  - 'create event content'
+  - 'create image media'
+  - 'create media'
+  - 'create page content'
+  - 'create remote_video media'
+  - 'create video media'
+  - 'use workbench access'
+  - 'view the administration theme'
