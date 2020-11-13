@@ -7,7 +7,7 @@ dependencies:
     - field.field.paragraph.markup.subtitle
     - paragraphs.paragraphs_type.markup
   module:
-    - paragraphs
+    - lecapi_admin
     - text
 id: paragraph.markup.default
 targetEntityType: paragraph
@@ -39,7 +39,7 @@ content:
         collapse_edit_all: collapse_edit_all
         duplicate: duplicate
     third_party_settings: {  }
-    type: paragraphs
+    type: lecapi_paragraphs
     region: content
 hidden:
   created: true

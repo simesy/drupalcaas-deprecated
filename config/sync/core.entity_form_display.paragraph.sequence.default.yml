@@ -7,7 +7,7 @@ dependencies:
     - field.field.paragraph.sequence.subtitle
     - paragraphs.paragraphs_type.sequence
   module:
-    - paragraphs
+    - lecapi_admin
 id: paragraph.sequence.default
 targetEntityType: paragraph
 bundle: sequence
@@ -30,7 +30,7 @@ content:
         collapse_edit_all: collapse_edit_all
         duplicate: duplicate
     third_party_settings: {  }
-    type: paragraphs
+    type: lecapi_paragraphs
     region: content
   subtitle:
     weight: 2
@@ -49,7 +49,7 @@ content:
         collapse_edit_all: collapse_edit_all
         duplicate: duplicate
     third_party_settings: {  }
-    type: paragraphs
+    type: lecapi_paragraphs
     region: content
 hidden:
   created: true
