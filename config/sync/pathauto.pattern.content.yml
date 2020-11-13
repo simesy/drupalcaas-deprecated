@@ -7,17 +7,8 @@ dependencies:
 id: content
 label: Content
 type: 'canonical_entities:node'
-pattern: '[node:title]'
-selection_criteria:
-  452c96c9-2c85-4818-81aa-9a14591fc650:
-    id: node_type
-    bundles:
-      article: article
-      page: page
-    negate: false
-    context_mapping:
-      node: node
-    uuid: 452c96c9-2c85-4818-81aa-9a14591fc650
+pattern: '[node:site:entity:key]/[node:content-type]/[node:title]'
+selection_criteria: {  }
 selection_logic: and
 weight: -5
 relationships: {  }

@@ -1,0 +1,29 @@
+uuid: 74e987df-3513-4667-9fd2-f74a7dc75af4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.article.site
+    - field.field.node.event.site
+    - field.field.node.page.site
+    - taxonomy.vocabulary.site
+id: site
+label: Site
+plural_label: Sites
+scheme: taxonomy
+scheme_settings:
+  vocabularies:
+    - site
+  fields:
+    -
+      entity_type: node
+      bundle: page
+      field: site
+    -
+      entity_type: node
+      bundle: event
+      field: site
+    -
+      entity_type: node
+      bundle: article
+      field: site

@@ -4,6 +4,8 @@ status: true
 dependencies:
   config:
     - field.field.node.article.content
+    - field.field.node.article.hero
+    - field.field.node.article.item
     - field.field.node.article.site
     - node.type.article
   module:
@@ -24,6 +26,24 @@ content:
       link: ''
     third_party_settings: {  }
     type: entity_reference_revisions_entity_view
+    region: content
+  hero:
+    type: entity_reference_entity_view
+    weight: 104
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    region: content
+  item:
+    type: entity_reference_revisions_entity_view
+    weight: 103
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
     region: content
   links:
     weight: 100

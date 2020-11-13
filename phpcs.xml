@@ -8,12 +8,12 @@
   <rule ref="DrupalPractice" />
   <rule ref="Drupal" />
 
-  <arg name="extensions" value="php,module,inc,install,test,profile,theme"/>
-  <arg name="ignore" value="*.css,*.md"/>
   <arg name="report" value="full"/>
+  <arg name="extensions" value="php,module,inc,install,test,profile,theme"/>
+  <exclude-pattern>*.(md|css|js)$</exclude-pattern>
 
   <config name="installed_paths" value="vendor/drupal/coder/coder_sniffer" />
-  <config name="drupal_core_version" value="8"/>
+  <config name="drupal_core_version" value="9"/>
 
   <rule ref="Drupal.Commenting.DocComment.MissingShort">
     <severity>0</severity>

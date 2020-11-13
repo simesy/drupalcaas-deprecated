@@ -37,6 +37,8 @@ module:
   jsonapi_menu_items: 0
   jsonapi_resources: 0
   jsonapi_views: 0
+  lecapi: 0
+  lecapi_admin: 0
   link: 0
   media: 0
   media_library: 0
@@ -61,7 +63,6 @@ module:
   text: 0
   token: 0
   toolbar: 0
-  update: 0
   user: 0
   views_ui: 0
   viewsreference: 0

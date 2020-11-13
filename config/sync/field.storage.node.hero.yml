@@ -1,0 +1,20 @@
+uuid: 5b6e28bf-20ab-445f-aa11-eeb461c44aef
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+    - node
+id: node.hero
+field_name: hero
+entity_type: node
+type: entity_reference
+settings:
+  target_type: media
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
