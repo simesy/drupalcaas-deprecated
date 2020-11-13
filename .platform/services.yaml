@@ -9,3 +9,14 @@ db:
 
 cache:
     type: redis:6.0
+
+searchsolr:
+  type: solr:8.6
+  disk: 1024
+  configuration:
+    cores:
+      collection1:
+        conf_dir: !archive "configsets/solr8"
+    endpoints:
+      solr:
+        core: collection1
