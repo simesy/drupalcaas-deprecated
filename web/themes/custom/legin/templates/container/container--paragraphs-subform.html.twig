@@ -4,7 +4,7 @@
   has_parent ? 'form-wrapper'
 ]
 %}
-{# This wrapper is added for developer usability. Classes with more information about the paragraphs type and display mode are added to the inner div. #}
-<div class="paragraphs-component-subform">
-  <div{{ attributes.addClass(classes) }}>{{ children }}</div>
-</div>
+
+{# See LecapiParagraphsWidget::formElement for how other classes are added. #}
+<div{{ attributes.addClass(classes) }}>{{ children }}</div>
+

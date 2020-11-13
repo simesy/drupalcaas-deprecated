@@ -2,26 +2,8 @@
 
 namespace Drupal\lecapi_admin\Plugin\Field\FieldWidget;
 
-use Drupal\Component\Utility\NestedArray;
-use Drupal\Component\Utility\Html;
-use Drupal\Core\Entity\ContentEntityInterface;
-use Drupal\Core\Entity\Entity\EntityFormDisplay;
-use Drupal\Core\Entity\FieldableEntityInterface;
-use Drupal\Core\Field\FieldDefinitionInterface;
-use Drupal\Core\Field\FieldFilteredMarkup;
-use Drupal\Core\Field\FieldStorageDefinitionInterface;
-use Drupal\Core\Field\WidgetBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Field\FieldItemListInterface;
-use Drupal\Core\Form\SubformState;
-use Drupal\Core\Render\Element;
-use Drupal\Core\TypedData\TranslationStatusInterface;
-use Drupal\field_group\FormatterHelper;
-use Drupal\paragraphs\ParagraphInterface;
-use Drupal\paragraphs\Plugin\EntityReferenceSelection\ParagraphSelection;
-use Symfony\Component\Validator\ConstraintViolationInterface;
-use Symfony\Component\Validator\ConstraintViolationListInterface;
-
 use Drupal\paragraphs\Plugin\Field\FieldWidget\ParagraphsWidget;
 
 /**
@@ -45,15 +27,9 @@ class LecapiParagraphsWidget extends ParagraphsWidget {
    */
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
     $element = parent::formElement($items, $delta, $element, $form, $form_state);
-    $element['#attributes']['class'][] = 'display-mode-' . $this->getSetting('form_display_mode');
-    $element['#attributes']['class'][] = 'paragraphs-type-' . $element['#paragraph_type'];
-//    $children = Element::children($element, TRUE);
-//    $string = implode(', ', $children);
-//    $element['si_label'] = [
-//      '#children' => '<p style="color: red; float: right; font-size: 10px; font-family: Monaco,monospace">' . $string . '</p>',
-//      '#weight' => -1000,
-//    ];
-//
+    // Add a class to show not just the paragraph type, but also the chosen display mode used in the widget settings.
+    $element['#attributes']['class'][] = 'lecapi-paragraphs-subform';
+    $element['#attributes']['class'][] = 'paragraph-form-' . $element['#paragraph_type'] . '-' . $this->getSetting('form_display_mode');
     return $element;
   }
 
@@ -72,4 +48,3 @@ class LecapiParagraphsWidget extends ParagraphsWidget {
   }
 
 }
-

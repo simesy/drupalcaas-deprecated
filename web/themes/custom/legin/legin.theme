@@ -1,11 +1,16 @@
 <?php
 
 /**
+ * @file
+ * Main theme file.
+ */
+
+/**
  * Implements hook_theme_suggestions_HOOK_alter().
  */
 function legin_theme_suggestions_container_alter(array &$suggestions, array &$variables) {
 
-  // There is no strong reason to override this template except for a little DX.
+  // Overriding this so that it's obvious to a themer who is inspecting templates that we're playing in this space.
   if (isset($variables['element']['#paragraph_type'])) {
     array_unshift($suggestions, 'container__paragraphs_subform');
   }
