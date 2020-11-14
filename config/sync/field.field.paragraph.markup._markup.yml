@@ -13,7 +13,7 @@ third_party_settings:
     basic: '0'
     full: '0'
     plain_text: '0'
-id: paragraph._markup._markup
+id: paragraph.markup._markup
 field_name: _markup
 entity_type: paragraph
 bundle: markup

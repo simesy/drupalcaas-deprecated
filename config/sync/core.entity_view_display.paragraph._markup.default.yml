@@ -9,7 +9,7 @@ dependencies:
   module:
     - entity_reference_revisions
     - text
-id: paragraph.markup.default
+id: paragraph._markup.default
 targetEntityType: paragraph
 bundle: _markup
 mode: default

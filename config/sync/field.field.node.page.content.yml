@@ -39,12 +39,12 @@ settings:
       cta:
         enabled: true
         weight: 7
-      list:
-        enabled: true
-        weight: 8
       item:
         weight: 11
         enabled: false
+      list:
+        enabled: true
+        weight: 8
       markup:
         enabled: true
         weight: 12

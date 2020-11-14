@@ -28,5 +28,7 @@ content:
     type: string_textfield
     region: content
 hidden:
+  anchor: true
   created: true
+  heading: true
   status: true

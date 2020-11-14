@@ -25,20 +25,20 @@ settings:
     target_bundles:
       item: item
     target_bundles_drag_drop:
+      _markup:
+        weight: 12
+        enabled: false
       cards:
         weight: 8
         enabled: false
       cta:
         weight: 9
         enabled: false
-      list:
-        weight: 10
-        enabled: false
       item:
         enabled: true
         weight: 11
-      _markup:
-        weight: 12
+      list:
+        weight: 10
         enabled: false
       sequence:
         weight: 13

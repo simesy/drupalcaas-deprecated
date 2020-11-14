@@ -31,11 +31,11 @@ settings:
       cta:
         weight: 9
         enabled: false
-      list:
-        weight: 10
-        enabled: false
       item:
         weight: 11
+        enabled: false
+      list:
+        weight: 10
         enabled: false
       markup:
         weight: 12
