@@ -9,7 +9,6 @@ dependencies:
     - paragraphs.paragraphs_type.cards
   module:
     - entity_reference_revisions
-    - options
 id: paragraph.cards.default
 targetEntityType: paragraph
 bundle: cards
@@ -33,11 +32,5 @@ content:
       link: ''
     third_party_settings: {  }
     region: content
-  variant:
-    weight: 2
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    type: list_default
-    region: content
-hidden: {  }
+hidden:
+  variant: true

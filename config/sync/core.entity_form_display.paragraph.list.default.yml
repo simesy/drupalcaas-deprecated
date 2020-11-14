@@ -15,7 +15,7 @@ bundle: list
 mode: default
 content:
   items:
-    weight: 3
+    weight: 2
     settings:
       title: Item
       title_plural: Items
@@ -34,7 +34,7 @@ content:
     type: lecapi_paragraphs
     region: content
   subtitle:
-    weight: 2
+    weight: 1
     settings:
       title: Subtitle
       title_plural: Subtitles
@@ -53,7 +53,7 @@ content:
     type: lecapi_paragraphs
     region: content
   variant:
-    weight: 4
+    weight: 0
     settings: {  }
     third_party_settings: {  }
     type: options_select
