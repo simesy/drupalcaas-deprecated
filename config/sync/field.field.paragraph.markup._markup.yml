@@ -1,9 +1,9 @@
-uuid: 37efaed5-3097-4531-88f7-366c88d5f954
+uuid: 37efaed5-3097-4531-88f7-366c88d53333
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.markup
+    - field.storage.paragraph._markup
     - paragraphs.paragraphs_type.markup
   module:
     - allowed_formats
@@ -13,8 +13,8 @@ third_party_settings:
     basic: '0'
     full: '0'
     plain_text: '0'
-id: paragraph.markup.markup
-field_name: markup
+id: paragraph._markup._markup
+field_name: _markup
 entity_type: paragraph
 bundle: markup
 label: Markup

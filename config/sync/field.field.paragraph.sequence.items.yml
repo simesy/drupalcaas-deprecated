@@ -37,7 +37,7 @@ settings:
       item:
         enabled: true
         weight: 11
-      markup:
+      _markup:
         weight: 12
         enabled: false
       sequence:
