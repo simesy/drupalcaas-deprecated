@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.page.content
+    - field.field.node.page.hero
     - field.field.node.page.site
     - node.type.page
   module:
@@ -17,7 +18,7 @@ third_party_settings:
       children:
         - site
       parent_name: ''
-      weight: 8
+      weight: 9
       format_type: details_sidebar
       region: content
       format_settings:
@@ -37,7 +38,7 @@ mode: default
 content:
   content:
     type: lecapi_paragraphs
-    weight: 1
+    weight: 2
     settings:
       title: Content
       title_plural: Content
@@ -56,13 +57,23 @@ content:
     region: content
   created:
     type: datetime_timestamp
-    weight: 3
+    weight: 4
     region: content
     settings: {  }
     third_party_settings: {  }
+  hero:
+    weight: 1
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
   path:
     type: path
-    weight: 6
+    weight: 7
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -70,7 +81,7 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 4
+    weight: 5
     region: content
     third_party_settings: {  }
   site:
@@ -83,14 +94,14 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 7
+    weight: 8
     region: content
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 5
+    weight: 6
     region: content
     third_party_settings: {  }
   title:
@@ -103,7 +114,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 2
+    weight: 3
     region: content
     settings:
       match_operator: CONTAINS

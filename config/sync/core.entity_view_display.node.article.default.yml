@@ -18,7 +18,7 @@ bundle: article
 mode: default
 content:
   content:
-    weight: 101
+    weight: 2
     label: hidden
     settings:
       view_mode: default
@@ -28,20 +28,20 @@ content:
     region: content
   hero:
     type: entity_reference_entity_view
-    weight: 104
-    label: above
+    weight: 1
+    label: hidden
     settings:
       view_mode: default
       link: false
     third_party_settings: {  }
     region: content
   links:
-    weight: 100
+    weight: 0
     region: content
     settings: {  }
     third_party_settings: {  }
   site:
-    weight: 102
+    weight: 3
     label: hidden
     settings:
       link: true
