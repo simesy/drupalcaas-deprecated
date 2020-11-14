@@ -3,7 +3,7 @@ langcode: en
 status: false
 dependencies:
   config:
-    - core.entity_form_mode.paragraph.faq
+    - core.entity_form_mode.paragraph.list
     - field.field.paragraph.cta._heading
     - field.field.paragraph.cta._link
     - field.field.paragraph.cta._markup
@@ -12,10 +12,10 @@ dependencies:
   module:
     - link
     - text
-id: paragraph.cta.faq
+id: paragraph.cta.list
 targetEntityType: paragraph
 bundle: cta
-mode: faq
+mode: list
 content:
   _heading:
     weight: 0

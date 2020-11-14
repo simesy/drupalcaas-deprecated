@@ -3,18 +3,18 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.markup.markup
+    - field.field.paragraph.markup._markup
     - field.field.paragraph.markup.subtitle
     - paragraphs.paragraphs_type.markup
   module:
-    - paragraphs
+    - lecapi_admin
     - text
 id: paragraph.markup.default
 targetEntityType: paragraph
-bundle: markup
+bundle: _markup
 mode: default
 content:
-  markup:
+  _markup:
     weight: 1
     settings:
       rows: 5
@@ -39,7 +39,7 @@ content:
         collapse_edit_all: collapse_edit_all
         duplicate: duplicate
     third_party_settings: {  }
-    type: paragraphs
+    type: lecapi_paragraphs
     region: content
 hidden:
   created: true

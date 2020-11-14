@@ -31,7 +31,7 @@ settings:
       cta:
         weight: 7
         enabled: false
-      faq:
+      list:
         weight: 8
         enabled: false
       sequence:

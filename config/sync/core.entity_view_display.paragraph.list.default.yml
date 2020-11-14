@@ -1,28 +1,29 @@
-uuid: 024cf2c7-2b18-4c57-92a1-c0d4c96e00cf
+uuid: 3ea5d567-a92e-4ee4-93b6-00cc4b0c3333
 langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.markup.markup
-    - field.field.paragraph.markup.subtitle
-    - paragraphs.paragraphs_type.markup
+    - field.field.paragraph.list.items
+    - field.field.paragraph.list.subtitle
+    - paragraphs.paragraphs_type.list
   module:
     - entity_reference_revisions
-    - text
-id: paragraph.markup.default
+id: paragraph.list.default
 targetEntityType: paragraph
-bundle: markup
+bundle: list
 mode: default
 content:
-  markup:
-    weight: 1
-    label: hidden
-    settings: {  }
+  items:
+    weight: 3
+    label: above
+    settings:
+      view_mode: default
+      link: ''
     third_party_settings: {  }
-    type: text_default
+    type: entity_reference_revisions_entity_view
     region: content
   subtitle:
-    weight: 0
+    weight: 2
     label: hidden
     settings:
       view_mode: default

@@ -7,7 +7,7 @@ dependencies:
     - field.field.paragraph.cards.subtitle
     - paragraphs.paragraphs_type.cards
   module:
-    - paragraphs
+    - lecapi_admin
 id: paragraph.cards.default
 targetEntityType: paragraph
 bundle: cards
@@ -30,10 +30,10 @@ content:
         collapse_edit_all: collapse_edit_all
         duplicate: duplicate
     third_party_settings: {  }
-    type: paragraphs
+    type: lecapi_paragraphs
     region: content
   subtitle:
-    type: paragraphs
+    type: lecapi_paragraphs
     weight: 2
     settings:
       title: Subtitle

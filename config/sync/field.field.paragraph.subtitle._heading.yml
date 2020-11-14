@@ -1,12 +1,12 @@
-uuid: ff4d9589-6090-4bff-92f8-a218b4bd0dcb
+uuid: ff4d9589-6090-4bff-92f8-a218b4bd3333
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.heading
+    - field.storage.paragraph._heading
     - paragraphs.paragraphs_type.subtitle
-id: paragraph.subtitle.heading
-field_name: heading
+id: paragraph.subtitle._heading
+field_name: _heading
 entity_type: paragraph
 bundle: subtitle
 label: Heading

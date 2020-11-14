@@ -9,7 +9,7 @@ dependencies:
   module:
     - chosen_field
     - field_group
-    - paragraphs
+    - lecapi_admin
     - path
 third_party_settings:
   field_group:
@@ -17,7 +17,7 @@ third_party_settings:
       children:
         - site
       parent_name: ''
-      weight: 2
+      weight: 3
       format_type: details_sidebar
       region: content
       format_settings:
@@ -34,7 +34,7 @@ bundle: event
 mode: default
 content:
   content:
-    weight: 1
+    weight: 2
     settings:
       title: Content
       title_plural: Content
@@ -44,13 +44,13 @@ content:
       closed_mode_threshold: 0
       add_mode: dropdown
       form_display_mode: default
-      default_paragraph_type: markup
+      default_paragraph_type: _markup
       features:
         add_above: '0'
         collapse_edit_all: collapse_edit_all
         duplicate: duplicate
     third_party_settings: {  }
-    type: paragraphs
+    type: lecapi_paragraphs
     region: content
   created:
     type: datetime_timestamp

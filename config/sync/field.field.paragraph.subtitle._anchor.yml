@@ -1,12 +1,12 @@
-uuid: f24cc2d2-050b-4867-8d77-c21562d15a39
+uuid: f24cc2d2-050b-4867-8d77-c21562d13333
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.anchor
+    - field.storage.paragraph._anchor
     - paragraphs.paragraphs_type.subtitle
-id: paragraph.subtitle.anchor
-field_name: anchor
+id: paragraph.subtitle._anchor
+field_name: _anchor
 entity_type: paragraph
 bundle: subtitle
 label: Anchor
