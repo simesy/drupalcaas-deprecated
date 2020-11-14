@@ -3,6 +3,6 @@ langcode: en
 status: true
 dependencies: {  }
 id: component
-label: Component
+label: 'Content block'
 revision: 0
-description: 'Ability to add a content component as a block.'
+description: 'Ability to add a basic HTML or other components, as a block.'

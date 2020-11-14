@@ -9,7 +9,7 @@ dependencies:
   module:
     - chosen_field
     - field_group
-    - paragraphs
+    - lecapi_admin
     - path
 third_party_settings:
   field_group:
@@ -36,7 +36,7 @@ bundle: page
 mode: default
 content:
   content:
-    type: paragraphs
+    type: lecapi_paragraphs
     weight: 1
     settings:
       title: Content
@@ -47,7 +47,7 @@ content:
       closed_mode_threshold: 0
       add_mode: dropdown
       form_display_mode: default
-      default_paragraph_type: _markup
+      default_paragraph_type: markup
       features:
         add_above: '0'
         collapse_edit_all: collapse_edit_all
