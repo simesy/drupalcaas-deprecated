@@ -15,14 +15,26 @@ settings:
       value: default
       label: 'No variants'
     -
+      value: cta.default
+      label: 'Standard CTA'
+    -
+      value: cta.large
+      label: 'Enhanced CTA'
+    -
+      value: list.default
+      label: FAQ
+    -
+      value: list.timeline
+      label: Accordion
+    -
       value: cards.default
       label: Grid
     -
       value: cards.fancy
-      label: Pants
+      label: 'Fancy example'
     -
       value: sequence.default
-      label: Stepper
+      label: 'Numbered stepper'
     -
       value: sequence.timeline
       label: Timeline

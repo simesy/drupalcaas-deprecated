@@ -7,6 +7,7 @@ dependencies:
     - field.field.paragraph.cta._link
     - field.field.paragraph.cta._markup
     - field.field.paragraph.cta._media
+    - field.field.paragraph.cta.variant
     - paragraphs.paragraphs_type.cta
   module:
     - link
@@ -17,7 +18,7 @@ bundle: cta
 mode: default
 content:
   _heading:
-    weight: 0
+    weight: 1
     settings:
       size: 60
       placeholder: ''
@@ -25,7 +26,7 @@ content:
     type: string_textfield
     region: content
   _link:
-    weight: 1
+    weight: 2
     settings:
       placeholder_url: ''
       placeholder_title: ''
@@ -34,7 +35,7 @@ content:
     region: content
   _markup:
     type: text_textarea
-    weight: 3
+    weight: 4
     region: content
     settings:
       rows: 5
@@ -42,7 +43,7 @@ content:
     third_party_settings: {  }
   _media:
     type: entity_reference_autocomplete
-    weight: 2
+    weight: 3
     region: content
     settings:
       match_operator: CONTAINS
@@ -50,6 +51,12 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  variant:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
 hidden:
   created: true
   status: true
