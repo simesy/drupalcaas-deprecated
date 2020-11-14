@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.taxonomy_term.site.key
+    - field.field.taxonomy_term.site._key
     - taxonomy.vocabulary.site
   module:
     - text
@@ -12,14 +12,7 @@ targetEntityType: taxonomy_term
 bundle: site
 mode: default
 content:
-  description:
-    label: hidden
-    type: text_default
-    weight: 0
-    region: content
-    settings: {  }
-    third_party_settings: {  }
-  key:
+  _key:
     weight: 1
     label: above
     settings:
@@ -27,4 +20,11 @@ content:
     third_party_settings: {  }
     type: string
     region: content
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden: {  }

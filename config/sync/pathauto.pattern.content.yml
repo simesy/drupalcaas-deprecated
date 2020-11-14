@@ -7,7 +7,7 @@ dependencies:
 id: content
 label: Content
 type: 'canonical_entities:node'
-pattern: '[node:site:entity:key]/[node:content-type]/[node:title]'
+pattern: '[node:site:entity:_key]/[node:content-type]/[node:title]'
 selection_criteria: {  }
 selection_logic: and
 weight: -5

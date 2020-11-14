@@ -1,15 +1,15 @@
-uuid: 69ed82d6-16a8-4d8b-ba53-0e2726596fe1
+uuid: a37c9680-99db-4f3d-97b3-fefd2b4fa210
 langcode: en
 status: true
 dependencies:
   module:
     - taxonomy
-id: taxonomy_term.key
-field_name: key
+id: taxonomy_term._key
+field_name: _key
 entity_type: taxonomy_term
 type: string
 settings:
-  max_length: 64
+  max_length: 255
   is_ascii: false
   case_sensitive: false
 module: core
