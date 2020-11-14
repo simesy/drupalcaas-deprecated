@@ -9,6 +9,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Field\WidgetBase;
 use Drupal\paragraphs\Entity\Paragraph;
 use Drupal\paragraphs\Plugin\Field\FieldWidget\ParagraphsWidget;
+use Drupal\lecapi\Ia;
 
 /**
  * Implements hook_field_widget_WIDGET_TYPE_form_alter().
@@ -19,29 +20,19 @@ function lecapi_field_widget_paragraphs_form_alter(&$element, FormStateInterface
   $field_definition = $context['items']->getFieldDefinition();
 //  $paragraph_entity_reference_field_name =
 
-  if ($paragraph_entity_reference_field_name == 'field_sections') {
-    /** @see ParagraphsWidget::formElement() */
-    $widget_state = WidgetBase::getWidgetState($element['#field_parents'], $paragraph_entity_reference_field_name, $form_state);
-
-    /** @var Paragraph $paragraph */
-    $paragraph_instance = $widget_state['paragraphs'][$element['#delta']]['entity'];
-    $paragraph_type = $paragraph_instance->bundle();
+  if ( $field_definition->getName() == Ia::FIELD_CONTENT) {
+    $widget_state = WidgetBase::getWidgetState($element['#field_parents'], Ia::FIELD_CONTENT, $form_state);
+    /** @var Drupal\paragraphs\Entity\Paragraph $paragraph  */
+    $paragraph = $widget_state['paragraphs'][$element['#delta']]['entity'];
 
     // Determine which paragraph type is being embedded.
-    if ($paragraph_type == 'embedded_image_or_video') {
-      $dependee_field_name = 'field_image_or_video';
-      $selector = sprintf('select[name="%s[%d][subform][%s]"]', $paragraph_entity_reference_field_name, $element['#delta'], $dependee_field_name);
+    if ($paragraph_instance->bundle() == Ia::PG_CTA) {
+      $selector = sprintf('select[name="%s[%d][subform][%s]"]', Ia::FIELD_CONTENT, $element['#delta'], Ia::FIELD_VARIANT);
 
       // Dependent fields.
-      $element['subform']['_heading']['#states'] = [
+      $element['subform'][Ia::FIELD_HEADING]['#states'] = [
         'visible' => [
-          $selector => ['value' => 'Image'],
-        ],
-      ];
-
-      $element['subform']['field_video']['#states'] = [
-        'visible' => [
-          $selector => ['value' => 'Video'],
+          $selector => ['value' => Ia::PG_CTA],
         ],
       ];
     }

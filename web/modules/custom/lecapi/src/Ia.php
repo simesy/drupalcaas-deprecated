@@ -10,22 +10,37 @@ class Ia {
   /**
    * Re-usable heading field name.
    */
-  const FIELD_HEADING = 'heading';
+  const FIELD_HEADING = '_heading';
 
   /**
    * Re-usable markup field name.
    */
-  const FIELD_MARKUP = 'markup';
+  const FIELD_MARKUP = '_markup';
 
   /**
    * Re-usable media field name.
    */
-  const FIELD_MEDIA = 'media';
+  const FIELD_MEDIA = '_media';
 
   /**
    * Re-usable link field name.
    */
-  const FIELD_LINK = 'link';
+  const FIELD_LINK = '_link';
+
+  /**
+   * Entry point for repeating content on all entity types.
+   */
+  const FIELD_CONTENT = 'content';
+
+  /**
+   * Entry point for repeating item content on paragraph types.
+   */
+  const FIELD_ITEMS = 'item';
+
+  /**
+   * Controls paragraph types.
+   */
+  const FIELD_VARIANT = 'variant';
 
   /**
    * CTA paragraph.
@@ -40,7 +55,7 @@ class Ia {
   /**
    * FAQ paragraph.
    */
-  const PG_FAQ = 'faq';
+  const PG_FAQ = 'list';
 
   /**
    * Sequence paragraph.

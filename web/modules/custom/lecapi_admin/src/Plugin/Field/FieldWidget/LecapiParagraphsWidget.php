@@ -56,53 +56,6 @@ class LecapiParagraphsWidget extends ParagraphsWidget {
   public function settingsForm(array $form, FormStateInterface $form_state) {
     $elements = parent::settingsForm($form, $form_state);
     return $elements;
-
-    $allowed_types = $this->getAllowedTypes();
-    if (count($allowed_types) == 1 && isset($allowed_types[Ia::PG_ITEM])) {
-      // The only allowed paragraph type is a a reusable item, so offer extra features.
-      $form_display_mode = $this->getSetting('form_display_mode');
-      $paragraph_type = ParagraphsType::load(Ia::PG_ITEM);
-
-      $field_map = \Drupal::entityManager()->getFieldMap();
-      $node_field_map = $field_map['node'];
-      $node_fields = array_keys($node_field_map['node']);
-    }
-
-
-
-
-    $elements['form_display_mode'] = array(
-      '#type' => 'select',
-      '#options' => \Drupal::service('entity_display.repository')->getFormModeOptions($this->getFieldSetting('target_type')),
-      '#description' => $this->t('The form display mode to use when rendering the paragraph form.'),
-      '#title' => $this->t('Form display mode'),
-      '#default_value' => $this->getSetting('form_display_mode'),
-      '#required' => TRUE,
-    );
-
-    $options  = [];
-    foreach ($this->getAllowedTypes() as $key => $bundle) {
-      $options[$key] = $bundle['label'];
-    }
-
-    $elements['default_paragraph_type'] = [
-      '#type' => 'select',
-      '#title' => $this->t('Default paragraph type'),
-      '#empty_value' => '_none',
-      '#default_value' => $this->getDefaultParagraphTypeMachineName(),
-      '#options' => $options,
-      '#description' => $this->t('When creating a new host entity, a paragraph of this type is added.'),
-    ];
-
-    $elements['features'] = [
-      '#type' => 'checkboxes',
-      '#title' => $this->t('Enable widget features'),
-      '#options' => $this->getSettingOptions('features'),
-      '#default_value' => $this->getSetting('features'),
-      '#description' => $this->t('When editing, available as action. "Add above" only works in add mode "Modal form"'),
-      '#multiple' => TRUE,
-    ];
-
   }
 
 }
