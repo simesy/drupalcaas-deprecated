@@ -11,7 +11,7 @@ cache:
     type: redis:6.0
 
 searchsolr:
-  type: solr:8.6
+  type: solr:7.7
   disk: 1024
   configuration:
     cores:
