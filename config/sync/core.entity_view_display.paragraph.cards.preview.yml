@@ -1,0 +1,37 @@
+uuid: 4804fcd3-0eb6-44f0-a438-86c8b6116af4
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.preview
+    - field.field.paragraph.cards.items
+    - field.field.paragraph.cards.subtitle
+    - field.field.paragraph.cards.variant
+    - paragraphs.paragraphs_type.cards
+  module:
+    - entity_reference_revisions
+id: paragraph.cards.preview
+targetEntityType: paragraph
+bundle: cards
+mode: preview
+content:
+  items:
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+  subtitle:
+    type: entity_reference_revisions_entity_view
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+hidden:
+  variant: true
