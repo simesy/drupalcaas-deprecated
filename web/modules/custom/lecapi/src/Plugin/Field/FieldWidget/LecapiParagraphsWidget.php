@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\lecapi_admin\Plugin\Field\FieldWidget;
+namespace Drupal\lecapi\Plugin\Field\FieldWidget;
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Field\FieldItemListInterface;
