@@ -1,0 +1,57 @@
+uuid: 60d29bec-c5ec-44ce-93b1-223e2eacdffd
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.preview
+    - field.field.paragraph.cta._heading
+    - field.field.paragraph.cta._link
+    - field.field.paragraph.cta._markup
+    - field.field.paragraph.cta._media
+    - field.field.paragraph.cta.variant
+    - paragraphs.paragraphs_type.cta
+  module:
+    - link
+    - text
+id: paragraph.cta.preview
+targetEntityType: paragraph
+bundle: cta
+mode: preview
+content:
+  _heading:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  _link:
+    weight: 1
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  _markup:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  _media:
+    weight: 3
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+hidden:
+  variant: true

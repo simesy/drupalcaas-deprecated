@@ -1,0 +1,21 @@
+uuid: 2e797e4c-7e8c-48ad-af67-9e7a6d586721
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.variant
+    - paragraphs.paragraphs_type.cards
+  module:
+    - options
+id: paragraph.cards.variant
+field_name: variant
+entity_type: paragraph
+bundle: cards
+label: Variant
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

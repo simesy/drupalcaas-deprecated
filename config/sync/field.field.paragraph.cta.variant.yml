@@ -1,0 +1,21 @@
+uuid: 74f53e36-7b9f-491f-87db-f594310ab4d8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.variant
+    - paragraphs.paragraphs_type.cta
+  module:
+    - options
+id: paragraph.cta.variant
+field_name: variant
+entity_type: paragraph
+bundle: cta
+label: Variant
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,34 @@
+uuid: e24b445f-22af-430d-99c6-3a61cca2f813
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.preview
+    - field.field.paragraph.markup._markup
+    - field.field.paragraph.markup.subtitle
+    - paragraphs.paragraphs_type.markup
+  module:
+    - entity_reference_revisions
+    - text
+id: paragraph.markup.preview
+targetEntityType: paragraph
+bundle: markup
+mode: preview
+content:
+  _markup:
+    type: text_default
+    weight: 1
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  subtitle:
+    type: entity_reference_revisions_entity_view
+    weight: 0
+    region: content
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+hidden: {  }

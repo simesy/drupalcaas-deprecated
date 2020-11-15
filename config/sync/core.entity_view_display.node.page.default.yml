@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.page.content
+    - field.field.node.page.hero
     - field.field.node.page.site
     - node.type.page
   module:
@@ -18,22 +19,28 @@ mode: default
 content:
   content:
     type: entity_reference_revisions_entity_view
-    weight: 102
-    label: above
+    weight: 1
+    label: hidden
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
     region: content
-  links:
-    weight: 101
-    region: content
-  site:
-    weight: 103
-    label: above
+  hero:
+    weight: 0
+    label: hidden
     settings:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
     region: content
-hidden: {  }
+  site:
+    weight: 2
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+hidden:
+  links: true

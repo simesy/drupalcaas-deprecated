@@ -3,7 +3,8 @@
 parameters:
   http.response.debug_cacheability_headers: true
   twig.config:
-    debug: true
+    # By default lando has some dev stuff turned off so that xdebug isn't slow if it's enabled in .lando.yml.
+    debug: false
     auto_reload: true
     cache: false
 services:

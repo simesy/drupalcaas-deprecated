@@ -5,45 +5,42 @@
  * Main module for Lil Engine Content API.
  */
 
-use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Field\WidgetBase;
-use Drupal\paragraphs\Entity\Paragraph;
-use Drupal\paragraphs\Plugin\Field\FieldWidget\ParagraphsWidget;
+use Drupal\paragraphs\ParagraphInterface;
 
 /**
- * Implements hook_field_widget_WIDGET_TYPE_form_alter().
+ * Implements hook_theme_suggestions_HOOK_alter().
  */
-function lecapi_field_widget_paragraphs_form_alter(&$element, FormStateInterface $form_state, $context) {
-  return;
-  /** @var \Drupal\field\Entity\FieldConfig $field_definition */
-  $field_definition = $context['items']->getFieldDefinition();
-//  $paragraph_entity_reference_field_name =
+function lecapi_theme_suggestions_container_alter(array &$suggestions, array &$variables) {
+  // Adds twig wrapper control, if needed, to the paragraphs subform container.
+  if (isset($variables['element']['#paragraph_type'])) {
+    array_unshift($suggestions, 'container__paragraphs_subform');
+  }
 
-  if ($paragraph_entity_reference_field_name == 'field_sections') {
-    /** @see ParagraphsWidget::formElement() */
-    $widget_state = WidgetBase::getWidgetState($element['#field_parents'], $paragraph_entity_reference_field_name, $form_state);
+}
 
-    /** @var Paragraph $paragraph */
-    $paragraph_instance = $widget_state['paragraphs'][$element['#delta']]['entity'];
-    $paragraph_type = $paragraph_instance->bundle();
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function lecapi_theme_suggestions_paragraph_alter(array &$suggestions, array &$variables) {
+  $paragraph = isset($variables['elements']['#paragraph']) ? $variables['elements']['#paragraph'] : FALSE;
+  if (!($paragraph instanceof ParagraphInterface)) {
+    return;
+  }
 
-    // Determine which paragraph type is being embedded.
-    if ($paragraph_type == 'embedded_image_or_video') {
-      $dependee_field_name = 'field_image_or_video';
-      $selector = sprintf('select[name="%s[%d][subform][%s]"]', $paragraph_entity_reference_field_name, $element['#delta'], $dependee_field_name);
+  // Reset all paragraph suggestions.
+  $suggestions = [];
+  $variant = $paragraph->getBehaviorSetting('lecapi_variants', 'variant', FALSE);
+  $mode = strtr($variables['elements']['#view_mode'], '.', '_');
 
-      // Dependent fields.
-      $element['subform']['_heading']['#states'] = [
-        'visible' => [
-          $selector => ['value' => 'Image'],
-        ],
-      ];
-
-      $element['subform']['field_video']['#states'] = [
-        'visible' => [
-          $selector => ['value' => 'Video'],
-        ],
-      ];
+  // Add default twigs for all types, with display mode and variant alternatives - ignoring anything "default".
+  $suggestions[] = 'paragraph__' . $paragraph->bundle();
+  if ($mode != 'default') {
+    $suggestions[] = 'paragraph__' . $paragraph->bundle() . '_' . $mode;
+  }
+  if ($variant != 'default') {
+    $suggestions[] = 'paragraph__' . $paragraph->bundle() . '__' . $variant;
+    if ($mode != 'default') {
+      $suggestions[] = 'paragraph__' . $paragraph->bundle() . '_' . $mode . '__' . $variant;
     }
   }
 }
