@@ -11,6 +11,7 @@ dependencies:
     - paragraphs.paragraphs_type.cta
   module:
     - link
+    - media_library
     - text
 id: paragraph.cta.default
 targetEntityType: paragraph
@@ -42,14 +43,11 @@ content:
       placeholder: ''
     third_party_settings: {  }
   _media:
-    type: entity_reference_autocomplete
+    type: media_library_widget
     weight: 3
     region: content
     settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
+      media_types: {  }
     third_party_settings: {  }
   variant:
     weight: 0
