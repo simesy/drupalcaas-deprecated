@@ -18,13 +18,16 @@ $databases['default']['default'] = array (
 
 $settings['container_yamls'][] = DRUPAL_ROOT . '/sites/default/lando.services.yml';
 
-$settings['cache']['bins']['render'] = 'cache.backend.null';
-$settings['cache']['bins']['dynamic_page_cache'] = 'cache.backend.null';
-$settings['cache']['bins']['page'] = 'cache.backend.null';
-$settings['twig_debug'] = TRUE;
+$settings['twig_debug'] = FALSE;
 $config['system.performance']['css']['preprocess'] = FALSE;
 $config['system.performance']['js']['preprocess'] = FALSE;
 $config['system.logging']['error_level'] = 'verbose';
+
+// By default lando has some dev stuff turned off so that xdebug isn't slow if it's enabled in .lando.yml.
+// You can override these in local.settings.php - useful examples shown here.
+// $settings['cache']['bins']['render'] = 'cache.backend.null';
+// $settings['cache']['bins']['dynamic_page_cache'] = 'cache.backend.null';
+// $settings['cache']['bins']['page'] = 'cache.backend.null';
 
 error_reporting(E_ALL);
 ini_set('display_errors', TRUE);
