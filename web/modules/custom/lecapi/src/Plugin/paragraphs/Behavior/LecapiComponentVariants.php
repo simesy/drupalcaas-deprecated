@@ -61,7 +61,7 @@ class LecapiComponentVariants extends ParagraphsBehaviorBase {
       '#type' => 'select',
       '#title' => 'Select a variant for this paragraph',
       '#options' => $all_options,
-      '#default_value' => $paragraph->getBehaviorSetting($this->pluginId, 'variant', reset($all_options))
+      '#default_value' => $paragraph->getBehaviorSetting($this->pluginId, 'variant', reset($all_options)),
     ];
     return $form;
   }
@@ -71,12 +71,20 @@ class LecapiComponentVariants extends ParagraphsBehaviorBase {
    */
   public function view(array &$build, Paragraph $paragraphs_entity, EntityViewDisplayInterface $display, $view_mode) {}
 
+  /**
+   * Return variant select options based on the plugin settings.
+   *
+   * @return array
+   *   The select options.
+   */
   private function getVariantOptions() {
     $return = [];
     $options = preg_split("(\r\n?|\n)", $this->configuration['variants']);
     foreach ($options as $option) {
-      list($key, $value) = explode('|', $option);
-      $return[$key] = $value;
+      if (strpos($option, '|')) {
+        list($key, $value) = explode('|', $option);
+        $return[$key] = $value;
+      }
     }
     return $return;
   }

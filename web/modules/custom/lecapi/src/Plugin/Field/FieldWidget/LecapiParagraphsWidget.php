@@ -4,9 +4,7 @@ namespace Drupal\lecapi\Plugin\Field\FieldWidget;
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Field\FieldItemListInterface;
-use Drupal\paragraphs\Entity\ParagraphsType;
 use Drupal\paragraphs\Plugin\Field\FieldWidget\ParagraphsWidget;
-use Drupal\lecapi\Ia;
 
 /**
  * Plugin implementation of the 'entity_reference_revisions item_paragraphs' widget.
@@ -48,7 +46,6 @@ class LecapiParagraphsWidget extends ParagraphsWidget {
     $defaults['edit_mode'] = 'closed';
     return $defaults;
   }
-
 
   /**
    * {@inheritdoc}
