@@ -7,7 +7,6 @@ dependencies:
     - field.field.paragraph.cta._link
     - field.field.paragraph.cta._markup
     - field.field.paragraph.cta._media
-    - field.field.paragraph.cta.variant
     - paragraphs.paragraphs_type.cta
   module:
     - link
@@ -52,5 +51,4 @@ content:
     third_party_settings: {  }
     type: entity_reference_label
     region: content
-hidden:
-  variant: true
+hidden: {  }
