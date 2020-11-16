@@ -13,32 +13,60 @@ commands:
     description: "Prepare tooling, setup path for environment"
     steps:
       - run:
+          name: Prepare tooling
+          command: |
+            # Prepare some variables to use in commands.
+            ~/project/.circleci/prepare-environment-variables.sh
+            # Install Git.
+            apt update && apt install git -y
+            # Install Mariadb Client for using mysql command like mysql, drush sql-cli ...
+            apt install mariadb-client -y
+            # Install Platformsh CLI to interact with Platformsh.
+            curl -sS https://platform.sh/cli/installer | php
+            echo "export PATH=$PATH:$HOME/.platformsh/bin" >> $BASH_ENV
+            # Skip host key checking for Platformsh
+            mkdir -p ~/.ssh
+            echo -e "Host *.platform.sh\n  StrictHostKeyChecking no" >> ~/.ssh/config
+            # Make some project commands are able to call from terminal like drush, drupal, phpcs, phpunit...
+            echo "export PATH=$PATH:$HOME/project/vendor/bin" >> $BASH_ENV
+            source ~/.bashrc
+      - run:
           name: Prepare codebase
           command: |
-            apt update && apt install git -y
-            echo "export PATH=$PATH:$HOME/project/vendor/bin" >> $BASH_ENV
-            composer install -d /root/project
+            composer install -d ~/project
             rm -rf /var/www/html
-            ln -s /root/project/web/ /var/www/html
+            ln -s ~/project/web/ /var/www/html
   prepare_drupal:
     description: "Install Drupal instance ready for testing"
     steps:
       - run:
           name: Install Drupal
           command: |
-            cd /root/project
+            cd ~/project
             cp .circleci/phpunit.xml phpunit.xml
             cp .circleci/circleci.settings.php web/sites/default/local.settings.php
             composer install
-            drush si minimal --db-url=mysql://root:lilengine@127.0.0.1/default --account-pass="admin"
+            # We dont want dump prod db directly. Just force dump staging db if PLATFORMSH_ENVIRONMENT is master-production.
+            if [[ ${PLATFORMSH_ENVIRONMENT} == 'master' ]]; then
+              platform db:dump -f db.sql -p ${PLATFORMSH_PROJECT_ID} -e staging;
+            else
+              platform db:dump -f db.sql -p ${PLATFORMSH_PROJECT_ID} -e ${PLATFORMSH_ENVIRONMENT};
+            fi
+            platform
+            # Import db from platform env, run update db, import config and clear cache.
+            drush sql-cli < db.sql
+            drush cr
+            drush updb
+            drush cim -y
+            drush cr
   start_server:
     description: "Start web server ready for functional testing"
     steps:
       - run:
           name: Start server
           command: |
-            chown -R www-data:www-data /root/project
-            chmod -R 755 /root
+            chown -R www-data:www-data ~/project
+            chmod -R 755 ~/project
             /etc/init.d/apache2 start
 jobs:
   coding_standards:
@@ -61,14 +89,20 @@ jobs:
       - run:
           name: Run PHPUnit tests
           command: phpunit -c ./phpunit.xml
-
 workflows:
   version: 2
   testing:
     jobs:
       - coding_standards:
           name: coding_standards
+          filters:
+            branches:
+              ignore: master
       - phpunit_tests:
           name: phpunit_tests
+          filters:
+            branches:
+              ignore: master
           requires:
             - coding_standards
+
