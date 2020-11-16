@@ -8,7 +8,6 @@ dependencies:
     - field.field.paragraph.cta._link
     - field.field.paragraph.cta._markup
     - field.field.paragraph.cta._media
-    - field.field.paragraph.cta.variant
     - paragraphs.paragraphs_type.cta
   module:
     - link
@@ -55,4 +54,3 @@ content:
 hidden:
   created: true
   status: true
-  variant: true
