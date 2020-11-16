@@ -7,7 +7,6 @@ dependencies:
     - field.field.paragraph.cta._link
     - field.field.paragraph.cta._markup
     - field.field.paragraph.cta._media
-    - field.field.paragraph.cta.variant
     - paragraphs.paragraphs_type.cta
   module:
     - link
@@ -49,12 +48,6 @@ content:
     settings:
       media_types: {  }
     third_party_settings: {  }
-  variant:
-    weight: 0
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
-    region: content
 hidden:
   created: true
   status: true

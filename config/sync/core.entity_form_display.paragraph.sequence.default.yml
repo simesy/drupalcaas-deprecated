@@ -5,10 +5,9 @@ dependencies:
   config:
     - field.field.paragraph.sequence.items
     - field.field.paragraph.sequence.subtitle
-    - field.field.paragraph.sequence.variant
     - paragraphs.paragraphs_type.sequence
   module:
-    - lecapi_admin
+    - lecapi
 id: paragraph.sequence.default
 targetEntityType: paragraph
 bundle: sequence
@@ -51,12 +50,6 @@ content:
         duplicate: duplicate
     third_party_settings: {  }
     type: lecapi_paragraphs
-    region: content
-  variant:
-    weight: 0
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
     region: content
 hidden:
   created: true

@@ -5,7 +5,6 @@ dependencies:
   config:
     - field.field.paragraph.cards.items
     - field.field.paragraph.cards.subtitle
-    - field.field.paragraph.cards.variant
     - paragraphs.paragraphs_type.cards
   module:
     - entity_reference_revisions
@@ -32,5 +31,4 @@ content:
       link: ''
     third_party_settings: {  }
     region: content
-hidden:
-  variant: true
+hidden: {  }
