@@ -12,7 +12,16 @@
 {% block paragraph %}
   <div{{ attributes.addClass(classes) }}>
     {% block content %}
-      {{ content }}
+
+      {{ content.subtitle }}
+
+      {% for key, item in paragraph.items if key|first != '#' %}
+        {{ item.entity._heading.value }}
+        {{ item.entity._markup.processed }}
+        {{ item.entity._link.processed }}
+        {{ item.entity._media.processed }}
+      {% endfor %}
+
     {% endblock %}
   </div>
 {% endblock paragraph %}
