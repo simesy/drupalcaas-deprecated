@@ -24,11 +24,11 @@ for any small to medium build.
 After a lot of projects we have settled on some default primary components which cover
 most situations.
 
-- faq - Accordions, FAQs
+- markup - A HTML block
+- cta - Callouts and CTAs
+- list - Accordions, FAQs
 - sequence - Timelines, Steppers
 - cards - Card style components
-- cta - Callouts and CTAs
-- markup - A HTML block
 - view - An embedded view
 - block - An embedded content block
 
