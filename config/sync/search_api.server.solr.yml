@@ -34,8 +34,8 @@ backend_config:
   connector: standard
   connector_config:
     scheme: http
-    host: solr
-    port: 8983
+    host: solr.internal
+    port: 8080
     path: /
     core: drupal
     timeout: 5
