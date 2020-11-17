@@ -22,6 +22,8 @@ commands:
             # Install Mariadb Client for using mysql command like mysql, drush sql-cli ...
             apt install mariadb-client -y
             # Install Platformsh CLI to interact with Platformsh.
+            docker-php-ext-install pcntl
+            docker-php-ext-install posix
             curl -sS https://platform.sh/cli/installer | php
             echo "export PATH=$PATH:$HOME/.platformsh/bin" >> $BASH_ENV
             source ~/.bashrc
@@ -45,7 +47,6 @@ commands:
             cd ~/project
             cp .circleci/phpunit.xml phpunit.xml
             cp .circleci/circleci.settings.php web/sites/default/local.settings.php
-            composer install
             # We dont want dump prod db directly. Just force dump staging db if PLATFORMSH_ENVIRONMENT is master-production.
             if [[ ${PLATFORMSH_ENVIRONMENT} == 'master' ]]; then
               platform db:dump -f db.sql -p ${PLATFORMSH_PROJECT_ID} -e staging;
