@@ -4,5 +4,5 @@ status: true
 dependencies: {  }
 name: Site
 vid: site
-description: ''
+description: 'Controls content ownership.'
 weight: 0

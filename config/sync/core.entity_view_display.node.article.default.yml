@@ -48,4 +48,6 @@ content:
     third_party_settings: {  }
     type: entity_reference_label
     region: content
-hidden: {  }
+hidden:
+  langcode: true
+  search_api_excerpt: true
