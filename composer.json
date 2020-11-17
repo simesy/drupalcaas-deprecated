@@ -3,11 +3,30 @@
     "description": "Project template for Drupal 9 projects with a relocated document root",
     "type": "project",
     "license": "GPL-2.0-or-later",
-    "homepage": "https://www.drupal.org/project/drupal",
+    "homepage": "https://github.com/simesy/lecapi",
     "support": {
-        "docs": "https://www.drupal.org/docs/user_guide/en/index.html",
-        "chat": "https://www.drupal.org/node/314178"
+        "docs": "https://github.com/simesy/lecapi"
     },
+    "authors": [
+        {
+            "name": "Simon Hobbs",
+            "email": "simon@lilengine.co",
+            "homepage": "https://www.lilengine.co",
+            "role": "Architect and developer"
+        },
+        {
+            "name": "Feb Dao",
+            "email": "feb@lilengine.co",
+            "homepage": "https://www.lilengine.co",
+            "role": "Developer"
+        },
+        {
+            "name": "Tan Nguyen",
+            "email": "tan@lilengine.co",
+            "homepage": "https://www.lilengin.co",
+            "role": "Developer"
+        }
+    ],
     "repositories": [
         {
             "type": "composer",
