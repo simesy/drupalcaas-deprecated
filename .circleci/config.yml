@@ -24,12 +24,12 @@ commands:
             # Install Platformsh CLI to interact with Platformsh.
             curl -sS https://platform.sh/cli/installer | php
             echo "export PATH=$PATH:$HOME/.platformsh/bin" >> $BASH_ENV
+            source ~/.bashrc
             # Skip host key checking for Platformsh
             mkdir -p ~/.ssh
             echo -e "Host *.platform.sh\n  StrictHostKeyChecking no" >> ~/.ssh/config
             # Make some project commands are able to call from terminal like drush, drupal, phpcs, phpunit...
             echo "export PATH=$PATH:$HOME/project/vendor/bin" >> $BASH_ENV
-            source ~/.bashrc
       - run:
           name: Prepare codebase
           command: |
@@ -52,7 +52,6 @@ commands:
             else
               platform db:dump -f db.sql -p ${PLATFORMSH_PROJECT_ID} -e ${PLATFORMSH_ENVIRONMENT};
             fi
-            platform
             # Import db from platform env, run update db, import config and clear cache.
             drush sql-cli < db.sql
             drush cr
