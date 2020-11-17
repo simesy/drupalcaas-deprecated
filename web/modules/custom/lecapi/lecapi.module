@@ -6,6 +6,7 @@
  */
 
 use Drupal\Component\Utility\Html;
+use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\lecapi\Ia;
 use Drupal\paragraphs\ParagraphInterface;
 use Drupal\Core\Template\Attribute;

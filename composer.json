@@ -95,11 +95,6 @@
             "drush/contrib/{$name}": ["type:drupal-drush"]
         },
         "enable-patching": true,
-        "patches": {
-            "drupal/core": {
-                "Machine name widget": "https://www.drupal.org/files/issues/2020-05-05/2685749-79.patch"
-            }
-        },
         "composer-exit-on-patch-failure": true,
         "patchLevel": {
             "drupal/core": "-p2"

@@ -10,7 +10,7 @@ field_name: _key
 entity_type: taxonomy_term
 bundle: site
 label: _key
-description: 'A lowercase string that is used in URL aliases and other things. Should use a machine name module but there is no obvious D9 candidate.'
+description: 'A lowercase string that is used in URL aliases and other things. Please keep unique (waiting for a core "machine name" widget).'
 required: true
 translatable: false
 default_value:

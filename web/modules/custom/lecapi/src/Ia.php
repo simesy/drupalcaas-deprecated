@@ -55,7 +55,7 @@ class Ia {
   /**
    * FAQ paragraph.
    */
-  const PG_FAQ = 'list';
+  const PG_LIST = 'list';
 
   /**
    * Sequence paragraph.
