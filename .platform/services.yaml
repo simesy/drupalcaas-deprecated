@@ -15,7 +15,7 @@ solr:
   disk: 1024
   configuration:
     cores:
-      collection1:
+      drupal:
         conf_dir: !archive "configsets/solr8"
     endpoints:
       solr:
