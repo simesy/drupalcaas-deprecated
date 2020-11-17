@@ -10,7 +10,7 @@ db:
 cache:
     type: redis:6.0
 
-searchsolr:
+solr:
   type: solr:7.7
   disk: 1024
   configuration:
@@ -19,4 +19,4 @@ searchsolr:
         conf_dir: !archive "configsets/solr8"
     endpoints:
       solr:
-        core: collection1
+        core: drupal
