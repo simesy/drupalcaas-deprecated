@@ -16,6 +16,7 @@
     ],
     "require": {
         "composer/installers": "^1.9",
+        "cweagans/composer-patches": "^1",
         "drupal/admin_toolbar": "^2",
         "drupal/allowed_formats": "^1",
         "drupal/block_field": "^1",
@@ -82,7 +83,6 @@
                 "[web-root]/sites/default/default.services.yml": false
             }
         },
-        "enable-patching": true,
         "installer-types": ["bower-asset", "npm-asset"],
         "installer-paths": {
             "web/core": ["type:drupal-core"],
@@ -93,6 +93,24 @@
             "web/themes/custom/{$name}": ["type:drupal-custom-theme"],
             "web/libraries/{$name}": ["type:drupal-library", "type:bower-asset", "type:npm-asset"],
             "drush/contrib/{$name}": ["type:drupal-drush"]
+        },
+        "enable-patching": true,
+        "patches": {
+            "drupal/core": {
+                "Machine name widget": "https://www.drupal.org/files/issues/2020-05-05/2685749-79.patch"
+            }
+        },
+        "composer-exit-on-patch-failure": true,
+        "patchLevel": {
+            "drupal/core": "-p2"
+        },
+        "patches-ignore": {
+            "predis/predis": {
+                "phpunit/phpunit": {
+                    "Fix PHP 7 compatibility": "./tests/phpunit_php7.patch",
+                    "Fix PHP 8 compatibility": "./tests/phpunit_php8.patch"
+                }
+            }
         }
     }
 }
