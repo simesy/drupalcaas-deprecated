@@ -16,6 +16,17 @@ $databases['default']['default'] = array (
   'driver' => 'mysql',
 );
 
+// Lando local solr overrides.
+$config['search_api.server.solr']['backend_config'] = [
+  'connector' => 'standard',
+  'connector_config' => [
+    'host' => 'solr',
+    'port' => '8983',
+    'path' => '/',
+    'core' => 'drupal',
+  ],
+];
+
 $settings['container_yamls'][] = DRUPAL_ROOT . '/sites/default/lando.services.yml';
 
 $settings['twig_debug'] = FALSE;
