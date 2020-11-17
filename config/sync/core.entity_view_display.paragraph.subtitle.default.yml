@@ -30,3 +30,4 @@ content:
 hidden:
   anchor: true
   heading: true
+  search_api_excerpt: true
