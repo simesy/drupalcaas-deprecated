@@ -1,0 +1,31 @@
+uuid: a8f673ac-cbee-4792-be37-d1c832274a91
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_index
+    - field.field.node.event.content
+    - field.field.node.event.site
+    - node.type.event
+  module:
+    - entity_reference_revisions
+    - user
+id: node.event.search_index
+targetEntityType: node
+bundle: event
+mode: search_index
+content:
+  content:
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+hidden:
+  langcode: true
+  links: true
+  search_api_excerpt: true
+  site: true

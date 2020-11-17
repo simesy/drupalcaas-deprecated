@@ -14,4 +14,6 @@ content:
   member_for:
     weight: 5
     region: content
-hidden: {  }
+hidden:
+  langcode: true
+  search_api_excerpt: true
