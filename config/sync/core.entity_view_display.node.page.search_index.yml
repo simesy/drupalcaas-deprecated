@@ -1,0 +1,35 @@
+uuid: 4a67d29f-72e5-42f8-ac5f-b1ed93221137
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_index
+    - field.field.node.page.content
+    - field.field.node.page.hero
+    - field.field.node.page.site
+    - node.type.page
+  module:
+    - entity_reference_revisions
+    - user
+_core:
+  default_config_hash: g1S3_GLaxq4l3I9RIca5Mlz02MxI2KmOquZpHw59akM
+id: node.page.search_index
+targetEntityType: node
+bundle: page
+mode: search_index
+content:
+  content:
+    type: entity_reference_revisions_entity_view
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+hidden:
+  hero: true
+  langcode: true
+  links: true
+  search_api_excerpt: true
+  site: true
