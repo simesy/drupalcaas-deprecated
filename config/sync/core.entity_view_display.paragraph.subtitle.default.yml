@@ -12,16 +12,16 @@ bundle: subtitle
 mode: default
 content:
   _anchor:
+    type: string
     weight: 1
-    label: above
+    region: content
+    label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
-    region: content
   _heading:
     weight: 0
-    label: above
+    label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }

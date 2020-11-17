@@ -1,18 +1,27 @@
-{%
-  set classes = [
-  'paragraph',
-  'paragraph--type--' ~ paragraph.bundle|clean_class,
-  view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
-  not paragraph.isPublished() ? 'paragraph--unpublished'
-]
-%}
-
-<h1>Testing 'accordion' variant of 'list' twig</h1>
-
+{#
+/**
+ * @file
+ * Extends paragraph.html.twig.
+ *
+ * Additional variables:
+ * - variant: component variable (paragraph behavior)
+ * - classes: type, bundle, variant classes.
+ * - sub_items: if there is a repeating field `items` then this is an array of those
+ *   `item` paragraphs to control as an alternative to {{ content }}.
+ */
+#}
 {% block paragraph %}
-  <div{{ attributes.addClass(classes) }}>
+  <div{{ attributes }}>
     {% block content %}
-      {{ content }}
+      {{ content.subtitle }}
+      {% for item in sub_items %}
+        <div{{ item.attributes }}>
+          {{ item._heading }}
+          {{ item._markup }}
+          {{ item._media }}
+          {{ item._link }}
+        </div>
+      {% endfor %}
     {% endblock %}
   </div>
 {% endblock paragraph %}

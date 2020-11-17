@@ -17,8 +17,8 @@ bundle: item
 mode: default
 content:
   _heading:
-    weight: 4
-    label: above
+    weight: 0
+    label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }

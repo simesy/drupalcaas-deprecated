@@ -5,7 +5,10 @@
  * Main module for Lil Engine Content API.
  */
 
+use Drupal\Component\Utility\Html;
+use Drupal\lecapi\Ia;
 use Drupal\paragraphs\ParagraphInterface;
+use Drupal\Core\Template\Attribute;
 
 /**
  * Implements hook_theme_suggestions_HOOK_alter().
@@ -37,10 +40,45 @@ function lecapi_theme_suggestions_paragraph_alter(array &$suggestions, array &$v
   if ($mode != 'default') {
     $suggestions[] = 'paragraph__' . $paragraph->bundle() . '_' . $mode;
   }
-  if ($variant != 'default') {
+  if ($variant && $variant != 'default') {
     $suggestions[] = 'paragraph__' . $paragraph->bundle() . '__' . $variant;
     if ($mode != 'default') {
       $suggestions[] = 'paragraph__' . $paragraph->bundle() . '_' . $mode . '__' . $variant;
     }
+  }
+}
+
+/**
+ * Implements template_preprocess_paragraph().
+ */
+function legin_preprocess_paragraph(&$variables) {
+  /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
+  $paragraph = $variables['paragraph'];
+  $variant = $paragraph->getBehaviorSetting('lecapi_variants', 'variant', FALSE);
+
+  // Add convenience fields from `items` paragraph (_heading, _markup, etc).
+  $variables['sub_items'] = [];
+  if ($paragraph->hasField(Ia::FIELD_ITEMS)) {
+    /** @var \Drupal\paragraphs\Entity\Paragraph $item */
+    foreach ($paragraph->get(Ia::FIELD_ITEMS)->referencedEntities() as $item) {
+      $sub_item = [];
+      foreach ($item->getFieldDefinitions() as $field_name => $definition) {
+        $sub_item[$field_name] = $item->get($field_name)->view('default');
+      }
+      // Quickedit attributes for when using individual fields.
+      $sub_item['attributes'] = new Attribute(['data-quickedit-entity-id' => $item->getEntityTypeId() . '/' . $item->id()]);
+      $variables['sub_items'][] = $sub_item;
+    }
+  }
+
+  // Move classes login from paragraphs twig template.
+  $variables['classes'] = [
+    'paragraph',
+    'bundle-' . Html::cleanCssIdentifier($paragraph->bundle()),
+  ];
+
+  if ($variant) {
+    $variables['variant'] = $variant;
+    $variables['classes'][] = 'variant-' . $variant;
   }
 }

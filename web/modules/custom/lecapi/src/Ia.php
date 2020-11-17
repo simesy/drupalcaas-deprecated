@@ -35,7 +35,7 @@ class Ia {
   /**
    * Entry point for repeating item content on paragraph types.
    */
-  const FIELD_ITEMS = 'item';
+  const FIELD_ITEMS = 'items';
 
   /**
    * Controls paragraph types.
