@@ -3,11 +3,30 @@
     "description": "Project template for Drupal 9 projects with a relocated document root",
     "type": "project",
     "license": "GPL-2.0-or-later",
-    "homepage": "https://www.drupal.org/project/drupal",
+    "homepage": "https://github.com/simesy/lecapi",
     "support": {
-        "docs": "https://www.drupal.org/docs/user_guide/en/index.html",
-        "chat": "https://www.drupal.org/node/314178"
+        "docs": "https://github.com/simesy/lecapi"
     },
+    "authors": [
+        {
+            "name": "Simon Hobbs",
+            "email": "simon@lilengine.co",
+            "homepage": "https://www.lilengine.co",
+            "role": "Architect and developer"
+        },
+        {
+            "name": "Feb Dao",
+            "email": "feb@lilengine.co",
+            "homepage": "https://www.lilengine.co",
+            "role": "Developer"
+        },
+        {
+            "name": "Tan Nguyen",
+            "email": "tan@lilengine.co",
+            "homepage": "https://www.lilengin.co",
+            "role": "Developer"
+        }
+    ],
     "repositories": [
         {
             "type": "composer",
@@ -23,21 +42,27 @@
         "drupal/chosen": "^3",
         "drupal/core-composer-scaffold": "^9",
         "drupal/core-recommended": "^9",
+        "drupal/consumers": "^1",
         "drupal/diff": "^1",
         "drupal/druxt": "^0.4.1",
         "drupal/field_group": "^3",
         "drupal/geofield": "^1",
         "drupal/geofield_map": "^2",
+        "drupal/graphql": "^4",
+        "drupal/graphql_search_api": "^1",
         "drupal/gin": "^3.0@alpha",
         "drupal/gin_login": "^1.0@RC",
+        "drupal/jsonapi_extras": "^3",
         "drupal/jsonapi_views": "1.x-dev",
         "drupal/metatag": "^1",
+        "drupal/openapi": "^2",
         "drupal/paragraphs": "^1.12",
         "drupal/pathauto": "^1.8",
         "drupal/redirect": "^1",
         "drupal/redis": "^1.4",
         "drupal/search_api": "^1.18",
         "drupal/search_api_solr": "^4.1",
+        "drupal/simple_oauth": "^5",
         "drupal/stage_file_proxy": "^1",
         "drupal/token": "^1",
         "drupal/viewsreference": "^2",

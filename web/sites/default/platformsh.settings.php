@@ -22,6 +22,10 @@ if ($platformsh->hasRelationship('database')) {
   ];
 }
 
+// Point to private oauth keys.
+$config['simple_oauth.settings']['public_key'] = '/app/private/oauth/public.key';
+$config['simple_oauth.settings']['private_key'] = '/app/private/oauth/private.key';
+
 // Enable verbose error messages on development branches, but not on the production branch.
 // You may add more debug-centric settings here if desired to have them automatically enable
 // on development but not production.
