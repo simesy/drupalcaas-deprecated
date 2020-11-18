@@ -39,6 +39,7 @@ build:
 hooks:
     build: |
         set -e
+        curl -sS https://platform.sh/cli/installer | php
     deploy: |
         set -e
         php ./drush/platformsh_generate_drush_yml.php
@@ -83,3 +84,15 @@ crons:
     drupal:
         spec: '*/19 * * * *'
         cmd: 'cd /app/web ; drush core-cron'
+    staging-backup:
+        spec: '0 1 * * *'
+        cmd: |
+          if [ "$PLATFORM_BRANCH" = staging ]; then
+            platform backup:create --environment staging --yes --no-wait
+          fi
+    staging-sync:
+        spec: '15 1 * * *'
+        cmd: |
+          if [ "$PLATFORM_BRANCH" = staging ]; then
+            platform environment:synchronize data --environment staging --yes --no-wait
+          fi
