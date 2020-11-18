@@ -47,18 +47,14 @@ commands:
             cd ~/project
             cp .circleci/phpunit.xml phpunit.xml
             cp .circleci/circleci.settings.php web/sites/default/local.settings.php
-            # We dont want dump prod db directly. Just force dump staging db if PLATFORMSH_ENVIRONMENT is master-production.
-            if [[ ${PLATFORMSH_ENVIRONMENT} == 'master' ]]; then
-              platform db:dump -f db.sql -p ${PLATFORMSH_PROJECT_ID} -e staging;
-            else
-              platform db:dump -f db.sql -p ${PLATFORMSH_PROJECT_ID} -e ${PLATFORMSH_ENVIRONMENT};
-            fi
+            # Always use db from staging for installing Drupal instance.
+            platform db:dump -f db.sql -p ${PLATFORMSH_PROJECT_ID} -e staging
             # Import db from platform env, run update db, import config and clear cache.
-            drush sql-cli < db.sql
-            drush cr
-            drush updb
-            drush cim -y
-            drush cr
+            drush sql:cli < db.sql
+            drush cache:rebuild
+            drush updatedb -y
+            drush config:import -y
+            drush cache:rebuild
   start_server:
     description: "Start web server ready for functional testing"
     steps:
@@ -95,14 +91,8 @@ workflows:
     jobs:
       - coding_standards:
           name: coding_standards
-          filters:
-            branches:
-              ignore: master
       - phpunit_tests:
           name: phpunit_tests
-          filters:
-            branches:
-              ignore: master
           requires:
             - coding_standards
 
