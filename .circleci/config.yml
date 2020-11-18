@@ -17,10 +17,10 @@ commands:
           command: |
             # Prepare some variables to use in commands.
             ~/project/.circleci/prepare-environment-variables.sh
-            # Install Git and uzip
+            # Install Git and uzip.
             apt update && apt install git -y
             apt install unzip -y
-            # Install Mariadb Client for using mysql command like mysql, drush sql-cli ...
+            # Install Mariadb Client for using mysql command like mysql, drush sql-cli, etc.
             apt install mariadb-client -y
             # Install Platformsh CLI to interact with Platformsh.
             docker-php-ext-install pcntl
@@ -28,10 +28,10 @@ commands:
             curl -sS https://platform.sh/cli/installer | php
             echo "export PATH=$PATH:$HOME/.platformsh/bin" >> $BASH_ENV
             source ~/.bashrc
-            # Skip host key checking for Platformsh
+            # Skip host key checking for Platformsh.
             mkdir -p ~/.ssh
             echo -e "Host *.platform.sh\n  StrictHostKeyChecking no" >> ~/.ssh/config
-            # Make some project commands are able to call from terminal like drush, drupal, phpcs, phpunit...
+            # Make some project commands are able to call from terminal like drush, drupal, phpcs, phpunit, etc.
             echo "export PATH=$PATH:$HOME/project/vendor/bin" >> $BASH_ENV
       - run:
           name: Prepare codebase
