@@ -17,8 +17,9 @@ commands:
           command: |
             # Prepare some variables to use in commands.
             ~/project/.circleci/prepare-environment-variables.sh
-            # Install Git.
+            # Install Git and uzip
             apt update && apt install git -y
+            apt install unzip -y
             # Install Mariadb Client for using mysql command like mysql, drush sql-cli ...
             apt install mariadb-client -y
             # Install Platformsh CLI to interact with Platformsh.
