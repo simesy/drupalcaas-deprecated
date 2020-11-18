@@ -12,6 +12,7 @@ module:
   chosen_lib: 0
   ckeditor: 0
   config: 0
+  consumers: 0
   contextual: 0
   ctools: 0
   datetime: 0
@@ -32,6 +33,8 @@ module:
   geofield_map: 0
   gin_login: 0
   gin_toolbar: 0
+  graphql: 0
+  graphql_search_api: 0
   image: 0
   jsonapi: 0
   jsonapi_menu_items: 0
@@ -59,6 +62,7 @@ module:
   search_api_solr_admin: 0
   serialization: 0
   shortcut: 0
+  simple_oauth: 0
   stage_file_proxy: 0
   system: 0
   taxonomy: 0
@@ -66,6 +70,7 @@ module:
   text: 0
   token: 0
   toolbar: 0
+  typed_data: 0
   user: 0
   views_ui: 0
   viewsreference: 0
