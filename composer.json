@@ -54,6 +54,7 @@
         "drupal/gin_login": "^1.0@RC",
         "drupal/jsonapi_extras": "^3",
         "drupal/jsonapi_views": "1.x-dev",
+        "drupal/jsonapi_search_api": "^1",
         "drupal/metatag": "^1",
         "drupal/openapi": "^2",
         "drupal/paragraphs": "^1.12",

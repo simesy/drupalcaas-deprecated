@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c80a07e950b8f7724c24a49a8fa3d0cd",
+    "content-hash": "4b918e8cf34feaead9f4a78b1672aefc",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1835,16 +1835,16 @@
         },
         {
             "name": "drupal/core",
-            "version": "9.0.7",
+            "version": "9.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core.git",
-                "reference": "5159f7e335ba2484075b2460b10780fed583d74c"
+                "reference": "67ec8d625bb29c4323bc34c680887bf4af0187e1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal/core/zipball/5159f7e335ba2484075b2460b10780fed583d74c",
-                "reference": "5159f7e335ba2484075b2460b10780fed583d74c",
+                "url": "https://api.github.com/repos/drupal/core/zipball/67ec8d625bb29c4323bc34c680887bf4af0187e1",
+                "reference": "67ec8d625bb29c4323bc34c680887bf4af0187e1",
                 "shasum": ""
             },
             "require": {
@@ -2075,11 +2075,11 @@
                 "GPL-2.0-or-later"
             ],
             "description": "Drupal is an open source content management platform powering millions of websites and applications.",
-            "time": "2020-10-07T19:33:16+00:00"
+            "time": "2020-11-17T22:05:11+00:00"
         },
         {
             "name": "drupal/core-composer-scaffold",
-            "version": "9.0.7",
+            "version": "9.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core-composer-scaffold.git",
@@ -2126,16 +2126,16 @@
         },
         {
             "name": "drupal/core-recommended",
-            "version": "9.0.7",
+            "version": "9.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core-recommended.git",
-                "reference": "a5584a633d3d75b1d300f94b00853aa9754e3ddb"
+                "reference": "26190ab57104b47d7c2a48a08b739abba4e31025"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal/core-recommended/zipball/a5584a633d3d75b1d300f94b00853aa9754e3ddb",
-                "reference": "a5584a633d3d75b1d300f94b00853aa9754e3ddb",
+                "url": "https://api.github.com/repos/drupal/core-recommended/zipball/26190ab57104b47d7c2a48a08b739abba4e31025",
+                "reference": "26190ab57104b47d7c2a48a08b739abba4e31025",
                 "shasum": ""
             },
             "require": {
@@ -2144,7 +2144,7 @@
                 "doctrine/annotations": "1.10.3",
                 "doctrine/lexer": "1.2.1",
                 "doctrine/reflection": "1.2.1",
-                "drupal/core": "9.0.7",
+                "drupal/core": "9.0.8",
                 "egulias/email-validator": "2.1.17",
                 "guzzlehttp/guzzle": "6.5.4",
                 "guzzlehttp/promises": "v1.3.1",
@@ -2204,7 +2204,7 @@
                 "GPL-2.0-or-later"
             ],
             "description": "Locked core dependencies; require this project INSTEAD OF drupal/core.",
-            "time": "2020-10-07T19:33:16+00:00"
+            "time": "2020-11-17T22:05:11+00:00"
         },
         {
             "name": "drupal/ctools",
@@ -3211,6 +3211,59 @@
             "time": "2020-02-27T20:07:31+00:00"
         },
         {
+            "name": "drupal/jsonapi_search_api",
+            "version": "1.0.0-rc2",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/jsonapi_search_api.git",
+                "reference": "8.x-1.0-rc2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/jsonapi_search_api-8.x-1.0-rc2.zip",
+                "reference": "8.x-1.0-rc2",
+                "shasum": "c36fa23790a61999830717442508f1bafa4ae9fe"
+            },
+            "require": {
+                "drupal/core": "^8 || ^9",
+                "drupal/jsonapi_resources": "^1.0@beta",
+                "drupal/search_api": "^1.0"
+            },
+            "require-dev": {
+                "drupal/facets": "^1.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-1.0-rc2",
+                    "datestamp": "1605116431",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "RC releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "mglaman",
+                    "homepage": "https://www.drupal.org/user/2416470"
+                }
+            ],
+            "description": "Exposes Search API indexes over JSON:API Resources.",
+            "homepage": "https://www.drupal.org/project/jsonapi_search_api",
+            "keywords": [
+                "Drupal"
+            ],
+            "support": {
+                "source": "https://git.drupalcode.org/project/jsonapi_search_api",
+                "issues": "https://www.drupal.org/project/issues/jsonapi_search_api"
+            }
+        },
+        {
             "name": "drupal/jsonapi_views",
             "version": "dev-1.x",
             "source": {
@@ -3726,17 +3779,17 @@
         },
         {
             "name": "drupal/search_api_solr",
-            "version": "4.1.9",
+            "version": "4.1.10",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/search_api_solr.git",
-                "reference": "4.1.9"
+                "reference": "4.1.10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/search_api_solr-4.1.9.zip",
-                "reference": "4.1.9",
-                "shasum": "ded7bd04d48f992ad042c70cc722b4ea05ba4265"
+                "url": "https://ftp.drupal.org/files/projects/search_api_solr-4.1.10.zip",
+                "reference": "4.1.10",
+                "shasum": "b91fb84785d92b26b9c456e4491aa07553c397b3"
             },
             "require": {
                 "consolidation/annotated-command": "^2.12|^4.1",
@@ -3773,8 +3826,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "4.1.9",
-                    "datestamp": "1605026966",
+                    "version": "4.1.10",
+                    "datestamp": "1605773021",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -10219,7 +10272,7 @@
         },
         {
             "name": "drupal/core-dev",
-            "version": "9.0.7",
+            "version": "9.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core-dev.git",
