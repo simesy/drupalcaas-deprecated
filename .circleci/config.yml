@@ -2,7 +2,7 @@ version: 2.1
 executors:
   default:
     docker:
-      - image: drupal:9.0.7-apache
+      - image: drupal:9.0.8-apache
       - image: mysql:5.7
         environment:
           MYSQL_DATABASE: default
