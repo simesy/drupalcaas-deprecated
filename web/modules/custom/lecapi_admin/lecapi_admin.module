@@ -5,65 +5,43 @@
  * Main module for lecapi_admin tricks.
  */
 
-
 use Drupal\Core\Session\AccountInterface;
 use Drupal\node\NodeInterface;
 
-define('LECAPI_ADMIN_REALM', 'lecapi');
-define('LECAPI_ADMIN_REALM_GID_UNRESTRICTED', 0);
-
+/**
+ * Implements hook_node_access_records().
+ */
 function lecapi_admin_node_access_records(NodeInterface $node) {
-
-  $user_section_storage = \Drupal::service('workbench_access.user_section_storage');
-  $scheme = \Drupal::service('entity_type.manager')->getStorage('access_scheme');
-  $sections = $user_section_storage->getUserSections($scheme->load('site'));
-
-//  vdd($sections);
-
+  // One record for the site that the node belongs to, the GID is the term ID of the Site.
   foreach ($node->get('site') as $site) {
-    $grants[] = array(
-      'realm' => LECAPI_ADMIN_REALM,
+    $grants[] = [
+      'realm' => 'lecapi',
       'gid' => $site->target_id,
       'grant_view' => 1,
       'grant_update' => 0,
       'grant_delete' => 0,
       'langcode' => 'en',
-    );
-  }
-
-  // Admins.
-  $grants[] = array(
-    'realm' => LECAPI_ADMIN_REALM,
-    'gid' => LECAPI_ADMIN_REALM_GID_UNRESTRICTED,
-    'grant_view' => 1,
-    'grant_update' => 0,
-    'grant_delete' => 0,
-    'langcode' => 'en',
-  );
-
-  foreach ($grants as $thing) {
-    \Drupal::messenger()->addWarning(implode(',', $thing));
+    ];
   }
 
   return $grants;
 }
 
+/**
+ * Implements hook_node_grants().
+ */
 function lecapi_admin_node_grants(AccountInterface $account, $op) {
   $grants = [];
+  $is_api_user = isset($account->getRoles()['api']);
+  $is_admin = $account->hasPermission('bypass workbench access');
 
-  if ($op == 'view') {
-    if (isset($account->getRoles()['api']) || $account->hasPermission('bypass workbench access')) {
-      $grants[LECAPI_ADMIN_REALM] = [LECAPI_ADMIN_REALM_GID_UNRESTRICTED];
-    }
-    else {
-      $user_section_storage = \Drupal::service('workbench_access.user_section_storage');
-      $scheme = \Drupal::service('entity_type.manager')->getStorage('access_scheme');
-      $sections = $user_section_storage->getUserSections($scheme->load('site'), $account, FALSE);
-      $grants[LECAPI_ADMIN_REALM] = $sections;
-    }
+  // Customers can only see content related to their Workbench Access sites. Anonymous users and editors are ignored.
+  if ($op == 'view' && !$is_api_user && !$is_admin) {
+    $user_section_storage = \Drupal::service('workbench_access.user_section_storage');
+    $scheme = \Drupal::service('entity_type.manager')->getStorage('access_scheme');
+    $sections = $user_section_storage->getUserSections($scheme->load('site'), $account, FALSE);
+    $grants['lecapi'] = $sections;
   }
-
-  \Drupal::messenger()->addWarning(implode(',', $grants[LECAPI_ADMIN_REALM]));
 
   return $grants;
 }
