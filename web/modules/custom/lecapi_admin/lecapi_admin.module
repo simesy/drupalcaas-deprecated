@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\Session\AccountInterface;
+use Drupal\lecapi\Ia;
 use Drupal\node\NodeInterface;
 
 /**
@@ -13,8 +14,8 @@ use Drupal\node\NodeInterface;
  */
 function lecapi_admin_node_access_records(NodeInterface $node) {
   // One record for the site that the node belongs to, the GID is the term ID of the Site.
-  foreach ($node->get('site') as $site) {
-    $grants[] = [
+  foreach ($node->get(Ia::FIELD_SITE) as $site) {
+    $records[] = [
       'realm' => 'lecapi',
       'gid' => $site->target_id,
       'grant_view' => 1,
@@ -24,7 +25,7 @@ function lecapi_admin_node_access_records(NodeInterface $node) {
     ];
   }
 
-  return $grants;
+  return $records;
 }
 
 /**
@@ -32,6 +33,7 @@ function lecapi_admin_node_access_records(NodeInterface $node) {
  */
 function lecapi_admin_node_grants(AccountInterface $account, $op) {
   $grants = [];
+  $scheme_id = Ia::FIELD_SITE;
   $is_api_user = isset($account->getRoles()['api']);
   $is_admin = $account->hasPermission('bypass workbench access');
 
@@ -39,7 +41,7 @@ function lecapi_admin_node_grants(AccountInterface $account, $op) {
   if ($op == 'view' && !$is_api_user && !$is_admin) {
     $user_section_storage = \Drupal::service('workbench_access.user_section_storage');
     $scheme = \Drupal::service('entity_type.manager')->getStorage('access_scheme');
-    $sections = $user_section_storage->getUserSections($scheme->load('site'), $account, FALSE);
+    $sections = $user_section_storage->getUserSections($scheme->load($scheme_id), $account, FALSE);
     $grants['lecapi'] = $sections;
   }
 
