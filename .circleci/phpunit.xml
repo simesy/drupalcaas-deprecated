@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<phpunit bootstrap="vendor/weitzman/drupal-test-traits/src/bootstrap-fast.php">
+<phpunit bootstrap="../vendor/weitzman/drupal-test-traits/src/bootstrap-fast.php">
     <php>
         <env name="DTT_BASE_URL" value="http://localhost"/>
         <env name="DTT_API_URL" value="http://localhost"/>
@@ -12,16 +12,16 @@
     </php>
     <testsuites>
       <testsuite name="unit">
-        <directory>./web/modules/custom/*/tests/src/Unit</directory>
-        <directory>./web/profiles/custom/*/tests/src/Unit</directory>
+        <directory>../web/modules/custom/lecapi/tests/src/Functional</directory>
+        <directory>../web/profiles/custom/*/tests/src/Unit</directory>
       </testsuite>
       <testsuite name="kernel">
-        <directory>./web/modules/custom/*/tests/src/Kernel</directory>
-        <directory>./web/profiles/custom/*/tests/src/Kernel</directory>
+        <directory>../web/modules/custom/*/tests/src/Kernel</directory>
+        <directory>../web/profiles/custom/*/tests/src/Kernel</directory>
       </testsuite>
       <testsuite name="functional">
-        <directory>./web/modules/custom/*/tests/src/Functional</directory>
-        <directory>./web/profiles/custom/*/tests/src/Functional</directory>
+        <directory>../web/modules/custom/*/tests/src/Functional</directory>
+        <directory>../web/profiles/custom/*/tests/src/Functional</directory>
       </testsuite>
     </testsuites>
 </phpunit>
