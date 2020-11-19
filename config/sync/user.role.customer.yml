@@ -7,6 +7,8 @@ label: customer
 weight: 3
 is_admin: null
 permissions:
+  - 'access administration pages'
+  - 'access site in maintenance mode'
   - 'access toolbar'
   - 'access workbench'
   - 'create article content'
@@ -18,5 +20,11 @@ permissions:
   - 'create page content'
   - 'create remote_video media'
   - 'create video media'
+  - 'edit any article content'
+  - 'edit any event content'
+  - 'edit any page content'
+  - 'revert all revisions'
   - 'use workbench access'
+  - 'view all revisions'
+  - 'view own unpublished content'
   - 'view the administration theme'

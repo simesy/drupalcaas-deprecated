@@ -38,6 +38,11 @@ class Ia {
   const FIELD_ITEMS = 'items';
 
   /**
+   * Referencing the sites taxonomy.
+   */
+  const FIELD_SITE = 'site';
+
+  /**
    * Controls paragraph types.
    */
   const FIELD_VARIANT = 'variant';
