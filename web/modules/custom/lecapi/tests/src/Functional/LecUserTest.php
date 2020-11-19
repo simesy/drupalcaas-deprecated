@@ -5,7 +5,14 @@ namespace Drupal\Tests\lecapi\LecUserTest;
 use Drupal\node\Entity\NodeType;
 use weitzman\DrupalTestTraits\ExistingSiteBase;
 
+/**
+ * Class define any test case for user.
+ */
 class LecUserTest extends ExistingSiteBase {
+
+  /**
+   * Test customer role create content.
+   */
   public function testCustomerRoleCreatingContent() {
     // Create an customer user then login.
     $customer_user = $this->createUser([], 'Customer Name', ['roles' => ['customer']]);
@@ -16,6 +23,10 @@ class LecUserTest extends ExistingSiteBase {
       $this->assertSession()->statusCodeEquals(200);
     }
   }
+
+  /**
+   * Test customer role edit content.
+   */
   public function testCustomerRoleEditingContent() {
     // Create an customer user then login.
     $customer_user_1 = $this->createUser([], 'customer1', ['roles' => ['customer']]);
@@ -37,4 +48,5 @@ class LecUserTest extends ExistingSiteBase {
     $this->drupalGet('/node/' . $node_page_1->id() . '/edit');
     $this->assertSession()->statusCodeNotEquals(200);
   }
+
 }
