@@ -64,6 +64,7 @@ commands:
           command: |
             chown -R www-data:www-data ~/project
             chmod -R 755 ~/project
+            chmod 755 $HOME
             /etc/init.d/apache2 start
 jobs:
   coding_standards:
