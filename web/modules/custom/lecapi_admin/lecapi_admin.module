@@ -4,3 +4,46 @@
  * @file
  * Main module for lecapi_admin tricks.
  */
+
+use Drupal\Core\Session\AccountInterface;
+use Drupal\lecapi\Ia;
+use Drupal\node\NodeInterface;
+
+/**
+ * Implements hook_node_access_records().
+ */
+function lecapi_admin_node_access_records(NodeInterface $node) {
+  // One record for the site that the node belongs to, the GID is the term ID of the Site.
+  foreach ($node->get(Ia::FIELD_SITE) as $site) {
+    $records[] = [
+      'realm' => 'lecapi',
+      'gid' => $site->target_id,
+      'grant_view' => 1,
+      'grant_update' => 0,
+      'grant_delete' => 0,
+      'langcode' => 'en',
+    ];
+  }
+
+  return $records;
+}
+
+/**
+ * Implements hook_node_grants().
+ */
+function lecapi_admin_node_grants(AccountInterface $account, $op) {
+  $grants = [];
+  $scheme_id = Ia::FIELD_SITE;
+  $is_api_user = isset($account->getRoles()['api']);
+  $is_admin = $account->hasPermission('bypass workbench access');
+
+  // Customers can only see content related to their Workbench Access sites. Anonymous users and editors are ignored.
+  if ($op == 'view' && !$is_api_user && !$is_admin) {
+    $user_section_storage = \Drupal::service('workbench_access.user_section_storage');
+    $scheme = \Drupal::service('entity_type.manager')->getStorage('access_scheme');
+    $sections = $user_section_storage->getUserSections($scheme->load($scheme_id), $account, FALSE);
+    $grants['lecapi'] = $sections;
+  }
+
+  return $grants;
+}
