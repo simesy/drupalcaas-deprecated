@@ -4,3 +4,66 @@
  * @file
  * Main module for lecapi_admin tricks.
  */
+
+
+use Drupal\Core\Session\AccountInterface;
+use Drupal\node\NodeInterface;
+
+define('LECAPI_ADMIN_REALM', 'lecapi');
+define('LECAPI_ADMIN_REALM_GID_UNRESTRICTED', 0);
+
+function lecapi_admin_node_access_records(NodeInterface $node) {
+
+  $user_section_storage = \Drupal::service('workbench_access.user_section_storage');
+  $scheme = \Drupal::service('entity_type.manager')->getStorage('access_scheme');
+  $sections = $user_section_storage->getUserSections($scheme->load('site'));
+
+//  vdd($sections);
+
+  foreach ($node->get('site') as $site) {
+    $grants[] = array(
+      'realm' => LECAPI_ADMIN_REALM,
+      'gid' => $site->target_id,
+      'grant_view' => 1,
+      'grant_update' => 0,
+      'grant_delete' => 0,
+      'langcode' => 'en',
+    );
+  }
+
+  // Admins.
+  $grants[] = array(
+    'realm' => LECAPI_ADMIN_REALM,
+    'gid' => LECAPI_ADMIN_REALM_GID_UNRESTRICTED,
+    'grant_view' => 1,
+    'grant_update' => 0,
+    'grant_delete' => 0,
+    'langcode' => 'en',
+  );
+
+  foreach ($grants as $thing) {
+    \Drupal::messenger()->addWarning(implode(',', $thing));
+  }
+
+  return $grants;
+}
+
+function lecapi_admin_node_grants(AccountInterface $account, $op) {
+  $grants = [];
+
+  if ($op == 'view') {
+    if (isset($account->getRoles()['api']) || $account->hasPermission('bypass workbench access')) {
+      $grants[LECAPI_ADMIN_REALM] = [LECAPI_ADMIN_REALM_GID_UNRESTRICTED];
+    }
+    else {
+      $user_section_storage = \Drupal::service('workbench_access.user_section_storage');
+      $scheme = \Drupal::service('entity_type.manager')->getStorage('access_scheme');
+      $sections = $user_section_storage->getUserSections($scheme->load('site'), $account, FALSE);
+      $grants[LECAPI_ADMIN_REALM] = $sections;
+    }
+  }
+
+  \Drupal::messenger()->addWarning(implode(',', $grants[LECAPI_ADMIN_REALM]));
+
+  return $grants;
+}
