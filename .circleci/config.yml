@@ -76,6 +76,8 @@ jobs:
           name: Test coding standards
           command: |
             cd "$HOME"
+            ls
+            pwd
             composer install
             ./vendor/bin/phpcs
   phpunit_tests:
