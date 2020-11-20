@@ -72,10 +72,12 @@ jobs:
       name: default
     steps:
       - checkout
-      - composer install -d ~/project
       - run:
           name: Test coding standards
-          command: phpcs
+          command: |
+            cd "$HOME"
+            composer install
+            ./vendor/bin/phpcs
   phpunit_tests:
     executor:
       name: default
