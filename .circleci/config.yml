@@ -72,7 +72,7 @@ jobs:
       name: default
     steps:
       - checkout
-      - prepare_environment
+      - composer install -d ~/project
       - run:
           name: Test coding standards
           command: phpcs
