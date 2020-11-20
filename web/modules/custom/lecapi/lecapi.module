@@ -21,7 +21,6 @@ function lecapi_theme_suggestions_container_alter(array &$suggestions, array &$v
   if (isset($variables['element']['#paragraph_type'])) {
     array_unshift($suggestions, 'container__paragraphs_subform');
   }
-
 }
 
 /**
@@ -90,7 +89,7 @@ function legin_preprocess_paragraph(&$variables) {
  * Implements hook_node_access().
  */
 function lecapi_node_access(EntityInterface $entity, $op, AccountInterface $account) {
-  // This grants view access for users which are not editors (eg API users).
+  // Although this is a public API, editors are limited to viewing their own content for UX reasons. This grants unrestricted view access for low-privileged users (eg API psuedo users).
   if ($op == 'view') {
     return AccessResult::allowedIf($account->hasPermission('lecapi bypass view access control'));
   }
