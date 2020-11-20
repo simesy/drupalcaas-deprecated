@@ -39,6 +39,7 @@ hooks:
   build: |
     set -e
     curl -sS https://platform.sh/cli/installer | php
+    composer --no-ansi --no-interaction install --no-progress --no-dev --prefer-dist --optimize-autoloader
   deploy: |
     set -e
     php ./drush/platformsh_generate_drush_yml.php
