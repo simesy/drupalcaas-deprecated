@@ -32,9 +32,6 @@ mounts:
   '/.console':
     source: local
     source_path: 'console'
-
-build:
-  flavor: composer
 hooks:
   build: |
     set -e
