@@ -6,6 +6,8 @@ dependencies:
     - field.storage.node.site
     - node.type.page
     - taxonomy.vocabulary.site
+  content:
+    - 'taxonomy_term:site:5bc6f5c4-1ed8-4597-a15f-dc70d325fa3a'
 id: node.page.site
 field_name: site
 entity_type: node
@@ -14,7 +16,9 @@ label: Site
 description: ''
 required: true
 translatable: true
-default_value: {  }
+default_value:
+  -
+    target_uuid: 5bc6f5c4-1ed8-4597-a15f-dc70d325fa3a
 default_value_callback: ''
 settings:
   handler: 'default:taxonomy_term'
