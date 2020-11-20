@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+IFS=$'\n\t'
+set -euo pipefail
+
 curl -sS https://platform.sh/cli/installer | php
 
 if [ -z "${CIRCLE_PULL_REQUEST}" ]; then
