@@ -32,6 +32,8 @@ mounts:
   '/.console':
     source: local
     source_path: 'console'
+build:
+  flavor: none
 hooks:
   build: |
     set -e
