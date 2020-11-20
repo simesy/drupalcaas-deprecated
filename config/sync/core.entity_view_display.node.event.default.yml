@@ -3,10 +3,15 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.event.address
     - field.field.node.event.content
+    - field.field.node.event.end
     - field.field.node.event.site
+    - field.field.node.event.start
     - node.type.event
   module:
+    - address
+    - datetime
     - entity_reference_revisions
     - user
 id: node.event.default
@@ -14,6 +19,13 @@ targetEntityType: node
 bundle: event
 mode: default
 content:
+  address:
+    weight: 105
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: address_default
+    region: content
   content:
     weight: 102
     label: hidden
@@ -22,6 +34,15 @@ content:
       link: ''
     third_party_settings: {  }
     type: entity_reference_revisions_entity_view
+    region: content
+  end:
+    weight: 104
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: short
+    third_party_settings: {  }
+    type: datetime_default
     region: content
   links:
     weight: 100
@@ -35,6 +56,15 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
+  start:
+    weight: 103
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: short
+    third_party_settings: {  }
+    type: datetime_default
     region: content
 hidden:
   langcode: true

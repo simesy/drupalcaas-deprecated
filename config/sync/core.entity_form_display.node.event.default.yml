@@ -3,13 +3,18 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.event.address
     - field.field.node.event.content
+    - field.field.node.event.end
     - field.field.node.event.site
+    - field.field.node.event.start
     - node.type.event
   module:
+    - address
     - chosen_field
+    - datetime
     - field_group
-    - lecapi_admin
+    - lecapi
     - path
 third_party_settings:
   field_group:
@@ -33,6 +38,12 @@ targetEntityType: node
 bundle: event
 mode: default
 content:
+  address:
+    weight: 28
+    settings: {  }
+    third_party_settings: {  }
+    type: address_default
+    region: content
   content:
     weight: 2
     settings:
@@ -58,6 +69,12 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  end:
+    weight: 27
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
   langcode:
     type: language_select
     weight: 2
@@ -87,6 +104,12 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
+    region: content
+  start:
+    weight: 26
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
     region: content
   status:
     type: boolean_checkbox

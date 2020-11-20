@@ -4,8 +4,11 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.search_index
+    - field.field.node.event.address
     - field.field.node.event.content
+    - field.field.node.event.end
     - field.field.node.event.site
+    - field.field.node.event.start
     - node.type.event
   module:
     - entity_reference_revisions
@@ -25,7 +28,10 @@ content:
     type: entity_reference_revisions_entity_view
     region: content
 hidden:
+  address: true
+  end: true
   langcode: true
   links: true
   search_api_excerpt: true
   site: true
+  start: true
