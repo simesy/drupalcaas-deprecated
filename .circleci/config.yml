@@ -18,8 +18,6 @@ commands:
       - run:
           name: Prepare tooling
           command: |
-            # Prepare some variables to use in commands.
-            ~/project/.circleci/prepare-environment-variables.sh
             # Install Git and uzip.
             apt update && apt install git -y
             apt install unzip -y
