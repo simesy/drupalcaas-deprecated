@@ -8,6 +8,7 @@ weight: 3
 is_admin: null
 permissions:
   - 'access administration pages'
+  - 'access content'
   - 'access site in maintenance mode'
   - 'access toolbar'
   - 'access workbench'
@@ -27,4 +28,3 @@ permissions:
   - 'use workbench access'
   - 'view all revisions'
   - 'view own unpublished content'
-  - 'view the administration theme'

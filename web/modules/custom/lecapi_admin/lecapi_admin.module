@@ -5,14 +5,12 @@
  * Main module for lecapi_admin tricks.
  */
 
-use Drupal\Core\Session\AccountInterface;
-use Drupal\lecapi\Ia;
-use Drupal\node\NodeInterface;
-
 /**
  * Implements hook_node_access_records().
  */
 function lecapi_admin_node_access_records(NodeInterface $node) {
+  $records = [];
+
   // One record for the site that the node belongs to, the GID is the term ID of the Site.
   foreach ($node->get(Ia::FIELD_SITE) as $site) {
     $records[] = [
@@ -33,16 +31,21 @@ function lecapi_admin_node_access_records(NodeInterface $node) {
  */
 function lecapi_admin_node_grants(AccountInterface $account, $op) {
   $grants = [];
-  $scheme_id = Ia::FIELD_SITE;
-  $is_api_user = isset($account->getRoles()['api']);
-  $is_admin = $account->hasPermission('bypass workbench access');
 
-  // Customers can only see content related to their Workbench Access sites. Anonymous users and editors are ignored.
-  if ($op == 'view' && !$is_api_user && !$is_admin) {
+  if ($op == 'view') {
+    // Grant access to editors based on workbench sections.
+    /** @var \Drupal\workbench_access\UserSectionStorage $user_section_storage */
     $user_section_storage = \Drupal::service('workbench_access.user_section_storage');
-    $scheme = \Drupal::service('entity_type.manager')->getStorage('access_scheme');
-    $sections = $user_section_storage->getUserSections($scheme->load($scheme_id), $account, FALSE);
-    $grants['lecapi'] = $sections;
+    /** @var \Drupal\workbench_access\RoleSectionStorage $role_section_storage */
+    $role_section_storage = \Drupal::service('workbench_access.role_section_storage');
+    $scheme = \Drupal::service('entity_type.manager')->getStorage('access_scheme')->load(Ia::FIELD_SITE);
+
+    $user_sections = $user_section_storage->getUserSections($scheme, $account, FALSE);
+    $role_sections = $role_section_storage->getRoleSections($scheme, $account);
+    $sections = array_unique($user_sections + $role_sections);
+
+    // Make sure the super grant (0) is not accidentally set by some type casting incident.
+    $grants['lecapi'] = array_diff($sections, [0]);
   }
 
   return $grants;
