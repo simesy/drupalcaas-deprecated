@@ -4,7 +4,7 @@ set -euo pipefail
 
 curl -sS https://platform.sh/cli/installer | php
 
-if [ -z "${CIRCLE_PULL_REQUEST}" ]; then
+if [ -z "${CIRCLE_PULL_REQUEST+x}" ]; then
   PLATFORMSH_ENVIRONMENT=${CIRCLE_BRANCH}
 else
   PR_NUMBER="$(echo ${CIRCLE_PULL_REQUEST} | grep / | cut -d/ -f7-)"
