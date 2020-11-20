@@ -13,6 +13,8 @@ use Drupal\node\NodeInterface;
  * Implements hook_node_access_records().
  */
 function lecapi_admin_node_access_records(NodeInterface $node) {
+  $records = [];
+
   // One record for the site that the node belongs to, the GID is the term ID of the Site.
   foreach ($node->get(Ia::FIELD_SITE) as $site) {
     $records[] = [
