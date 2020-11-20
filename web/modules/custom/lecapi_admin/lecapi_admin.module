@@ -5,6 +5,9 @@
  * Main module for lecapi_admin tricks.
  */
 
+use Drupal\Core\Session\AccountInterface;
+use Drupal\node\NodeInterface;
+
 /**
  * Implements hook_node_access_records().
  */
