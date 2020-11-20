@@ -2,7 +2,10 @@ version: 2.1
 executors:
   default:
     docker:
-      - image: drupal:9.0.7-apache
+      - image: quay.io/govcms/govcms-ci
+  fullstack:
+    docker:
+      - image: drupal:9.0.8-apache
       - image: mysql:5.7
         environment:
           MYSQL_DATABASE: default
@@ -64,6 +67,7 @@ commands:
           command: |
             chown -R www-data:www-data ~/project
             chmod -R 755 ~/project
+            chmod 755 $HOME
             /etc/init.d/apache2 start
 jobs:
   coding_standards:
@@ -71,13 +75,17 @@ jobs:
       name: default
     steps:
       - checkout
-      - prepare_environment
       - run:
           name: Test coding standards
-          command: phpcs
+          command: |
+            cd "${HOME}/project"
+            ls
+            pwd
+            composer install
+            ./vendor/bin/phpcs
   phpunit_tests:
     executor:
-      name: default
+      name: fullstack
     steps:
       - checkout
       - prepare_environment

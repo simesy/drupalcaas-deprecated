@@ -19,16 +19,15 @@ $settings['config_sync_directory'] = '../config/sync';
 // Include a generic Platform.sh settings file if remote.
 $platformsh = new \Platformsh\ConfigReader\Config();
 if ($platformsh->isValidPlatform()) {
-  include $app_root . '/' . $site_path . '/platformsh.settings.php';
+  include_once $app_root . '/' . $site_path . '/platformsh.settings.php';
 }
-
 
 // Include a generic Lando file if local.
 if (getenv('LANDO') == 'ON') {
-  include $app_root . '/' . $site_path . '/lando.settings.php';
+  include_once $app_root . '/' . $site_path . '/lando.settings.php';
 }
 
 // Local settings. These come last so that they can override anything.
 if (file_exists($app_root . '/' . $site_path . '/local.settings.php')) {
-  include $app_root . '/' . $site_path . '/local.settings.php';
+  include_once $app_root . '/' . $site_path . '/local.settings.php';
 }
