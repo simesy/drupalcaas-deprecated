@@ -1,30 +1,27 @@
-<phpunit bootstrap="web/core/tests/bootstrap.php" colors="true"
-         beStrictAboutTestsThatDoNotTestAnything="true"
-         beStrictAboutOutputDuringTests="true"
-         beStrictAboutChangesToGlobalState="true"
-         printerClass="\Drupal\Tests\Listeners\HtmlOutputPrinter">
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit bootstrap="./vendor/weitzman/drupal-test-traits/src/bootstrap-fast.php">
   <php>
-    <ini name="error_reporting" value="32767"/>
-    <ini name="memory_limit" value="-1"/>
-    <env name="SIMPLETEST_BASE_URL" value="http://lecapi.lndo.site"/>
-    <env name="SIMPLETEST_DB" value="mysql://drupal9:drupal9@localhost/drupal9"/>
-    <env name="BROWSERTEST_OUTPUT_DIRECTORY" value="/app/web/sites/simpletest"/>
+    <env name="DTT_BASE_URL" value="http://localhost"/>
+    <env name="DTT_API_URL" value="http://localhost"/>
+    <env name="DTT_MINK_DRIVER_ARGS" value='["chrome", null, "http://localhost:4444/wd/hub"]'/>
+    <env name="DTT_API_OPTIONS" value='{"socketTimeout": 360, "domWaitTimeout": 3600000}' />
+    <env name="BROWSERTEST_OUTPUT_DIRECTORY" value="web/sites/default/files/browser_output"/>
+    <env name="SYMFONY_DEPRECATIONS_HELPER" value="disabled"/>
+    <env name="DTT_SCREENSHOT_REPORT_DIRECTORY" value="sites/default/files"/>
   </php>
   <testsuites>
-    <testsuites>
-      <testsuite name="unit">
-        <directory>./web/modules/custom/*/tests/src/Unit</directory>
-        <directory>./web/profiles/custom/*/tests/src/Unit</directory>
-      </testsuite>
-      <testsuite name="kernel">
-        <directory>./web/modules/custom/*/tests/src/Kernel</directory>
-        <directory>./web/profiles/custom/*/tests/src/Kernel</directory>
-      </testsuite>
-      <testsuite name="functional">
-        <directory>./web/modules/custom/*/tests/src/Functional</directory>
-        <directory>./web/profiles/custom/*/tests/src/Functional</directory>
-      </testsuite>
-    </testsuites>
+    <testsuite name="unit">
+      <directory>./web/modules/custom/lecapi/tests/src/Functional</directory>
+      <directory>./web/profiles/custom/*/tests/src/Unit</directory>
+    </testsuite>
+    <testsuite name="kernel">
+      <directory>./web/modules/custom/*/tests/src/Kernel</directory>
+      <directory>./web/profiles/custom/*/tests/src/Kernel</directory>
+    </testsuite>
+    <testsuite name="functional">
+      <directory>./web/modules/custom/*/tests/src/Functional</directory>
+      <directory>./web/profiles/custom/*/tests/src/Functional</directory>
+    </testsuite>
   </testsuites>
 </phpunit>
-

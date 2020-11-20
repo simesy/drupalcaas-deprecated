@@ -47,7 +47,6 @@ commands:
           name: Install Drupal
           command: |
             cd ~/project
-            cp .circleci/phpunit.xml phpunit.xml
             cp .circleci/circleci.settings.php web/sites/default/local.settings.php
             # Always use db from staging for installing Drupal instance.
             platform db:dump -f db.sql -p ${PLATFORMSH_PROJECT_ID} -e staging
