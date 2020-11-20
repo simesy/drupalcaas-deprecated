@@ -75,7 +75,7 @@ jobs:
       - run:
           name: Test coding standards
           command: |
-            cd "$HOME"
+            cd "${HOME}/project"
             ls
             pwd
             composer install
