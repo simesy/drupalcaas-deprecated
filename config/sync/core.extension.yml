@@ -57,6 +57,8 @@ module:
   quickedit: 0
   rdf: 0
   redis: 0
+  rest: 0
+  restui: 0
   search_api: 0
   search_api_solr: 0
   search_api_solr_admin: 0

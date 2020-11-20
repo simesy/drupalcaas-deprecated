@@ -66,6 +66,7 @@
         "drupal/pathauto": "^1.8",
         "drupal/redirect": "^1",
         "drupal/redis": "^1.4",
+        "drupal/restui": "^1",
         "drupal/search_api": "^1.18",
         "drupal/search_api_solr": "^4.1",
         "drupal/simple_oauth": "^5",
