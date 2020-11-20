@@ -3,6 +3,7 @@
 namespace Drupal\Tests\lecapi\LecapiUserTest;
 
 use Drupal\node\Entity\NodeType;
+use Drupal\Tests\RandomGeneratorTrait;
 use weitzman\DrupalTestTraits\ExistingSiteBase;
 
 /**
@@ -29,8 +30,9 @@ class LecapiUserTest extends ExistingSiteBase {
    */
   public function testCustomerRoleEditingContent() {
     // Create an customer user then login.
-    $customer_user_1 = $this->createUser([], 'customer1', ['roles' => ['customer']]);
-    $customer_user_2 = $this->createUser([], 'customer2', ['roles' => ['customer']]);
+    $customer_user_1 = $this->createUser([], 'customer1-' . $this->randomString(), ['roles' => ['customer']]);
+    $customer_user_2 = $this->createUser([], 'customer2-' . $this->randomString(), ['roles' => ['customer']]);
+
     // Customer 1 create a node page.
     $node_page_1 = $this->createNode([
       'title' => 'Page 1 - customer 1',
