@@ -2,6 +2,9 @@ version: 2.1
 executors:
   default:
     docker:
+      - image: quay.io/govcms/govcms-ci
+  fullstack:
+    docker:
       - image: drupal:9.0.8-apache
       - image: mysql:5.7
         environment:
@@ -82,7 +85,7 @@ jobs:
             ./vendor/bin/phpcs
   phpunit_tests:
     executor:
-      name: default
+      name: fullstack
     steps:
       - checkout
       - prepare_environment
