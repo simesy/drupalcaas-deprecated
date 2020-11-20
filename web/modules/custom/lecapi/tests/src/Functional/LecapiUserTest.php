@@ -11,6 +11,8 @@ use weitzman\DrupalTestTraits\ExistingSiteBase;
  */
 class LecapiUserTest extends ExistingSiteBase {
 
+  use RandomGeneratorTrait;
+
   /**
    * Test customer role create content.
    */
