@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\Tests\lecapi\LecUserTest;
+namespace Drupal\Tests\lecapi\LecapiUserTest;
 
 use Drupal\node\Entity\NodeType;
 use weitzman\DrupalTestTraits\ExistingSiteBase;
@@ -8,7 +8,7 @@ use weitzman\DrupalTestTraits\ExistingSiteBase;
 /**
  * Class define any test case for user.
  */
-class LecUserTest extends ExistingSiteBase {
+class LecapiUserTest extends ExistingSiteBase {
 
   /**
    * Test customer role create content.
