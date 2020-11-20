@@ -6,4 +6,6 @@ id: api
 label: api
 weight: 4
 is_admin: null
-permissions: {  }
+permissions:
+  - 'access content'
+  - 'lecapi bypass view access control'

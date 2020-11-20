@@ -6,9 +6,12 @@
  */
 
 use Drupal\Component\Utility\Html;
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Template\Attribute;
+use Drupal\Core\Session\AccountInterface;
 use Drupal\lecapi\Ia;
 use Drupal\paragraphs\ParagraphInterface;
-use Drupal\Core\Template\Attribute;
 
 /**
  * Implements hook_theme_suggestions_HOOK_alter().
@@ -18,7 +21,6 @@ function lecapi_theme_suggestions_container_alter(array &$suggestions, array &$v
   if (isset($variables['element']['#paragraph_type'])) {
     array_unshift($suggestions, 'container__paragraphs_subform');
   }
-
 }
 
 /**
@@ -81,4 +83,15 @@ function legin_preprocess_paragraph(&$variables) {
     $variables['variant'] = $variant;
     $variables['classes'][] = 'variant-' . $variant;
   }
+}
+
+/**
+ * Implements hook_node_access().
+ */
+function lecapi_node_access(EntityInterface $entity, $op, AccountInterface $account) {
+  // Although this is a public API, editors are limited to viewing their own content for UX reasons. This grants unrestricted view access for low-privileged users (eg API psuedo users).
+  if ($op == 'view') {
+    return AccessResult::allowedIf($account->hasPermission('lecapi bypass view access control'));
+  }
+  return AccessResult::neutral();
 }
