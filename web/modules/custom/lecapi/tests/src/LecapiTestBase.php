@@ -2,6 +2,8 @@
 
 namespace Drupal\Tests\lecapi;
 
+use Drupal\lecapi\Ia;
+use Drupal\taxonomy\Entity\Vocabulary;
 use Drupal\Tests\RandomGeneratorTrait;
 use weitzman\DrupalTestTraits\Entity\MediaCreationTrait;
 use weitzman\DrupalTestTraits\Entity\NodeCreationTrait;
@@ -40,6 +42,35 @@ class LecapiTestBase extends ExistingSiteBase {
   protected $databasePrefix;
 
   /**
+   * @var \Drupal\Core\Entity\EntityTypeManager
+   */
+  protected $entityTypeManager;
+
+  /**
+   * Workbench Access schema.
+   *
+   * @var \Drupal\workbench_access\Entity\AccessSchemeInterface
+   */
+  protected $workbenchAccessSchema;
+
+  /**
+   * User section storage.
+   *
+   * @var \Drupal\workbench_access\UserSectionStorage
+   */
+  protected $workbenchAccessUserStorage;
+
+  /**
+   * Setup function for test case.
+   */
+  protected function setUp(): void {
+    parent::setUp();
+    $this->entityTypeManager = \Drupal::service('entity_type.manager');
+    $this->workbenchAccessUserStorage = \Drupal::service('workbench_access.user_section_storage');
+    $this->workbenchAccessSchema = $this->entityTypeManager->getStorage('access_scheme')->load(Ia::FIELD_SITE);
+  }
+
+  /**
    * Configuration service.
    *
    * @param string $name
@@ -50,6 +81,43 @@ class LecapiTestBase extends ExistingSiteBase {
    */
   protected function config($name) {
     return $this->container->get('config.factory')->getEditable($name);
+  }
+
+  /**
+   * Create a customer.
+   *
+   * @return \Drupal\user\UserInterface
+   *   A new user entity.
+   */
+  protected function getCustomer() {
+    $user = $this->drupalCreateUser();
+    $user->addRole('customer');
+    $user->save();
+    return $user;
+  }
+
+  /**
+   * Return a new site term.
+   *
+   * @return \Drupal\taxonomy\Entity\Term
+   *   A new term that represents a new site.
+   */
+  protected function getSiteTerm() {
+    $vocab = Vocabulary::load(Ia::FIELD_SITE);
+    $term = $this->createTerm($vocab);
+    return $term;
+  }
+
+  /**
+   * Assign a user to a site.
+   *
+   * @param \Drupal\user\UserInterface
+   *   A user entity.
+   * @param \Drupal\taxonomy\Entity\Term
+   *   A term in the site taxonomy.
+   */
+  protected function addUserToSite($user, $siteTerm) {
+    $this->workbenchAccessUserStorage->addUser($this->workbenchAccessSchema, $user, [$siteTerm->id()]);
   }
 
 }
