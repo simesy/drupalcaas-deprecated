@@ -114,7 +114,7 @@ function lecapi_admin_node_grants(AccountInterface $account, $op) {
   if ($op == 'view') {
     if ($account->hasPermission('lecapi bypass view access control')) {
       // @todo dynamically load all taxonomy terms? I haven't decided how to manage this for API access.
-      $grants = [1, 2, 3, 4,];
+      $grants = [1, 2, 3, 4];
     }
     else {
       // Grant access to editors based on workbench sections.

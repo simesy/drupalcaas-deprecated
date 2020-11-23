@@ -3,7 +3,9 @@
 namespace Drupal\Tests\lecapi;
 
 use Drupal\lecapi\Ia;
+use Drupal\taxonomy\Entity\Term;
 use Drupal\taxonomy\Entity\Vocabulary;
+use Drupal\user\UserInterface;
 use Drupal\Tests\RandomGeneratorTrait;
 use weitzman\DrupalTestTraits\Entity\MediaCreationTrait;
 use weitzman\DrupalTestTraits\Entity\NodeCreationTrait;
@@ -111,12 +113,12 @@ class LecapiTestBase extends ExistingSiteBase {
   /**
    * Assign a user to a site.
    *
-   * @param \Drupal\user\UserInterface
+   * @param \Drupal\user\UserInterface $user
    *   A user entity.
-   * @param \Drupal\taxonomy\Entity\Term
+   * @param \Drupal\taxonomy\Entity\Term $siteTerm
    *   A term in the site taxonomy.
    */
-  protected function addUserToSite($user, $siteTerm) {
+  protected function addUserToSite(UserInterface $user, Term $siteTerm) {
     $this->workbenchAccessUserStorage->addUser($this->workbenchAccessSchema, $user, [$siteTerm->id()]);
   }
 

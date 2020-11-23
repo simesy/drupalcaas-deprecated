@@ -12,13 +12,6 @@ use Drupal\Tests\lecapi\LecapiTestBase;
 class LecapiUserCustomerTest extends LecapiTestBase {
 
   /**
-   * Setup function for test case.
-   */
-  protected function setUp(): void {
-    parent::setUp();
-  }
-
-  /**
    * Test customer user not belong workbench section unable create content.
    */
   public function testCustomerCreatingContent() {
