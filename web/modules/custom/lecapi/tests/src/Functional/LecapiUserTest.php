@@ -1,16 +1,16 @@
 <?php
 
-namespace Drupal\Tests\lecapi\LecapiUserTest;
+namespace Drupal\Tests\lecapi\Functional;
 
 use Drupal\lecapi\Ia;
 use Drupal\node\Entity\NodeType;
+use Drupal\Tests\lecapi\LecapiTestBase;
 use Drupal\Tests\RandomGeneratorTrait;
-use weitzman\DrupalTestTraits\ExistingSiteBase;
 
 /**
  * Class define any test case for user.
  */
-class LecapiUserTest extends ExistingSiteBase {
+class LecapiUserTest extends LecapiTestBase {
 
   use RandomGeneratorTrait;
 
