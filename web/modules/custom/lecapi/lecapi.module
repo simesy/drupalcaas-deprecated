@@ -6,11 +6,10 @@
  */
 
 use Drupal\Component\Utility\Html;
-use Drupal\Core\Access\AccessResult;
-use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Template\Attribute;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\lecapi\Ia;
+use Drupal\node\NodeInterface;
 use Drupal\paragraphs\ParagraphInterface;
 
 /**
@@ -86,12 +85,50 @@ function legin_preprocess_paragraph(&$variables) {
 }
 
 /**
- * Implements hook_node_access().
+ * Implements hook_node_access_records().
  */
-function lecapi_node_access(EntityInterface $entity, $op, AccountInterface $account) {
-  // Although this is a public API, editors are limited to viewing their own content for UX reasons. This grants unrestricted view access for low-privileged users (eg API psuedo users).
-  if ($op == 'view') {
-    return AccessResult::allowedIf($account->hasPermission('lecapi bypass view access control'));
+function lecapi_admin_node_access_records(NodeInterface $node) {
+  $records = [];
+
+  // One record for the site that the node belongs to, the GID is the term ID of the Site.
+  foreach ($node->get(Ia::FIELD_SITE) as $site) {
+    $records[] = [
+      'realm' => 'lecapi',
+      'gid' => $site->target_id,
+      'grant_view' => 1,
+      'grant_update' => 0,
+      'grant_delete' => 0,
+      'langcode' => 'en',
+    ];
   }
-  return AccessResult::neutral();
+
+  return $records;
+}
+
+/**
+ * Implements hook_node_grants().
+ */
+function lecapi_admin_node_grants(AccountInterface $account, $op) {
+  $grants = [];
+
+  if ($op == 'view') {
+    if ($account->hasPermission('lecapi bypass view access control')) {
+      // @todo dynamically load all taxonomy terms? I haven't decided how to manage this for API access.
+      $grants = [1, 2, 3, 4,];
+    }
+    else {
+      // Grant access to editors based on workbench sections.
+      /** @var \Drupal\workbench_access\UserSectionStorage $user_section_storage */
+      $user_section_storage = \Drupal::service('workbench_access.user_section_storage');
+      /** @var \Drupal\workbench_access\RoleSectionStorage $role_section_storage */
+      $role_section_storage = \Drupal::service('workbench_access.role_section_storage');
+      $scheme = \Drupal::service('entity_type.manager')->getStorage('access_scheme')->load(Ia::FIELD_SITE);
+
+      $user_sections = $user_section_storage->getUserSections($scheme, $account, FALSE);
+      $role_sections = $role_section_storage->getRoleSections($scheme, $account);
+      $grants = array_unique($user_sections + $role_sections);
+    }
+  }
+
+  return ['lecapi' => $grants];
 }
