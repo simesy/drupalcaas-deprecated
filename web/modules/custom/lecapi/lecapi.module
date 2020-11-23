@@ -87,7 +87,7 @@ function legin_preprocess_paragraph(&$variables) {
 /**
  * Implements hook_node_access_records().
  */
-function lecapi_admin_node_access_records(NodeInterface $node) {
+function lecapi_node_access_records(NodeInterface $node) {
   $records = [];
 
   // One record for the site that the node belongs to, the GID is the term ID of the Site.
@@ -108,7 +108,7 @@ function lecapi_admin_node_access_records(NodeInterface $node) {
 /**
  * Implements hook_node_grants().
  */
-function lecapi_admin_node_grants(AccountInterface $account, $op) {
+function lecapi_node_grants(AccountInterface $account, $op) {
   $grants = [];
 
   if ($op == 'view') {
