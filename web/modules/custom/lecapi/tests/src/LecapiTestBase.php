@@ -12,6 +12,7 @@ use weitzman\DrupalTestTraits\Entity\NodeCreationTrait;
 use weitzman\DrupalTestTraits\Entity\TaxonomyCreationTrait;
 use weitzman\DrupalTestTraits\Entity\UserCreationTrait;
 use weitzman\DrupalTestTraits\ExistingSiteBase;
+use weitzman\DrupalTestTraits\ScreenShotTrait;
 
 /**
  * A useful base class for functional tests.
@@ -30,6 +31,7 @@ class LecapiTestBase extends ExistingSiteBase {
   }
   use TaxonomyCreationTrait;
   use RandomGeneratorTrait;
+  use ScreenShotTrait;
 
   /**
    * {@inheritdoc}
@@ -99,6 +101,19 @@ class LecapiTestBase extends ExistingSiteBase {
   }
 
   /**
+   * Create an administrator.
+   *
+   * @return \Drupal\user\UserInterface
+   *   A new user entity.
+   */
+  protected function getAdministrator() {
+    $user = $this->drupalCreateUser();
+    $user->addRole('administrator');
+    $user->save();
+    return $user;
+  }
+
+  /**
    * Return a new site term.
    *
    * @return \Drupal\taxonomy\Entity\Term
@@ -108,6 +123,20 @@ class LecapiTestBase extends ExistingSiteBase {
     $vocab = Vocabulary::load(Ia::FIELD_SITE);
     $term = $this->createTerm($vocab);
     return $term;
+  }
+
+  /**
+   * Return a new site term.
+   *
+   * @return \Drupal\taxonomy\Entity\Term
+   *   A new term that represents a new site.
+   */
+  protected function getConsumer() {
+    $consumer = $this->entityTypeManager->getStorage('consumer')->create([
+      'label' => 'Test consumer ' . $this->randomString(),
+    ]);
+    $this->markEntityForCleanup($consumer);
+    return $consumer;
   }
 
   /**

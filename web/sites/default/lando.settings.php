@@ -45,8 +45,10 @@ ini_set('display_errors', TRUE);
 ini_set('display_startup_errors', TRUE);
 
 $settings['update_free_access'] = FALSE;
-$settings['rebuild_access'] = TRUE;
+$settings['rebuild_access'] = FALSE;
 $settings['skip_permissions_hardening'] = TRUE;
 
 $config['stage_file_proxy.settings']['origin'] = 'https://content.lilengine.co';
 $config['stage_file_proxy.settings']['hotlink'] = TRUE;
+
+$settings['trusted_host_patterns'] = ['^lecapi\.lndo\.site$', '^localhost$'];
