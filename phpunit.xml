@@ -6,7 +6,9 @@
     <env name="DTT_API_URL" value="http://localhost"/>
     <env name="DTT_MINK_DRIVER_ARGS" value='["chrome", null, "http://localhost:4444/wd/hub"]'/>
     <env name="DTT_API_OPTIONS" value='{"socketTimeout": 360, "domWaitTimeout": 3600000}' />
-    <env name="BROWSERTEST_OUTPUT_DIRECTORY" value="web/sites/default/files/browser_output"/>
+    <env name="BROWSERTEST_OUTPUT_DIRECTORY" value="/app/web/sites/default/files/browser_output"/>
+    <env name="BROWSERTEST_OUTPUT_FILE" value="/app/web/sites/default/files/browser_output/test-output.html"/>
+    <env name="BROWSERTEST_OUTPUT_DIRECTORY" value="/app/web/sites/default/files/browser_output"/>
     <env name="SYMFONY_DEPRECATIONS_HELPER" value="disabled"/>
     <env name="DTT_SCREENSHOT_REPORT_DIRECTORY" value="sites/default/files"/>
   </php>
