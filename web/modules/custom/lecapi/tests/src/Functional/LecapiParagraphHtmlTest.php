@@ -129,9 +129,9 @@ class LecapiParagraphHtmlTest extends LecapiTestBase {
   /**
    * Assert same document.
    *
-   * @param array $expected_document
+   * @param array $expected
    *   Expected document.
-   * @param array $actual_document
+   * @param array $array
    *   Actual document.
    */
   protected function assertArraySimilar(array $expected, array $array) {
@@ -140,7 +140,8 @@ class LecapiParagraphHtmlTest extends LecapiTestBase {
     foreach ($expected as $key => $value) {
       if (is_array($value)) {
         $this->assertArraySimilar($value, $array[$key]);
-      } else {
+      }
+      else {
         $this->assertContains($value, $array);
       }
     }
