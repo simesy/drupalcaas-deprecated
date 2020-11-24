@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.event.address
     - field.field.node.event.content
     - field.field.node.event.end
+    - field.field.node.event.related
     - field.field.node.event.site
     - field.field.node.event.start
     - node.type.event
@@ -21,25 +22,26 @@ third_party_settings:
     group_workflow:
       children:
         - site
+        - related
       parent_name: ''
       weight: 3
       format_type: details_sidebar
       region: content
       format_settings:
+        description: ''
+        weight: 0
+        required_fields: true
         id: ''
         classes: ''
-        description: ''
         open: false
-        required_fields: true
-        weight: 0
-      label: Workflow
+      label: 'Workflow and IA'
 id: node.event.default
 targetEntityType: node
 bundle: event
 mode: default
 content:
   address:
-    weight: 28
+    weight: 13
     settings: {  }
     third_party_settings: {  }
     type: address_default
@@ -70,21 +72,21 @@ content:
     settings: {  }
     third_party_settings: {  }
   end:
-    weight: 27
+    weight: 12
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
     region: content
   langcode:
     type: language_select
-    weight: 2
+    weight: 1
     region: content
     settings:
       include_locked: true
     third_party_settings: {  }
   path:
     type: path
-    weight: 8
+    weight: 9
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -95,6 +97,16 @@ content:
     weight: 6
     region: content
     third_party_settings: {  }
+  related:
+    weight: 4
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
   site:
     weight: 3
     settings:
@@ -106,7 +118,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   start:
-    weight: 26
+    weight: 11
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
@@ -115,7 +127,7 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 9
+    weight: 10
     region: content
     third_party_settings: {  }
   sticky:
