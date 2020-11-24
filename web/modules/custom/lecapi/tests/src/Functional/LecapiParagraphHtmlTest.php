@@ -52,7 +52,7 @@ class LecapiParagraphHtmlTest extends LecapiTestBase {
     $this->assertEqual($response->getStatusCode(), 200);
     // So sanh documet respone.
     $actual_document = Json::decode($response->getBody()->__toString());
-    $this->assertSameDocument($expected_document, $actual_document);
+    $this->assertArraySimilar($expected_document, $actual_document);
 
   }
 
@@ -108,7 +108,7 @@ class LecapiParagraphHtmlTest extends LecapiTestBase {
           'subtitle' => [
             'data' => [
               'type' => 'paragraph--subtitle',
-              'id' => 'dc9fbc7c-5e38-4cd3-bd86-1f5f8516c183',
+              'id' => $this->entity->get('subtitle')->first()->entity->uuid(),
               'meta' => [
                 'target_revision_id' => $this->entity->get('subtitle')->first()->entity->getRevisionId(),
               ],
@@ -134,19 +134,15 @@ class LecapiParagraphHtmlTest extends LecapiTestBase {
    * @param array $actual_document
    *   Actual document.
    */
-  protected function assertSameDocument(array $expected_document, array $actual_document) {
-    $expected_keys = array_keys($expected_document);
-    $actual_keys = array_keys($actual_document);
-    $missing_member_names = array_diff($expected_keys, $actual_keys);
-    $extra_member_names = array_diff($actual_keys, $expected_keys);
-    if (!empty($missing_member_names) || !empty($extra_member_names)) {
-      $message_format = "The document members did not match the expected values. Missing: [ %s ]. Unexpected: [ %s ]";
-      $message = sprintf($message_format, implode(', ', $missing_member_names), implode(', ', $extra_member_names));
-      $this->assertSame($expected_document, $actual_document, $message);
-    }
-    foreach ($expected_document as $member_name => $expected_member) {
-      $actual_member = $actual_document[$member_name];
-      $this->assertSame($expected_member, $actual_member, "The '$member_name' member was not as expected.");
+  protected function assertArraySimilar(array $expected, array $array) {
+    $this->assertTrue(count(array_diff_key($array, $expected)) === 0);
+
+    foreach ($expected as $key => $value) {
+      if (is_array($value)) {
+        $this->assertArraySimilar($value, $array[$key]);
+      } else {
+        $this->assertContains($value, $array);
+      }
     }
   }
 
