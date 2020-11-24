@@ -9,6 +9,9 @@ use Drupal\Tests\jsonapi\Functional\JsonApiRequestTestTrait;
 use Drupal\Tests\lecapi\LecapiTestBase;
 use GuzzleHttp\RequestOptions;
 
+/**
+ * Class for testing paragraph html.
+ */
 class LecapiParagraphHtmlTest extends LecapiTestBase {
 
   use JsonApiRequestTestTrait;
@@ -25,6 +28,9 @@ class LecapiParagraphHtmlTest extends LecapiTestBase {
    */
   protected $account;
 
+  /**
+   * {@inheritdoc}
+   */
   protected function setUp(): void {
     parent::setUp();
     // Setup entity for testing.
@@ -42,16 +48,16 @@ class LecapiParagraphHtmlTest extends LecapiTestBase {
     $this->drupalLogin($this->account);
     $response = $this->request('GET', $url, $request_options);
     $expected_document = $this->getExpectedDocument();
-    // So sanh Code response
+    // So sanh Code response.
     $this->assertEqual($response->getStatusCode(), 200);
-    // So sanh documet respone
+    // So sanh documet respone.
     $actual_document = Json::decode($response->getBody()->__toString());
     $this->assertSameDocument($expected_document, $actual_document);
 
   }
 
   /**
-   * {@inheritdoc}
+   * Get expected document.
    */
   protected function getExpectedDocument() {
     $self_url = Url::fromUri('base:/jsonapi/paragraph/markup/' . $this->entity->uuid())->setAbsolute()->toString(TRUE)->getGeneratedUrl();
@@ -124,7 +130,9 @@ class LecapiParagraphHtmlTest extends LecapiTestBase {
    * Assert same document.
    *
    * @param array $expected_document
+   *   Expected document.
    * @param array $actual_document
+   *   Actual document.
    */
   protected function assertSameDocument(array $expected_document, array $actual_document) {
     $expected_keys = array_keys($expected_document);
@@ -146,6 +154,8 @@ class LecapiParagraphHtmlTest extends LecapiTestBase {
    * Setup entity for testing.
    *
    * @return \Drupal\Core\Entity\EntityInterface
+   *   Return to Entity.
+   *
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    * @throws \Drupal\Core\Entity\EntityStorageException
@@ -177,7 +187,7 @@ class LecapiParagraphHtmlTest extends LecapiTestBase {
       ->create([
         'type' => 'page',
         'content' => [
-          $html_paragraph
+          $html_paragraph,
         ],
         'title' => 'Test HTML component',
         'uid' => $this->account->id(),
@@ -188,4 +198,5 @@ class LecapiParagraphHtmlTest extends LecapiTestBase {
     $referenced_entities = $page_node->get('content')->referencedEntities();
     return reset($referenced_entities);
   }
+
 }
