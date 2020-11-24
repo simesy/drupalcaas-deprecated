@@ -135,8 +135,7 @@ class LecapiParagraphHtmlTest extends LecapiTestBase {
    *   Actual document.
    */
   protected function assertArraySimilar(array $expected, array $array) {
-    $this->assertTrue(count(array_diff_key($array, $expected)) === 0);
-
+    $this->assertEquals([], array_diff_key($array, $expected));
     foreach ($expected as $key => $value) {
       if (is_array($value)) {
         $this->assertArraySimilar($value, $array[$key]);
