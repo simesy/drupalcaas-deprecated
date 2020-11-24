@@ -6,6 +6,7 @@ dependencies:
     - core.entity_view_mode.node.search_index
     - field.field.node.page.content
     - field.field.node.page.hero
+    - field.field.node.page.parent
     - field.field.node.page.site
     - node.type.page
   module:
@@ -31,5 +32,6 @@ hidden:
   hero: true
   langcode: true
   links: true
+  parent: true
   search_api_excerpt: true
   site: true
