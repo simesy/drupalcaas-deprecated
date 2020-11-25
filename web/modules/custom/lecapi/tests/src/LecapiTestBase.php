@@ -124,7 +124,6 @@ class LecapiTestBase extends ExistingSiteBase {
   protected function getSiteTerm() {
     $vocab = Vocabulary::load(Ia::FIELD_SITE);
     $term = $this->createTerm($vocab);
-    $this->markEntityForCleanup($term);
     return $term;
   }
 
