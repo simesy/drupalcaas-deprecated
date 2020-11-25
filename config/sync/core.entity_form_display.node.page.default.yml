@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.page.content
     - field.field.node.page.hero
+    - field.field.node.page.parent
     - field.field.node.page.related
     - field.field.node.page.site
     - node.type.page
@@ -18,19 +19,20 @@ third_party_settings:
     group_workflow:
       children:
         - site
+        - parent
         - related
       parent_name: ''
       weight: 9
       format_type: details_sidebar
       region: content
       format_settings:
+        description: ''
+        weight: 0
+        required_fields: true
         id: ''
         classes: ''
-        description: ''
         open: false
-        required_fields: true
-        weight: 0
-      label: Workflow
+      label: 'Workflow and IA'
 _core:
   default_config_hash: AD_lefuYmjsKeH3OQApsyP_nLj6ZnGaALznLQSQ0Z_o
 id: node.page.default
@@ -80,6 +82,16 @@ content:
     settings:
       include_locked: true
     third_party_settings: {  }
+  parent:
+    weight: 10
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
   path:
     type: path
     weight: 7
