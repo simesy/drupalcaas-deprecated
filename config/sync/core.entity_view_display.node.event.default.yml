@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.event.address
     - field.field.node.event.content
     - field.field.node.event.end
+    - field.field.node.event.related
     - field.field.node.event.site
     - field.field.node.event.start
     - node.type.event
@@ -49,6 +50,14 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  related:
+    weight: 106
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
   site:
     weight: 101
     label: hidden

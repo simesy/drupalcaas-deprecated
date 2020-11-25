@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.page.content
     - field.field.node.page.hero
     - field.field.node.page.parent
+    - field.field.node.page.related
     - field.field.node.page.site
     - node.type.page
   module:
@@ -33,5 +34,6 @@ hidden:
   langcode: true
   links: true
   parent: true
+  related: true
   search_api_excerpt: true
   site: true

@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.article.content
     - field.field.node.article.hero
+    - field.field.node.article.related
     - field.field.node.article.site
     - node.type.article
   module:
@@ -40,6 +41,14 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  related:
+    weight: 4
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
   site:
     weight: 3
     label: hidden

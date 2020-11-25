@@ -5,12 +5,13 @@ dependencies:
   config:
     - field.field.node.article.content
     - field.field.node.article.hero
+    - field.field.node.article.related
     - field.field.node.article.site
     - node.type.article
   module:
     - chosen_field
     - field_group
-    - lecapi_admin
+    - lecapi
     - media_library
     - path
 third_party_settings:
@@ -18,18 +19,19 @@ third_party_settings:
     group_workflow:
       children:
         - site
+        - related
       parent_name: ''
       weight: 9
       format_type: details_sidebar
       region: content
       format_settings:
+        description: ''
+        weight: 0
+        required_fields: true
         id: ''
         classes: ''
-        description: ''
         open: false
-        required_fields: true
-        weight: 0
-      label: Workflow
+      label: 'Workflow and IA'
 _core:
   default_config_hash: 6VUXB1jTUjK5zjkfMa2Kd2WW4sFUlgfBlfJSx01qLpU
 id: node.article.default
@@ -89,6 +91,16 @@ content:
     weight: 5
     region: content
     third_party_settings: {  }
+  related:
+    weight: 29
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
   site:
     weight: 28
     settings: {  }

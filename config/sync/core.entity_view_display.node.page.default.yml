@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.page.content
     - field.field.node.page.hero
     - field.field.node.page.parent
+    - field.field.node.page.related
     - field.field.node.page.site
     - node.type.page
   module:
@@ -36,6 +37,14 @@ content:
     type: entity_reference_label
     region: content
   parent:
+    weight: 4
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  related:
     weight: 3
     label: above
     settings:
