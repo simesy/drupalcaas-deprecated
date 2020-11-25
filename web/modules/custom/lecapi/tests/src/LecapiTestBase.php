@@ -5,6 +5,7 @@ namespace Drupal\Tests\lecapi;
 use Drupal\lecapi\Ia;
 use Drupal\taxonomy\Entity\Term;
 use Drupal\taxonomy\Entity\Vocabulary;
+use Drupal\Tests\jsonapi\Functional\JsonApiRequestTestTrait;
 use Drupal\user\UserInterface;
 use Drupal\Tests\RandomGeneratorTrait;
 use weitzman\DrupalTestTraits\Entity\MediaCreationTrait;
@@ -32,6 +33,7 @@ class LecapiTestBase extends ExistingSiteBase {
   use TaxonomyCreationTrait;
   use RandomGeneratorTrait;
   use ScreenShotTrait;
+  use JsonApiRequestTestTrait;
 
   /**
    * {@inheritdoc}
@@ -122,6 +124,7 @@ class LecapiTestBase extends ExistingSiteBase {
   protected function getSiteTerm() {
     $vocab = Vocabulary::load(Ia::FIELD_SITE);
     $term = $this->createTerm($vocab);
+    $this->markEntityForCleanup($term);
     return $term;
   }
 
