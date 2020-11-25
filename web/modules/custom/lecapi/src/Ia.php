@@ -48,6 +48,16 @@ class Ia {
   const FIELD_VARIANT = 'variant';
 
   /**
+   * Re-usable anchor field name.
+   */
+  const FIELD_ANCHOR = '_anchor';
+
+  /**
+   * Re-usable anchor field name.
+   */
+  const FIELD_SUBTITLE = 'subtitle';
+
+  /**
    * CTA paragraph.
    */
   const PG_CTA = 'cta';

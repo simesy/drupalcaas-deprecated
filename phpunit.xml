@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<phpunit bootstrap="./scripts/tests-bootstrap-fast.php">
+<phpunit bootstrap="./scripts/tests-bootstrap-fast.php" printerClass="\Drupal\Tests\Listeners\HtmlOutputPrinter">
   <php>
     <env name="DTT_BASE_URL" value="http://localhost"/>
     <env name="DTT_API_URL" value="http://localhost"/>
