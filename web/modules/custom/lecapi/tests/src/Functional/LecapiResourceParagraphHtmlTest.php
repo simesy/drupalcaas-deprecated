@@ -71,14 +71,14 @@ class LecapiResourceParagraphHtmlTest extends LecapiTestBase {
       ]);
     /** @var \Drupal\node\Entity\Node $page_node */
     $page_node = $this->drupalCreateNode([
-        'type' => 'page',
-        Ia::FIELD_CONTENT => [
-          $html_paragraph,
-        ],
-        'title' => 'Test HTML component',
-        'uid' => $customer_user->id(),
-        Ia::FIELD_SITE => $this->getSiteTerm(),
-      ]);
+      'type' => 'page',
+      Ia::FIELD_CONTENT => [
+        $html_paragraph,
+      ],
+      'title' => 'Test HTML component',
+      'uid' => $customer_user->id(),
+      Ia::FIELD_SITE => $this->getSiteTerm(),
+    ]);
     $page_node->save();
     // Set html paragraph as entity be test.
     $referenced_entities = $page_node->get(Ia::FIELD_CONTENT)->referencedEntities();

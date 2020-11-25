@@ -1,4 +1,5 @@
 <?php
+
 namespace Drupal\Tests\lecapi\Functional;
 
 use Drupal\Component\Serialization\Json;
@@ -7,7 +8,10 @@ use Drupal\lecapi\Ia;
 use Drupal\Tests\lecapi\LecapiTestBase;
 use GuzzleHttp\RequestOptions;
 
-class LecapiResourceParagraphCardTest extends LecapiTestBase {
+/**
+ * Test case for Cards paragraph.
+ */
+class LecapiResourceParagraphCardsTest extends LecapiTestBase {
 
   /**
    * Tests GETting an individual resource.
@@ -36,6 +40,7 @@ class LecapiResourceParagraphCardTest extends LecapiTestBase {
     $this->assertSame('Card item 3', $actual_document['included'][2]['attributes'][Ia::FIELD_HEADING]);
     $this->assertSame('https://example.com3', $actual_document['included'][2]['attributes'][Ia::FIELD_LINK]['uri']);
   }
+
   /**
    * Setup entity for testing.
    *
@@ -75,7 +80,7 @@ class LecapiResourceParagraphCardTest extends LecapiTestBase {
         'heading' => 'Card item 3',
         'link' => 'https://example.com3',
         'media' => $media_image->id(),
-      ]
+      ],
     ];
     $paragraph_card_items = [];
     foreach ($card_items as $card_item) {
@@ -88,7 +93,7 @@ class LecapiResourceParagraphCardTest extends LecapiTestBase {
       $paragraph_card_item->set(Ia::FIELD_LINK, ['uri' => $card_item['link']]);
       $paragraph_card_items[] = $paragraph_card_item;
     }
-    $card_paragraph = $this->entityTypeManager
+    $cards_paragraph = $this->entityTypeManager
       ->getStorage('paragraph')
       ->create([
         'type' => 'cards',
@@ -97,17 +102,18 @@ class LecapiResourceParagraphCardTest extends LecapiTestBase {
       ]);
     /** @var \Drupal\node\Entity\Node $page_node */
     $page_node = $this->drupalCreateNode([
-        'type' => 'page',
-        Ia::FIELD_CONTENT => [
-          $card_paragraph,
-        ],
-        'title' => 'Test Card component',
-        'uid' => $customer_user->id(),
-        Ia::FIELD_SITE => $this->getSiteTerm(),
-      ]);
+      'type' => 'page',
+      Ia::FIELD_CONTENT => [
+        $cards_paragraph,
+      ],
+      'title' => 'Test Card component',
+      'uid' => $customer_user->id(),
+      Ia::FIELD_SITE => $this->getSiteTerm(),
+    ]);
     $page_node->save();
     // Set html paragraph as entity be test.
     $referenced_entities = $page_node->get(Ia::FIELD_CONTENT)->referencedEntities();
     return reset($referenced_entities);
   }
+
 }
