@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.event.address
     - field.field.node.event.content
     - field.field.node.event.end
+    - field.field.node.event.related
     - field.field.node.event.site
     - field.field.node.event.start
     - node.type.event
@@ -32,6 +33,7 @@ hidden:
   end: true
   langcode: true
   links: true
+  related: true
   search_api_excerpt: true
   site: true
   start: true

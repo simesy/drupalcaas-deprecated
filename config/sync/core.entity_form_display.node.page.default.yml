@@ -5,18 +5,20 @@ dependencies:
   config:
     - field.field.node.page.content
     - field.field.node.page.hero
+    - field.field.node.page.related
     - field.field.node.page.site
     - node.type.page
   module:
     - chosen_field
     - field_group
-    - lecapi_admin
+    - lecapi
     - path
 third_party_settings:
   field_group:
     group_workflow:
       children:
         - site
+        - related
       parent_name: ''
       weight: 9
       format_type: details_sidebar
@@ -91,6 +93,16 @@ content:
     weight: 5
     region: content
     third_party_settings: {  }
+  related:
+    weight: 10
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
   site:
     weight: 9
     settings: {  }
