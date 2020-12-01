@@ -9,9 +9,9 @@ use Drupal\Tests\lecapi\LecapiTestBase;
 use GuzzleHttp\RequestOptions;
 
 /**
- * Test case class for paragraph html resource json:api.
+ * Test case for CTA paragraph.
  */
-class LecapiResourceParagraphHtmlTest extends LecapiTestBase {
+class LecapiResourceParagraphCalloutTest extends LecapiTestBase {
 
   /**
    * Tests GETting an individual resource.
@@ -21,21 +21,19 @@ class LecapiResourceParagraphHtmlTest extends LecapiTestBase {
     $this->drupalLogin($account_authenticate);
     // Setup entity for testing then mark it for cleanup.
     $entity = $this->setUpTestingEntity();
-    $this->markEntityForCleanup($entity);
     // Build and perform request.
     $url = Url::fromRoute(sprintf('jsonapi.%s.individual', $entity->getEntityTypeId() . '--' . $entity->bundle()), ['entity' => $entity->uuid()]);
     $request_options = [];
     $request_options[RequestOptions::HEADERS]['Accept'] = 'application/vnd.api+json';
-    $request_options[RequestOptions::QUERY]['include'] = Ia::FIELD_SUBTITLE;
+    $request_options[RequestOptions::QUERY]['include'] = implode(',', [Ia::FIELD_MEDIA]);
     $response = $this->request('GET', $url, $request_options);
     // Assert response code.
     $this->assertEquals(200, $response->getStatusCode());
     // Assert response body.
     $actual_document = Json::decode($response->getBody()->__toString());
-    $this->assertSame('<p>This is text markup</p>', $actual_document['data']['attributes'][Ia::FIELD_MARKUP]['value']);
-    $this->assertSame('<p>This is text markup</p>', $actual_document['data']['attributes'][Ia::FIELD_MARKUP]['processed']);
-    $this->assertSame('anchor-text', $actual_document['included'][0]['attributes'][Ia::FIELD_ANCHOR]);
-    $this->assertSame('Subtitle', $actual_document['included'][0]['attributes'][Ia::FIELD_HEADING]);
+    $this->assertSame('Callout Heading', $actual_document['data']['attributes'][Ia::FIELD_HEADING]);
+    $this->assertSame('https://example.com', $actual_document['data']['attributes'][Ia::FIELD_LINK]['uri']);
+    $this->assertSame('<p>Test markup</p>', $actual_document['data']['attributes'][Ia::FIELD_MARKUP]['value']);
   }
 
   /**
@@ -52,30 +50,25 @@ class LecapiResourceParagraphHtmlTest extends LecapiTestBase {
     $customer_user = $this->getCustomer();
     $site_term = $this->getSiteTerm();
     $this->addUserToSite($customer_user, $site_term);
-    $subtitle_paragraph = $this->entityTypeManager
+    $media_image = $this->createMedia(['bundle' => 'image']);
+    $media_image->media_image->generateSampleItems();
+    $media_image->save();
+    $callout_paragraph = $this->entityTypeManager
       ->getStorage('paragraph')
       ->create([
-        'type' => 'subtitle',
-        Ia::FIELD_ANCHOR => 'anchor-text',
-        Ia::FIELD_HEADING => 'Subtitle',
-      ]);
-    $html_paragraph = $this->entityTypeManager
-      ->getStorage('paragraph')
-      ->create([
-        'type' => 'markup',
-        Ia::FIELD_MARKUP => [
-          'value' => '<p>This is text markup</p>',
-          'format' => 'basic',
-        ],
-        Ia::FIELD_SUBTITLE => $subtitle_paragraph,
+        'type' => Ia::PG_CTA,
+        Ia::FIELD_HEADING => ['Callout Heading'],
+        Ia::FIELD_LINK => ['uri' => 'https://example.com'],
+        Ia::FIELD_MARKUP => ['value' => '<p>Test markup</p>', 'format' => 'basic'],
+        Ia::FIELD_MEDIA => ['target_id' => $media_image->id()],
       ]);
     /** @var \Drupal\node\Entity\Node $page_node */
     $page_node = $this->drupalCreateNode([
       'type' => 'page',
       Ia::FIELD_CONTENT => [
-        $html_paragraph,
+        $callout_paragraph,
       ],
-      'title' => 'Test HTML component',
+      'title' => 'Test Callout component',
       'uid' => $customer_user->id(),
       Ia::FIELD_SITE => $this->getSiteTerm(),
     ]);

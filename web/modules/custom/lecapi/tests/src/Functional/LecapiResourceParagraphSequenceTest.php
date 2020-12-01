@@ -9,9 +9,9 @@ use Drupal\Tests\lecapi\LecapiTestBase;
 use GuzzleHttp\RequestOptions;
 
 /**
- * Test case class for paragraph html resource json:api.
+ * Test case for Sequence paragraph.
  */
-class LecapiResourceParagraphHtmlTest extends LecapiTestBase {
+class LecapiResourceParagraphSequenceTest extends LecapiTestBase {
 
   /**
    * Tests GETting an individual resource.
@@ -21,21 +21,24 @@ class LecapiResourceParagraphHtmlTest extends LecapiTestBase {
     $this->drupalLogin($account_authenticate);
     // Setup entity for testing then mark it for cleanup.
     $entity = $this->setUpTestingEntity();
-    $this->markEntityForCleanup($entity);
     // Build and perform request.
     $url = Url::fromRoute(sprintf('jsonapi.%s.individual', $entity->getEntityTypeId() . '--' . $entity->bundle()), ['entity' => $entity->uuid()]);
     $request_options = [];
     $request_options[RequestOptions::HEADERS]['Accept'] = 'application/vnd.api+json';
-    $request_options[RequestOptions::QUERY]['include'] = Ia::FIELD_SUBTITLE;
+    $request_options[RequestOptions::QUERY]['include'] = implode(',', [Ia::FIELD_ITEMS, Ia::FIELD_SUBTITLE]);
     $response = $this->request('GET', $url, $request_options);
     // Assert response code.
     $this->assertEquals(200, $response->getStatusCode());
     // Assert response body.
     $actual_document = Json::decode($response->getBody()->__toString());
-    $this->assertSame('<p>This is text markup</p>', $actual_document['data']['attributes'][Ia::FIELD_MARKUP]['value']);
-    $this->assertSame('<p>This is text markup</p>', $actual_document['data']['attributes'][Ia::FIELD_MARKUP]['processed']);
-    $this->assertSame('anchor-text', $actual_document['included'][0]['attributes'][Ia::FIELD_ANCHOR]);
-    $this->assertSame('Subtitle', $actual_document['included'][0]['attributes'][Ia::FIELD_HEADING]);
+    $this->assertSame('anchor-text', $actual_document['included'][3]['attributes'][Ia::FIELD_ANCHOR]);
+    $this->assertSame('Subtitle', $actual_document['included'][3]['attributes'][Ia::FIELD_HEADING]);
+    $this->assertSame('Step 1', $actual_document['included'][0]['attributes'][Ia::FIELD_HEADING]);
+    $this->assertSame('<p>Test markup 1</p>', $actual_document['included'][0]['attributes'][Ia::FIELD_MARKUP]['value']);
+    $this->assertSame('Step 2', $actual_document['included'][1]['attributes'][Ia::FIELD_HEADING]);
+    $this->assertSame('<p>Test markup 2</p>', $actual_document['included'][1]['attributes'][Ia::FIELD_MARKUP]['value']);
+    $this->assertSame('Step 3', $actual_document['included'][2]['attributes'][Ia::FIELD_HEADING]);
+    $this->assertSame('<p>Test markup 3</p>', $actual_document['included'][2]['attributes'][Ia::FIELD_MARKUP]['value']);
   }
 
   /**
@@ -59,23 +62,44 @@ class LecapiResourceParagraphHtmlTest extends LecapiTestBase {
         Ia::FIELD_ANCHOR => 'anchor-text',
         Ia::FIELD_HEADING => 'Subtitle',
       ]);
-    $html_paragraph = $this->entityTypeManager
+    $sequence_items = [
+      [
+        'heading' => 'Step 1',
+        'markup' => '<p>Test markup 1</p>',
+      ],
+      [
+        'heading' => 'Step 2',
+        'markup' => '<p>Test markup 2</p>',
+      ],
+      [
+        'heading' => 'Step 3',
+        'markup' => '<p>Test markup 3</p>',
+      ],
+    ];
+    $paragraph_sequence_items = [];
+    foreach ($sequence_items as $sequence_item) {
+      /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph_sequence_item */
+      $paragraph_sequence_item = $this->entityTypeManager
+        ->getStorage('paragraph')
+        ->create(['type' => Ia::PG_ITEM]);
+      $paragraph_sequence_item->set(Ia::FIELD_HEADING, ['value' => $sequence_item['heading']]);
+      $paragraph_sequence_item->set(Ia::FIELD_MARKUP, ['value' => $sequence_item['markup'], 'format' => 'basic']);
+      $paragraph_sequence_items[] = $paragraph_sequence_item;
+    }
+    $sequence_paragraph = $this->entityTypeManager
       ->getStorage('paragraph')
       ->create([
-        'type' => 'markup',
-        Ia::FIELD_MARKUP => [
-          'value' => '<p>This is text markup</p>',
-          'format' => 'basic',
-        ],
+        'type' => Ia::PG_SEQUENCE,
+        Ia::FIELD_ITEMS => $paragraph_sequence_items,
         Ia::FIELD_SUBTITLE => $subtitle_paragraph,
       ]);
     /** @var \Drupal\node\Entity\Node $page_node */
     $page_node = $this->drupalCreateNode([
       'type' => 'page',
       Ia::FIELD_CONTENT => [
-        $html_paragraph,
+        $sequence_paragraph,
       ],
-      'title' => 'Test HTML component',
+      'title' => 'Test Card component',
       'uid' => $customer_user->id(),
       Ia::FIELD_SITE => $this->getSiteTerm(),
     ]);
