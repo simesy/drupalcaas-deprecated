@@ -21,7 +21,7 @@ third_party_settings:
         - site
         - related
       parent_name: ''
-      weight: 9
+      weight: 10
       format_type: details_sidebar
       region: content
       format_settings:
@@ -32,6 +32,47 @@ third_party_settings:
         classes: ''
         open: false
       label: 'Workflow and IA'
+    group_tab:
+      children:
+        - group_content
+        - group_other
+      parent_name: ''
+      weight: 11
+      format_type: tabs
+      region: content
+      format_settings:
+        direction: horizontal
+        id: ''
+        classes: ''
+      label: Tab
+    group_content:
+      children:
+        - content
+      parent_name: group_tab
+      weight: 12
+      format_type: tab
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        formatter: closed
+        required_fields: true
+      label: Content
+    group_other:
+      children:
+        - hero
+      parent_name: group_tab
+      weight: 13
+      format_type: tab
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        formatter: closed
+        required_fields: true
+      label: Other
 _core:
   default_config_hash: 6VUXB1jTUjK5zjkfMa2Kd2WW4sFUlgfBlfJSx01qLpU
 id: node.article.default
@@ -66,14 +107,14 @@ content:
     third_party_settings: {  }
   hero:
     type: media_library_widget
-    weight: 1
+    weight: 8
     settings:
       media_types: {  }
     third_party_settings: {  }
     region: content
   langcode:
     type: language_select
-    weight: 2
+    weight: 1
     region: content
     settings:
       include_locked: true
@@ -111,7 +152,7 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 8
+    weight: 9
     region: content
     third_party_settings: {  }
   sticky:

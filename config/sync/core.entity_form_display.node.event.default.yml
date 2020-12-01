@@ -35,13 +35,56 @@ third_party_settings:
         classes: ''
         open: false
       label: 'Workflow and IA'
+    group_tab:
+      children:
+        - group_content
+        - group_other
+      parent_name: ''
+      weight: 13
+      format_type: tabs
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        direction: horizontal
+      label: Tab
+    group_content:
+      children:
+        - content
+      parent_name: group_tab
+      weight: 14
+      format_type: tab
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        formatter: closed
+        required_fields: true
+      label: Content
+    group_other:
+      children:
+        - address
+        - start
+        - end
+      parent_name: group_tab
+      weight: 15
+      format_type: tab
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        formatter: closed
+        required_fields: true
+      label: Other
 id: node.event.default
 targetEntityType: node
 bundle: event
 mode: default
 content:
   address:
-    weight: 13
+    weight: 12
     settings: {  }
     third_party_settings: {  }
     type: address_default
@@ -72,7 +115,7 @@ content:
     settings: {  }
     third_party_settings: {  }
   end:
-    weight: 12
+    weight: 14
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
@@ -86,7 +129,7 @@ content:
     third_party_settings: {  }
   path:
     type: path
-    weight: 9
+    weight: 8
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -118,7 +161,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   start:
-    weight: 11
+    weight: 13
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
@@ -127,7 +170,7 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 10
+    weight: 9
     region: content
     third_party_settings: {  }
   sticky:
