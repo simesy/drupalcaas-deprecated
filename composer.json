@@ -59,8 +59,9 @@
         "drupal/graphql": "^4",
         "drupal/graphql_search_api": "^1",
         "drupal/jsonapi_extras": "^3",
-        "drupal/jsonapi_views": "1.x-dev",
+        "drupal/jsonapi_image_styles": "^2.0@beta",
         "drupal/jsonapi_search_api": "^1",
+        "drupal/jsonapi_views": "1.x-dev",
         "drupal/metatag": "^1",
         "drupal/openapi": "^2",
         "drupal/paragraphs": "^1.12",
@@ -78,9 +79,9 @@
         "drupal/workbench": "^1.2",
         "drupal/workbench_access": "^1.0@beta",
         "drush/drush": "^10.3",
+        "oomphinc/composer-installers-extender": "dev-master",
         "platformsh/config-reader": "^2.3",
         "predis/predis": "^1.1",
-        "oomphinc/composer-installers-extender": "dev-master",
         "zaporylie/composer-drupal-optimizations": "^1"
     },
     "require-dev": {
