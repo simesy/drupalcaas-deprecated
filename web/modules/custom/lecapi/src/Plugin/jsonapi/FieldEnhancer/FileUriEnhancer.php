@@ -20,8 +20,8 @@ class FileUriEnhancer extends ResourceFieldEnhancerBase {
    * {@inheritdoc}
    */
   protected function doTransform($data, Context $context) {
-    if (isset($data['fully_qualified_url'])) {
-      unset($data['fully_qualified_url']);
+    if (isset($data['absolute'])) {
+      unset($data['absolute']);
     }
     return $data;
   }
@@ -31,7 +31,7 @@ class FileUriEnhancer extends ResourceFieldEnhancerBase {
    */
   protected function doUndoTransform($data, Context $context) {
     if ($data['value']) {
-      $data['fully_qualified_url'] = file_create_url($data['value']);
+      $data['absolute'] = file_create_url($data['value']);
     }
     return $data;
   }
