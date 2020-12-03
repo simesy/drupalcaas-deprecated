@@ -51,6 +51,7 @@ third_party_settings:
       label: Tab
     group_content:
       children:
+        - deck
         - content
       parent_name: group_tab
       weight: 6
@@ -65,6 +66,7 @@ third_party_settings:
       label: Content
     group_other:
       children:
+        - media
         - hero
       parent_name: group_tab
       weight: 7
@@ -86,7 +88,7 @@ mode: default
 content:
   content:
     type: lecapi_paragraphs
-    weight: 2
+    weight: 12
     settings:
       title: Content
       title_plural: Content
@@ -118,7 +120,7 @@ content:
     type: text_textarea
     region: content
   hero:
-    weight: 1
+    weight: 11
     settings:
       match_operator: CONTAINS
       match_limit: 10

@@ -53,6 +53,7 @@ third_party_settings:
       label: Tab
     group_content:
       children:
+        - deck
         - content
       parent_name: group_tab
       weight: 14
@@ -67,6 +68,7 @@ third_party_settings:
       label: Content
     group_other:
       children:
+        - media
         - address
         - start
         - end
@@ -87,13 +89,13 @@ bundle: event
 mode: default
 content:
   address:
-    weight: 12
+    weight: 14
     settings: {  }
     third_party_settings: {  }
     type: address_default
     region: content
   content:
-    weight: 2
+    weight: 14
     settings:
       title: Content
       title_plural: Content
@@ -118,7 +120,7 @@ content:
     settings: {  }
     third_party_settings: {  }
   deck:
-    weight: 11
+    weight: 13
     settings:
       rows: 5
       placeholder: ''
@@ -126,7 +128,7 @@ content:
     type: text_textarea
     region: content
   end:
-    weight: 14
+    weight: 16
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
@@ -139,7 +141,7 @@ content:
       include_locked: true
     third_party_settings: {  }
   media:
-    weight: 10
+    weight: 12
     settings:
       match_operator: CONTAINS
       match_limit: 10
@@ -182,7 +184,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   start:
-    weight: 13
+    weight: 15
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
