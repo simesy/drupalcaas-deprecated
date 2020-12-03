@@ -4,12 +4,15 @@ status: true
 dependencies:
   config:
     - field.field.node.article.content
+    - field.field.node.article.deck
     - field.field.node.article.hero
+    - field.field.node.article.media
     - field.field.node.article.related
     - field.field.node.article.site
     - node.type.article
   module:
     - entity_reference_revisions
+    - text
     - user
 _core:
   default_config_hash: ChmU3AVqDKU32A_fyChG0W9dTRKmVBR58B6OClCLvZI
@@ -27,6 +30,13 @@ content:
     third_party_settings: {  }
     type: entity_reference_revisions_entity_view
     region: content
+  deck:
+    weight: 6
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
   hero:
     type: entity_reference_entity_view
     weight: 1
@@ -41,6 +51,15 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  media:
+    type: entity_reference_entity_view
+    weight: 5
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    region: content
   related:
     weight: 4
     label: above

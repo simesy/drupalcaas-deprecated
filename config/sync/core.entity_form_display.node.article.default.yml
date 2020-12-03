@@ -4,7 +4,9 @@ status: true
 dependencies:
   config:
     - field.field.node.article.content
+    - field.field.node.article.deck
     - field.field.node.article.hero
+    - field.field.node.article.media
     - field.field.node.article.related
     - field.field.node.article.site
     - node.type.article
@@ -14,6 +16,7 @@ dependencies:
     - lecapi
     - media_library
     - path
+    - text
 third_party_settings:
   field_group:
     group_workflow:
@@ -105,6 +108,14 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  deck:
+    weight: 31
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
   hero:
     type: media_library_widget
     weight: 8
@@ -119,6 +130,13 @@ content:
     settings:
       include_locked: true
     third_party_settings: {  }
+  media:
+    type: media_library_widget
+    weight: 30
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+    region: content
   path:
     type: path
     weight: 7

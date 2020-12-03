@@ -5,7 +5,9 @@ dependencies:
   config:
     - core.entity_view_mode.node.search_index
     - field.field.node.page.content
+    - field.field.node.page.deck
     - field.field.node.page.hero
+    - field.field.node.page.media
     - field.field.node.page.parent
     - field.field.node.page.related
     - field.field.node.page.site
@@ -30,9 +32,11 @@ content:
     third_party_settings: {  }
     region: content
 hidden:
+  deck: true
   hero: true
   langcode: true
   links: true
+  media: true
   parent: true
   related: true
   search_api_excerpt: true

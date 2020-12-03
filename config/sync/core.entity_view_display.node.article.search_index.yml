@@ -5,7 +5,9 @@ dependencies:
   config:
     - core.entity_view_mode.node.search_index
     - field.field.node.article.content
+    - field.field.node.article.deck
     - field.field.node.article.hero
+    - field.field.node.article.media
     - field.field.node.article.related
     - field.field.node.article.site
     - node.type.article
@@ -29,9 +31,11 @@ content:
     type: entity_reference_revisions_entity_view
     region: content
 hidden:
+  deck: true
   hero: true
   langcode: true
   links: true
+  media: true
   related: true
   search_api_excerpt: true
   site: true
