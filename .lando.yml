@@ -15,3 +15,7 @@ services:
     core: drupal
     config:
       dir: .platform/configsets/solr7
+  phpmyadmin:
+    type: phpmyadmin
+    hosts:
+      - database
