@@ -4,13 +4,16 @@ status: true
 dependencies:
   config:
     - field.field.node.page.content
+    - field.field.node.page.deck
     - field.field.node.page.hero
+    - field.field.node.page.media
     - field.field.node.page.parent
     - field.field.node.page.related
     - field.field.node.page.site
     - node.type.page
   module:
     - entity_reference_revisions
+    - text
     - user
 _core:
   default_config_hash: g1S3_GLaxq4l3I9RIca5Mlz02MxI2KmOquZpHw59akM
@@ -28,9 +31,24 @@ content:
       link: ''
     third_party_settings: {  }
     region: content
+  deck:
+    weight: 5
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
   hero:
     weight: 0
     label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  media:
+    weight: 6
+    label: above
     settings:
       link: true
     third_party_settings: {  }

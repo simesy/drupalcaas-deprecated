@@ -1,0 +1,27 @@
+uuid: 70248e2f-1502-42c1-9583-ef8a253f4e51
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.deck
+    - node.type.page
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    basic: '0'
+    full: '0'
+    plain_text: '0'
+id: node.page.deck
+field_name: deck
+entity_type: node
+bundle: page
+label: Deck
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

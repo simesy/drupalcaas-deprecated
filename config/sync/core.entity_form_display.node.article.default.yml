@@ -4,7 +4,9 @@ status: true
 dependencies:
   config:
     - field.field.node.article.content
+    - field.field.node.article.deck
     - field.field.node.article.hero
+    - field.field.node.article.media
     - field.field.node.article.related
     - field.field.node.article.site
     - node.type.article
@@ -14,6 +16,7 @@ dependencies:
     - lecapi
     - media_library
     - path
+    - text
 third_party_settings:
   field_group:
     group_workflow:
@@ -47,6 +50,7 @@ third_party_settings:
       label: Tab
     group_content:
       children:
+        - deck
         - content
       parent_name: group_tab
       weight: 12
@@ -61,6 +65,7 @@ third_party_settings:
       label: Content
     group_other:
       children:
+        - media
         - hero
       parent_name: group_tab
       weight: 13
@@ -81,7 +86,7 @@ bundle: article
 mode: default
 content:
   content:
-    weight: 2
+    weight: 5
     settings:
       title: Content
       title_plural: Content
@@ -105,9 +110,17 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  deck:
+    weight: 4
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
   hero:
     type: media_library_widget
-    weight: 8
+    weight: 5
     settings:
       media_types: {  }
     third_party_settings: {  }
@@ -119,6 +132,13 @@ content:
     settings:
       include_locked: true
     third_party_settings: {  }
+  media:
+    type: media_library_widget
+    weight: 3
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+    region: content
   path:
     type: path
     weight: 7
