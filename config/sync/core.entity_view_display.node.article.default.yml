@@ -22,7 +22,7 @@ bundle: article
 mode: default
 content:
   content:
-    weight: 2
+    weight: 4
     label: hidden
     settings:
       view_mode: default
@@ -31,15 +31,15 @@ content:
     type: entity_reference_revisions_entity_view
     region: content
   deck:
-    weight: 6
-    label: above
+    weight: 1
+    label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
     region: content
   hero:
     type: entity_reference_entity_view
-    weight: 1
+    weight: 0
     label: hidden
     settings:
       view_mode: default
@@ -47,21 +47,21 @@ content:
     third_party_settings: {  }
     region: content
   links:
-    weight: 0
+    weight: 2
     region: content
     settings: {  }
     third_party_settings: {  }
   media:
     type: entity_reference_entity_view
-    weight: 5
-    label: above
+    weight: 3
+    label: hidden
     settings:
       view_mode: default
       link: false
     third_party_settings: {  }
     region: content
   related:
-    weight: 4
+    weight: 6
     label: above
     settings:
       link: true
@@ -69,7 +69,7 @@ content:
     type: entity_reference_label
     region: content
   site:
-    weight: 3
+    weight: 5
     label: hidden
     settings:
       link: true
