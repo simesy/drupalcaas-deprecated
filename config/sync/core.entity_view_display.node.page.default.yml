@@ -24,7 +24,7 @@ mode: default
 content:
   content:
     type: entity_reference_revisions_entity_view
-    weight: 1
+    weight: 0
     label: hidden
     settings:
       view_mode: default
@@ -39,7 +39,7 @@ content:
     type: text_default
     region: content
   hero:
-    weight: 0
+    weight: 1
     label: hidden
     settings:
       link: true
