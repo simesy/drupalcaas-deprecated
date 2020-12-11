@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - field.field.media.image.media_image
-    - image.style.large
     - media.type.image
   module:
     - image
@@ -18,7 +17,7 @@ content:
   media_image:
     label: visually_hidden
     settings:
-      image_style: large
+      image_style: ''
       image_link: ''
     third_party_settings: {  }
     type: image
