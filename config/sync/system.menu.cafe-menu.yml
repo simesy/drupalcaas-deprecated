@@ -1,0 +1,8 @@
+uuid: 4df07d17-1ac3-4574-8b8d-bc7e81d8d619
+langcode: en
+status: true
+dependencies: {  }
+id: cafe-menu
+label: 'Cafe menu'
+description: 'Main menu for the cafe website'
+locked: false
