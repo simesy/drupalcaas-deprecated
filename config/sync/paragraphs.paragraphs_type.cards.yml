@@ -14,4 +14,4 @@ description: 'Usually variations on a grid. A compelling display of things you w
 behavior_plugins:
   lecapi_variants:
     enabled: true
-    variants: "horizontal|Horizontal layout\r\nvertical|Vertical layout"
+    variants: "horizontal|Horizontal layout\r\nvertical|Vertical layout\r\ngallery|Gallery"
