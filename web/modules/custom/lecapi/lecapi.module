@@ -6,6 +6,8 @@
  */
 
 use Drupal\Component\Utility\Html;
+use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\Template\Attribute;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\lecapi\Ia;
@@ -131,4 +133,26 @@ function lecapi_node_grants(AccountInterface $account, $op) {
   }
 
   return ['lecapi' => $grants];
+}
+
+/**
+ * Implements hook_entity_base_field_info().
+ */
+function lecapi_entity_base_field_info(EntityTypeInterface $entity_type) {
+  $fields = [];
+  $base_table = $entity_type->getBaseTable();
+
+  // Certain classes are just not supported.
+  $original_class = $entity_type->getOriginalClass();
+
+  if (!empty($base_table) && $original_class == 'Drupal\file\Entity\File') {
+    $fields['image_style_uri'] = BaseFieldDefinition::create('lecapi_image_style_uri')
+      ->setLabel(t('Entity image styles'))
+      ->setDescription(t('Image styles of the file entity'))
+      ->setComputed(TRUE)
+      ->setCardinality(1)
+      ->setTranslatable(TRUE);
+  }
+
+  return $fields;
 }
