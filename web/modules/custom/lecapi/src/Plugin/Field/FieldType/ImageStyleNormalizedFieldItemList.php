@@ -22,6 +22,7 @@ class ImageStyleNormalizedFieldItemList extends FieldItemList {
     $uri = ($entity instanceof File) ? $entity->getFileUri() : FALSE;
     $styles = ImageStyle::loadMultiple();
     $urls = [];
+    $urls['original'] = file_create_url($uri);
     foreach ($styles as $name => $style) {
       if ($style instanceof ImageStyle) {
         $urls[$name] = $style->buildUrl($uri);
