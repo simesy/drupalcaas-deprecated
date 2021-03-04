@@ -8,4 +8,8 @@ id: anonymous
 label: anon
 weight: 0
 is_admin: false
-permissions: {  }
+permissions:
+  - 'access content'
+  - 'access druxt resources'
+  - 'lecapi bypass view access control'
+  - 'view media'
