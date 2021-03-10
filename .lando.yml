@@ -4,10 +4,20 @@ config:
   webroot: web
   # Off by default for performance. Set to `true` and run `lando rebuild` (will not reset database).
   xdebug: false
+keys:
+  - id_rsa
 tooling:
   drush:
-    # Perhaps temporary fix for drush tooling using the wrong service.
+    # Override .lando.upstream.yml
     service: appserver
+  # @see docs/backend.md.
+  sync-prod:
+    service: appserver
+    description: Syncs prod database and files to local.
+    cmd:
+      - drush sql:sync @prod @self --yes
+      - drush cache:rebuild
+      - drush user:login
 services:
   solr:
     type: solr:7.7
