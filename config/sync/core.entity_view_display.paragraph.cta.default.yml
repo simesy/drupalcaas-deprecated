@@ -7,9 +7,11 @@ dependencies:
     - field.field.paragraph.cta._link
     - field.field.paragraph.cta._markup
     - field.field.paragraph.cta._media
+    - field.field.paragraph.cta.variant
     - paragraphs.paragraphs_type.cta
   module:
     - link
+    - options
     - text
 id: paragraph.cta.default
 targetEntityType: paragraph
@@ -50,6 +52,13 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
+  variant:
+    weight: 4
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
     region: content
 hidden:
   search_api_excerpt: true

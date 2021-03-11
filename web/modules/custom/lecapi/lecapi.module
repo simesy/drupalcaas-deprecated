@@ -59,7 +59,7 @@ function legin_preprocess_paragraph(&$variables) {
   $paragraph = $variables['paragraph'];
   $variant = $paragraph->getBehaviorSetting('lecapi_variants', 'variant', FALSE);
 
-  // Add convenience fields from `items` paragraph (_heading, _markup, etc).
+  // Surface `items` paragraphs (with associated _heading, _markup, etc).
   $variables['sub_items'] = [];
   if ($paragraph->hasField(Ia::FIELD_ITEMS)) {
     /** @var \Drupal\paragraphs\Entity\Paragraph $item */
@@ -74,7 +74,7 @@ function legin_preprocess_paragraph(&$variables) {
     }
   }
 
-  // Move classes login from paragraphs twig template.
+  // @todo why did I do this - Si.
   $variables['classes'] = [
     'paragraph',
     'bundle-' . Html::cleanCssIdentifier($paragraph->bundle()),
