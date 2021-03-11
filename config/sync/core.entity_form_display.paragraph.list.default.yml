@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.paragraph.list.items
     - field.field.paragraph.list.subtitle
+    - field.field.paragraph.list.variant
     - paragraphs.paragraphs_type.list
   module:
     - lecapi
@@ -50,6 +51,12 @@ content:
         duplicate: duplicate
     third_party_settings: {  }
     type: lecapi_paragraphs
+    region: content
+  variant:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
     region: content
 hidden:
   created: true
