@@ -28,7 +28,7 @@ function field_instance_options_form_field_config_edit_form_alter(array &$form, 
 
   $form['field_instance_options']['instance_allowed_values'] = [
     '#type' => 'textarea',
-    '#title' => t('Override options for this field instance'),
+    '#title' => t('Select list options (allowed values) for this field instance'),
     '#default_value' => $array_allowed_values,
     '#description' => t('Options for this field instance as key|Labels. Do not remove values which are in the database.'),
     '#element_validate' => ['_field_instance_options_allowed_values_validate'],
