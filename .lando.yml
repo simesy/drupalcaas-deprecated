@@ -15,6 +15,7 @@ tooling:
     service: appserver
     description: Syncs prod database and files to local.
     cmd:
+      - drush sql:drop
       - drush sql:sync @prod @self --yes
       - drush cache:rebuild
       - drush user:login
