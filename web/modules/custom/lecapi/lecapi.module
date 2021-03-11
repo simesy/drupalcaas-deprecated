@@ -35,7 +35,6 @@ function lecapi_theme_suggestions_paragraph_alter(array &$suggestions, array &$v
 
   // Reset all paragraph suggestions.
   $suggestions = [];
-  $variant = $paragraph->getBehaviorSetting('lecapi_variants', 'variant', FALSE);
   $mode = strtr($variables['elements']['#view_mode'], '.', '_');
 
   // Add default twigs for all types, with display mode and variant alternatives - ignoring anything "default".
@@ -43,10 +42,12 @@ function lecapi_theme_suggestions_paragraph_alter(array &$suggestions, array &$v
   if ($mode != 'default') {
     $suggestions[] = 'paragraph__' . $paragraph->bundle() . '_' . $mode;
   }
-  if ($variant && $variant != 'default') {
-    $suggestions[] = 'paragraph__' . $paragraph->bundle() . '__' . $variant;
-    if ($mode != 'default') {
-      $suggestions[] = 'paragraph__' . $paragraph->bundle() . '_' . $mode . '__' . $variant;
+  if ($paragraph->hasField(Ia::FIELD_VARIANT) && $variant = $paragraph->variant->value) {
+    if ($variant != 'default') {
+      $suggestions[] = 'paragraph__' . $paragraph->bundle() . '__' . $variant;
+      if ($mode != 'default') {
+        $suggestions[] = 'paragraph__' . $paragraph->bundle() . '_' . $mode . '__' . $variant;
+      }
     }
   }
 }
@@ -55,9 +56,7 @@ function lecapi_theme_suggestions_paragraph_alter(array &$suggestions, array &$v
  * Implements template_preprocess_paragraph().
  */
 function legin_preprocess_paragraph(&$variables) {
-  /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
   $paragraph = $variables['paragraph'];
-  $variant = $paragraph->getBehaviorSetting('lecapi_variants', 'variant', FALSE);
 
   // Surface `items` paragraphs (with associated _heading, _markup, etc).
   $variables['sub_items'] = [];
@@ -74,15 +73,18 @@ function legin_preprocess_paragraph(&$variables) {
     }
   }
 
-  // @todo why did I do this - Si.
+  // Add useful classes and variant information.
   $variables['classes'] = [
     'paragraph',
     'bundle-' . Html::cleanCssIdentifier($paragraph->bundle()),
   ];
-
-  if ($variant) {
+  $variables['bundle'] = $paragraph->bundle();
+  if ($paragraph->hasField(Ia::FIELD_VARIANT) && $variant = $paragraph->get(Ia::FIELD_VARIANT)->value) {
     $variables['variant'] = $variant;
     $variables['classes'][] = 'variant-' . $variant;
+  }
+  else {
+    $variables['variant'] = 'default';
   }
 }
 
