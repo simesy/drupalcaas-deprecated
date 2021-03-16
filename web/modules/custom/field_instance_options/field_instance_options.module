@@ -88,7 +88,8 @@ function get_list_item_base() {
  * @return array
  *   The field values.
  */
-function _field_instance_options_allowed_values(FieldStorageDefinitionInterface $definition, FieldableEntityInterface $entity = NULL, &$cacheable = FALSE) {
+function _field_instance_options_allowed_values(FieldStorageDefinitionInterface $definition, FieldableEntityInterface $entity = NULL, &$cacheable = NULL) {
+  $cacheable = FALSE;
   $instance_fields = \Drupal::service('entity_type.manager')->getStorage('field_config')->loadByProperties([
     'field_name' => $definition->getName(),
     'entity_type' => $definition->getTargetEntityTypeId(),
