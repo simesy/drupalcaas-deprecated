@@ -11,6 +11,12 @@ tooling:
     # Override .lando.upstream.yml
     service: appserver
   # @see docs/backend.md.
+  gulp:
+    service: node
+  npm:
+    service: node
+  node:
+    service: node
   sync-prod:
     service: appserver
     description: Syncs prod database and files to local.
@@ -19,6 +25,21 @@ tooling:
       - drush sql:sync @prod @self --yes
       - drush cache:rebuild
       - drush user:login
+  theme-build:
+    service: node
+    description: Build the theme.
+    dir: /app/web/themes/custom/legin
+    cmd: npm install
+  theme-watch:
+    service: node
+    description: Watch the theme.
+    dir: /app/web/themes/custom/legin
+    cmd: gulp
+  theme-generate:
+    service: node
+    description: Watch the theme.
+    dir: /app/web/themes/custom/legin
+    cmd: gulp sass
 services:
   solr:
     type: solr:7.7
@@ -30,3 +51,7 @@ services:
     type: phpmyadmin
     hosts:
       - database
+  node:
+    type: node
+    globals:
+      gulp-cli: latest

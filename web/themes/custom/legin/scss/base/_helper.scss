@@ -1,0 +1,50 @@
+.bg {
+  &--blue {
+    background-color: $blue;
+  }
+
+  &--orange {
+    background-color: $orange;
+  }
+
+  &--yellow {
+    background-color: $yellow;
+  }
+
+  &--red {
+    background-color: $red;
+  }
+
+  &--purple {
+    background-color: $purple;
+  }
+
+  &--gray {
+    background-color: $gray;
+  }
+}
+
+
+.col {
+  &-w-auto {
+    flex: 0 0 auto;
+  }
+
+  &-w-full {
+    flex: 1;
+  }
+}
+
+.link {
+  &--white {
+    a {
+      color: $white;
+    }
+  }
+}
+
+.text {
+  &--white {
+    color: $white;
+  }
+}
