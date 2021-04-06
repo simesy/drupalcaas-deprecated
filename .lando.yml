@@ -11,12 +11,6 @@ tooling:
     # Override .lando.upstream.yml
     service: appserver
   # @see docs/backend.md.
-  gulp:
-    service: node
-  npm:
-    service: node
-  node:
-    service: node
   sync-prod:
     service: appserver
     description: Syncs prod database and files to local.
