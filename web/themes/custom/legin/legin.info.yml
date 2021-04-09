@@ -5,6 +5,10 @@ core_version_requirement: ^8 || ^9
 base theme: gin
 screenshot: logo.png
 
+libraries:
+  - legin/global-styling
+  - legin/global-js
+
 regions:
   header: 'Header'
   pre_content: 'Pre-content'

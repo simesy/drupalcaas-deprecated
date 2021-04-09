@@ -1,0 +1,14 @@
+global-styling:
+  css:
+    theme:
+      css/styles.css: {}
+
+global-js:
+  js:
+    js/script.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+    - core/drupal
+    - core/drupalSettings
+    - core/jquery.ui.datepicker 

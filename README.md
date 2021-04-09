@@ -91,3 +91,19 @@ want to use this as a boilerplate site for new projects then you might pop in so
 feature requests but you might also just create a fork. Be mindful that we are not
 trying to abstract things like the Platform.sh settings - there is heaps that you
 will want to customise if you copy this project.
+
+## Working with theme
+### Install the dependent packages
+```
+- lando theme-build
+```
+
+### Watching the style changes
+```
+- lando theme-watch
+```
+
+### Generating the styles
+```
+- lando theme-generate
+```
