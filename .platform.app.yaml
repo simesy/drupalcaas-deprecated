@@ -11,7 +11,7 @@ relationships:
   database: 'db:mysql'
   redis: 'cache:redis'
   solr: 'solr:solr'
-
+  essearch: 'searchelastic:elasticsearch'
 disk: 2048
 mounts:
   '/web/sites/default/files':

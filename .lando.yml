@@ -49,3 +49,6 @@ services:
     type: node
     globals:
       gulp-cli: latest
+  elasticsearch:
+    type: elasticsearch:7.9.3
+    portforward: true

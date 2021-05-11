@@ -51,6 +51,7 @@
         "drupal/core-recommended": "^9",
         "drupal/diff": "^1",
         "drupal/druxt": "^0.4.1",
+        "drupal/elasticsearch_connector": "^7.0@alpha",
         "drupal/field_group": "^3",
         "drupal/geofield": "^1",
         "drupal/geofield_map": "^2",
