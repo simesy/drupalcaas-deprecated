@@ -164,3 +164,14 @@ foreach ($platformsh->variables() as $name => $value) {
       break;
   }
 }
+
+// Elasticsearch config.
+$es_relationship_name = 'essearch';
+$es_cluster_name = 'default';
+if ($platformsh->hasRelationship($es_relationship_name)) {
+  $platformsh->registerFormatter('drupal-elastic', function($creds) {
+    return sprintf('http://%s:%s', $creds['host'], $creds['port']);
+  });
+  // Set the connector configuration to the appropriate value, as defined by the formatter above.
+  $config['elasticsearch_connector.cluster.' . $es_cluster_name]['url'] = $platformsh->formattedCredentials($es_relationship_name, 'drupal-elastic');
+}

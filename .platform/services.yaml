@@ -12,7 +12,7 @@ cache:
 
 solr:
   type: solr:7.7
-  disk: 1024
+  disk: 256
   configuration:
     cores:
       drupal:
@@ -20,3 +20,6 @@ solr:
     endpoints:
       solr:
         core: drupal
+searchelastic:
+    type: elasticsearch:7.9
+    disk: 256
