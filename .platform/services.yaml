@@ -10,16 +10,16 @@ db:
 cache:
     type: redis:6.0
 
-solr:
-  type: solr:7.7
-  disk: 256
-  configuration:
-    cores:
-      drupal:
-        conf_dir: !archive "configsets/solr7"
-    endpoints:
-      solr:
-        core: drupal
+# solr:
+#   type: solr:7.7
+#   disk: 256
+#   configuration:
+#     cores:
+#       drupal:
+#         conf_dir: !archive "configsets/solr7"
+#     endpoints:
+#       solr:
+#         core: drupal
 searchelastic:
     type: elasticsearch:7.9
     disk: 256
