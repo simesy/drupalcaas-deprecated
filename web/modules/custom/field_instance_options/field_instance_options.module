@@ -61,7 +61,7 @@ function _field_instance_options_allowed_values_validate($element, &$form_state)
  *   The entity.
  * @param $form
  *   The entity form.
- * @param FormStateInterface $form_state
+ * @param Drupal\Core\Form\FormStateInterface $form_state
  *   The form state.
  */
 function _field_instance_options_allowed_values_set($entity_type, $entity, &$form, FormStateInterface $form_state) {
@@ -105,6 +105,9 @@ function get_list_item_base() {
       return $this->extractAllowedValues($string, FALSE);
     }
 
+    /**
+     * Implement allowed string values.
+     */
     public function doAllowedValuesString(array $values) {
       return self::allowedValuesString($values);
     }
