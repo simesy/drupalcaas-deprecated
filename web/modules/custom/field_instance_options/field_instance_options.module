@@ -58,13 +58,13 @@ function _field_instance_options_allowed_values_validate($element, &$form_state)
  * @param string $entity_type
  *   Entity type.
  * @param Drupal\Core\Entity\ContentEntityInterface $entity
- *   ContentEntityInterface.
+ *   The entity.
  * @param Drupal\Core\Form\FormStateInterface $form
- *   FormStateInterface.
- * @param Drupal\Core\Form\FormStateInterface $form_state
+ *   The entity form.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
  *   The form state.
  */
-function _field_instance_options_allowed_values_set($entity_type, $entity, &$form, FormStateInterface $form_state) {
+function _field_instance_options_allowed_values_set($entity_type, ContentEntityInterface $entity, FormStateInterface &$form, FormStateInterface $form_state) {
   $entity->setThirdPartySetting('field_instance_options', 'instance_allowed_values', $form_state->getValue('instance_allowed_values'));
 }
 
