@@ -55,11 +55,11 @@ function _field_instance_options_allowed_values_validate($element, &$form_state)
 /**
  * Entity builder callback to save our settings into the field storage config.
  *
- * @param $entity_type
+ * @param string $entity_type
  *   Entity type.
- * @param $entity
+ * @param Drupal\Core\Entity\ContentEntityInterface $entity
  *   The entity.
- * @param $form
+ * @param Drupal\Core\Form\FormStateInterface $form
  *   The entity form.
  * @param Drupal\Core\Form\FormStateInterface $form_state
  *   The form state.
