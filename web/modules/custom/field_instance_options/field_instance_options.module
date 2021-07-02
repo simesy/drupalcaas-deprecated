@@ -58,9 +58,9 @@ function _field_instance_options_allowed_values_validate($element, &$form_state)
  * @param string $entity_type
  *   Entity type.
  * @param Drupal\Core\Entity\ContentEntityInterface $entity
- *   The entity.
+ *   ContentEntityInterface.
  * @param Drupal\Core\Form\FormStateInterface $form
- *   The entity form.
+ *   FormStateInterface.
  * @param Drupal\Core\Form\FormStateInterface $form_state
  *   The form state.
  */
