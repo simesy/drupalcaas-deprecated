@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Field instance options for Lil Engine Content API.
+ */
+
 use Drupal\Core\Entity\FieldableEntityInterface;
 use Drupal\Core\Field\FieldStorageDefinitionInterface;
 use Drupal\Core\Form\FormStateInterface;
@@ -50,16 +55,16 @@ function _field_instance_options_allowed_values_validate($element, &$form_state)
 /**
  * Entity builder callback to save our settings into the field storage config.
  *
- * @param $entity_type
+ * @param string $entity_type
  *   Entity type.
- * @param $entity
+ * @param Drupal\Core\Entity\ContentEntityInterface $entity
  *   The entity.
- * @param $form
+ * @param Drupal\Core\Form\FormStateInterface $form
  *   The entity form.
- * @param FormStateInterface $form_state
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
  *   The form state.
  */
-function _field_instance_options_allowed_values_set($entity_type, $entity, &$form, FormStateInterface $form_state) {
+function _field_instance_options_allowed_values_set($entity_type, ContentEntityInterface $entity, FormStateInterface &$form, FormStateInterface $form_state) {
   $entity->setThirdPartySetting('field_instance_options', 'instance_allowed_values', $form_state->getValue('instance_allowed_values'));
 }
 
@@ -68,15 +73,45 @@ function _field_instance_options_allowed_values_set($entity_type, $entity, &$for
  */
 function get_list_item_base() {
   return new class() extends ListItemBase {
-    // Override constructor to not need config.
-    public function __construct() {}
-    // Implement interface we don't care about.
-    public function allowedValuesDescription() {}
-    public static function schema(FieldStorageDefinitionInterface $definition) {}
-    public static function propertyDefinitions(FieldStorageDefinitionInterface $definition) {}
-    // Methods we want to reuse nust be aliased because they are protected
-    public function doExtractAllowedValues($string) { return $this->extractAllowedValues($string, FALSE); }
-    public function doAllowedValuesString(array $values) { return self::allowedValuesString($values); }
+
+    /**
+     * Override constructor to not need config.
+     */
+    public function __construct() {
+    }
+
+    /**
+     * Implement interface we don't care about.
+     */
+    public function allowedValuesDescription() {
+    }
+
+    /**
+     * Implement schema.
+     */
+    public static function schema(FieldStorageDefinitionInterface $definition) {
+    }
+
+    /**
+     * Implement property definitions.
+     */
+    public static function propertyDefinitions(FieldStorageDefinitionInterface $definition) {
+    }
+
+    /**
+     * Methods we want to reuse nust be aliased because they are protected.
+     */
+    public function doExtractAllowedValues($string) {
+      return $this->extractAllowedValues($string, FALSE);
+    }
+
+    /**
+     * Implement allowed string values.
+     */
+    public function doAllowedValuesString(array $values) {
+      return self::allowedValuesString($values);
+    }
+
   };
 }
 
