@@ -25,7 +25,7 @@ class LecapiHardeningTest extends LecapiTestBase {
     $this->drupalGet('/admin/reports/status');
     // Commenting out this test for now due to the oauth issue.
     // Anon users need permission to see content.
-//    $this->assertSession()->pageTextContains('The anonymous and authenticated roles have no permissions');
+    // ($this->assertSession()->pageTextContains('The anonymous and authenticated roles have no permissions');).
     $this->assertSession()->pageTextContains('The API role is configured corrected');
     $this->assertSession()->pageTextContains('OAuth consumers are set up correctly');
 
