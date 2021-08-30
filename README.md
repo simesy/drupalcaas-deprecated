@@ -1,13 +1,14 @@
-# Lil Engine Content API
+# Content as a Service with Drupal
 
-This (will soon be) a live project which Lil Engine use to run content for various headless
-sites. It's a public project for a few reasons:
+This is a Drupal instance that is focussed on delivering "Content As A Service"
+using Drupal.
 
-* We can! There is nothing sensitive in the code.
-* We think the IA is good practice for paragraphs/components.
-* We can use this for demos and blogs.
-* We use it as a model for Platform.sh and Lando setup.
-* There are not enough public Drupal code bases.
+## Quick notes
+
+* An opinionated content model using paragraphs/components.
+* Used for demos and blogs.
+* Includes a model for Platform.sh and Lando setup.
+* Public and shareable.
 
 If you want you can clone this site and modify it to your taste whether or not you are
 building a headless site. Intentionally, the custom code is kept to a minimum. There
@@ -17,8 +18,8 @@ is no profile. It's just Drupal and a bunch of (hopefully you'll agree) lean con
 
 ### Components
 
-Components / paragraphs are designed to be semantic, intuitive and reusable. If we
-can use this IA for multiple websites then you are likely to find them practical
+Components / paragraphs are designed to be semantic, intuitive and reusable. If you
+can use this IA for multiple websites then you are likely to find it practical
 for any small to medium build.
 
 After a lot of projects we have settled on some default primary components which cover
