@@ -25,6 +25,7 @@ console/
 web/sites/default/files
 
 # Development.
+.lando.local.yml
 local.settings.php
 local.services.yml
 local

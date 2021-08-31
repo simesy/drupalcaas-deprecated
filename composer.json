@@ -1,29 +1,26 @@
 {
-    "name": "drupal/recommended-project",
-    "description": "Project template for Drupal 9 projects with a relocated document root",
+    "name": "simesy/drupalcaas",
+    "description": "A Drupal with a content-as-a-service bent.",
     "type": "project",
     "license": "GPL-2.0-or-later",
-    "homepage": "https://github.com/simesy/lecapi",
+    "homepage": "https://github.com/simesy/drupalcaas",
     "support": {
-        "docs": "https://github.com/simesy/lecapi"
+        "docs": "https://github.com/simesy/drupalcaas"
     },
     "authors": [
         {
             "name": "Simon Hobbs",
-            "email": "simon@lilengine.co",
-            "homepage": "https://www.lilengine.co",
+            "email": "simon@hobbs.id.au",
             "role": "Architect and developer"
         },
         {
             "name": "Feb Dao",
             "email": "feb@lilengine.co",
-            "homepage": "https://www.lilengine.co",
             "role": "Developer"
         },
         {
             "name": "Tan Nguyen",
             "email": "tan@lilengine.co",
-            "homepage": "https://www.lilengin.co",
             "role": "Developer"
         }
     ],
@@ -59,10 +56,6 @@
         "drupal/gin_login": "^1.0@RC",
         "drupal/graphql": "^4",
         "drupal/graphql_search_api": "^1",
-        "drupal/jsonapi_extras": "^3",
-        "drupal/jsonapi_image_styles": "^2.0@beta",
-        "drupal/jsonapi_search_api": "^1",
-        "drupal/jsonapi_views": "1.x-dev",
         "drupal/metatag": "^1",
         "drupal/openapi": "^2",
         "drupal/paragraphs": "^1.12",

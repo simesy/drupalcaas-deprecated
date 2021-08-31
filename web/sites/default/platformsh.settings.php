@@ -2,6 +2,9 @@
 /**
  * @file
  * Platform.sh settings.
+ *
+ * Periodically you should review this against the Platform ideal settings.
+ * @see https://github.com/platformsh-templates/drupal9/blob/master/web/sites/default/settings.platformsh.php
  */
 
 use Drupal\Core\Installer\InstallerKernel;

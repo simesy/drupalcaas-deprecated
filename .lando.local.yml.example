@@ -1,0 +1,8 @@
+# @see https://github.com/simesy/drupalcaas/issues/80
+services:
+  solr:
+    type: solr
+    scanner: false
+    overrides:
+      entrypoint: 'echo disabled service'
+      restart: no

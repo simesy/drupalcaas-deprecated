@@ -1,4 +1,4 @@
-name: lecapi
+name: caas
 recipe: drupal9
 config:
   webroot: web
@@ -38,17 +38,20 @@ services:
   solr:
     type: solr:7.7
     portforward: true
+    scanner: false
     core: drupal
     config:
       dir: .platform/configsets/solr7
-  phpmyadmin:
-    type: phpmyadmin
-    hosts:
-      - database
+    phpmyadmin:
+      type: phpmyadmin
+      hosts:
+        - database
   node:
     type: node
+    scanner: false
     globals:
       gulp-cli: latest
   elasticsearch:
     type: elasticsearch:7.9.3
+    scanner: false
     portforward: true

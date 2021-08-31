@@ -1,7 +1,5 @@
 <?php
 
-// These only need to override lando.settings.php if running with Lando locally.
-
 $settings['container_yamls'][] = DRUPAL_ROOT . '/sites/default/local.services.yml';
 
 $settings['cache']['bins']['render'] = 'cache.backend.null';
@@ -21,6 +19,5 @@ $settings['update_free_access'] = FALSE;
 $settings['rebuild_access'] = TRUE;
 $settings['skip_permissions_hardening'] = TRUE;
 
-$config['stage_file_proxy.settings']['origin'] = 'https://content.lilengine.co';
+$config['stage_file_proxy.settings']['origin'] = 'https://caas.freesauce.com.au';
 $config['stage_file_proxy.settings']['hotlink'] = TRUE;
-
