@@ -4,9 +4,6 @@
     "type": "project",
     "license": "GPL-2.0-or-later",
     "homepage": "https://github.com/simesy/drupalcaas",
-    "support": {
-        "docs": "https://github.com/simesy/drupalcaas"
-    },
     "authors": [
         {
             "name": "Simon Hobbs",
@@ -127,6 +124,11 @@
         "composer-exit-on-patch-failure": true,
         "patchLevel": {
             "drupal/core": "-p2"
+        },
+        "patches": {
+            "drupal/core": {
+                "Entity sub-types": "https://www.drupal.org/files/issues/2021-08-26/2570593-155.9_2_x.patch"
+            }
         },
         "patches-ignore": {
             "predis/predis": {
