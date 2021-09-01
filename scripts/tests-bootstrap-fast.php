@@ -18,5 +18,5 @@
 include_once './vendor/weitzman/drupal-test-traits/src/bootstrap-fast.php';
 
 // Additional namespaces.
-$class_loader->addPsr4('Drupal\Tests\lecapi\\', "$root/modules/custom/lecapi/tests/src");
+$class_loader->addPsr4('Drupal\Tests\caas\\', "$root/modules/custom/caas/tests/src");
 $class_loader->addPsr4('Drupal\Tests\jsonapi\\', "$root/core/modules/jsonapi/tests/src");

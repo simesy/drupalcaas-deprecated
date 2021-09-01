@@ -1,11 +1,11 @@
 <?php
 
-namespace Drupal\Tests\lecapi\Functional;
+namespace Drupal\Tests\caas\Functional;
 
 use Drupal\Component\Serialization\Json;
 use Drupal\Core\Url;
-use Drupal\lecapi\Ia;
-use Drupal\Tests\lecapi\LecapiTestBase;
+use Drupal\caas\Ia;
+use Drupal\Tests\caas\LecapiTestBase;
 use GuzzleHttp\RequestOptions;
 
 /**

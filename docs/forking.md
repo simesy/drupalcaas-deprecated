@@ -1,4 +1,4 @@
-# Forking lecapi
+# Forking caas
 
 Since this is not an upstream product you can use it by forking it. That means
 you clone the repository, modify some parts of the code to suit your project

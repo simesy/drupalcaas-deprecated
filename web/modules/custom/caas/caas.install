@@ -2,7 +2,7 @@
 
 /**
  * @file
- * The lecapi install and update routines.
+ * The caas install and update routines.
  */
 
 use Drupal\Core\Link;
@@ -11,7 +11,7 @@ use Drupal\user\Entity\Role;
 /**
  * Implements hook_requirements().
  */
-function lecapi_requirements($phase) {
+function caas_requirements($phase) {
   $requirements = [];
   $api_role = Role::load('api');
   $anon_role = Role::load('anonymous');
@@ -20,18 +20,18 @@ function lecapi_requirements($phase) {
   $consumer_storage = \Drupal::service('entity_type.manager')->getStorage('consumer');
 
   // Defaults, OK.
-  $requirements['lecapi_inherited_roles'] = [
-    'title' => t('Lil Engine Content API: Anon/auth access'),
+  $requirements['caas_inherited_roles'] = [
+    'title' => t('Anon/auth access'),
     'value' => 'The anonymous and authenticated roles have no permissions.',
     'severity' => REQUIREMENT_OK,
   ];
-  $requirements['lecapi_api_role'] = [
-    'title' => t('Lil Engine Content API: API access'),
-    'value' => 'The API role is configured corrected.',
+  $requirements['caas_api_role'] = [
+    'title' => t('API access'),
+    'value' => 'The API role is configured correctly.',
     'severity' => REQUIREMENT_OK,
   ];
-  $requirements['lecapi_consumers'] = [
-    'title' => t('Lil Engine Content API: Consumers'),
+  $requirements['caas_consumers'] = [
+    'title' => t('Consumers'),
     'value' => 'OAuth consumers are set up correctly.',
     'severity' => REQUIREMENT_OK,
   ];
@@ -39,13 +39,13 @@ function lecapi_requirements($phase) {
   if ($phase == 'runtime') {
     // Ensure inherited roles provide no permissions.
     if ($anon_role->getPermissions() != [] || $auth_role->getPermissions() != []) {
-      $requirements['lecapi_inherited_roles']['value'] = t('The %anon and %auth roles should not have any permissions. This makes it easier to ensure hardening. Please assign access via other roles as appropriate.',
+      $requirements['caas_inherited_roles']['value'] = t('The %anon and %auth roles should not have any permissions. This makes it easier to ensure hardening. Please assign access via other roles as appropriate.',
         [
           '%anon' => Link::fromTextAndUrl($anon_role->id(), $anon_role->toUrl('edit-permissions-form'))->toString(),
           '%auth' => Link::fromTextAndUrl($auth_role->id(), $auth_role->toUrl('edit-permissions-form'))->toString(),
         ]
       );
-      $requirements['lecapi_inherited_roles']['severity'] = REQUIREMENT_ERROR;
+      $requirements['caas_inherited_roles']['severity'] = REQUIREMENT_ERROR;
     }
 
     // Ensure API role is tight and read-only.
@@ -54,12 +54,12 @@ function lecapi_requirements($phase) {
     $differences = array_diff($api_permissions, [
       'access content',
       'access druxt resources',
-      'lecapi bypass view access control',
+      'caas bypass view access control',
       'view media',
     ]);
     if ($differences != []) {
-      $requirements['lecapi_api_role']['value'] = t('The %role role should be restricted to read-only access. The following differences were detected:', ['%role' => Link::fromTextAndUrl($api_role->id(), $api_role->toUrl('edit-permissions-form'))->toString()]);
-      $requirements['lecapi_api_role']['description'] = [
+      $requirements['caas_api_role']['value'] = t('The %role role should be restricted to read-only access. The following differences were detected:', ['%role' => Link::fromTextAndUrl($api_role->id(), $api_role->toUrl('edit-permissions-form'))->toString()]);
+      $requirements['caas_api_role']['description'] = [
         '#type' => 'inline_template',
         '#template' => '{{ configuration_error_list }}',
         '#context' => [
@@ -69,7 +69,7 @@ function lecapi_requirements($phase) {
           ],
         ],
       ];
-      $requirements['lecapi_api_role']['severity'] = REQUIREMENT_ERROR;
+      $requirements['caas_api_role']['severity'] = REQUIREMENT_ERROR;
     }
 
     // Ensure consumers are limited to API roles, hence read-only.
@@ -97,8 +97,8 @@ function lecapi_requirements($phase) {
       }
     }
     if (count($consumer_issues)) {
-      $requirements['lecapi_consumers']['value'] = t('Some issues were found with the consumer configuration.');
-      $requirements['lecapi_consumers']['description'] = [
+      $requirements['caas_consumers']['value'] = t('Some issues were found with the consumer configuration.');
+      $requirements['caas_consumers']['description'] = [
         '#type' => 'inline_template',
         '#template' => '{{ configuration_error_list }}',
         '#context' => [
@@ -108,7 +108,7 @@ function lecapi_requirements($phase) {
           ],
         ],
       ];
-      $requirements['lecapi_consumers']['severity'] = REQUIREMENT_ERROR;
+      $requirements['caas_consumers']['severity'] = REQUIREMENT_ERROR;
     }
   }
 

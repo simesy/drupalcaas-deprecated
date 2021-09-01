@@ -9,5 +9,5 @@ is_admin: null
 permissions:
   - 'access content'
   - 'access druxt resources'
-  - 'lecapi bypass view access control'
+  - 'caas bypass view access control'
   - 'view media'

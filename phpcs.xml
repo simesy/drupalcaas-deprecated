@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ruleset name="lecapi">
+<ruleset name="caas">
   <description>Default PHP CodeSniffer configuration</description>
 
   <file>./web/modules/custom</file>

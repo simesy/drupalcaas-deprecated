@@ -21,7 +21,6 @@ module:
   dblog: 0
   decoupled_router: 0
   diff: 0
-  druxt: 0
   dynamic_page_cache: 0
   editor: 0
   elasticsearch_connector: 0
@@ -39,14 +38,9 @@ module:
   graphql: 0
   graphql_search_api: 0
   image: 0
-  jsonapi: 0
-  jsonapi_extras: 0
-  jsonapi_menu_items: 0
-  jsonapi_resources: 0
-  jsonapi_views: 0
   language: 0
-  lecapi: 0
-  lecapi_admin: 0
+  caas: 0
+  caas_admin: 0
   link: 0
   media: 0
   media_library: 0

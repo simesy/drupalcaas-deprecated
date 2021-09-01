@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\lecapi;
+namespace Drupal\caas;
 
 /**
  * A class to centralise content model information.

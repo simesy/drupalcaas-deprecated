@@ -10,14 +10,14 @@ use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\Template\Attribute;
 use Drupal\Core\Session\AccountInterface;
-use Drupal\lecapi\Ia;
+use Drupal\caas\Ia;
 use Drupal\node\NodeInterface;
 use Drupal\paragraphs\ParagraphInterface;
 
 /**
  * Implements hook_theme_suggestions_HOOK_alter().
  */
-function lecapi_theme_suggestions_container_alter(array &$suggestions, array &$variables) {
+function caas_theme_suggestions_container_alter(array &$suggestions, array &$variables) {
   // Adds twig wrapper control, if needed, to the paragraphs subform container.
   if (isset($variables['element']['#paragraph_type'])) {
     array_unshift($suggestions, 'container__paragraphs_subform');
@@ -27,7 +27,7 @@ function lecapi_theme_suggestions_container_alter(array &$suggestions, array &$v
 /**
  * Implements hook_theme_suggestions_HOOK_alter().
  */
-function lecapi_theme_suggestions_paragraph_alter(array &$suggestions, array &$variables) {
+function caas_theme_suggestions_paragraph_alter(array &$suggestions, array &$variables) {
   $paragraph = isset($variables['elements']['#paragraph']) ? $variables['elements']['#paragraph'] : FALSE;
   if (!($paragraph instanceof ParagraphInterface)) {
     return;
@@ -91,13 +91,13 @@ function legin_preprocess_paragraph(&$variables) {
 /**
  * Implements hook_node_access_records().
  */
-function lecapi_node_access_records(NodeInterface $node) {
+function caas_node_access_records(NodeInterface $node) {
   $records = [];
 
   // One record for the site that the node belongs to, the GID is the term ID of the Site.
   foreach ($node->get(Ia::FIELD_SITE) as $site) {
     $records[] = [
-      'realm' => 'lecapi',
+      'realm' => 'caas',
       'gid' => $site->target_id,
       'grant_view' => 1,
       'grant_update' => 0,
@@ -112,11 +112,11 @@ function lecapi_node_access_records(NodeInterface $node) {
 /**
  * Implements hook_node_grants().
  */
-function lecapi_node_grants(AccountInterface $account, $op) {
+function caas_node_grants(AccountInterface $account, $op) {
   $grants = [];
 
   if ($op == 'view') {
-    if ($account->hasPermission('lecapi bypass view access control')) {
+    if ($account->hasPermission('caas bypass view access control')) {
       // @todo dynamically load all taxonomy terms? I haven't decided how to manage this for API access.
       $grants = [1, 2, 3, 4];
     }
@@ -134,13 +134,13 @@ function lecapi_node_grants(AccountInterface $account, $op) {
     }
   }
 
-  return ['lecapi' => $grants];
+  return ['caas' => $grants];
 }
 
 /**
  * Implements hook_entity_base_field_info().
  */
-function lecapi_entity_base_field_info(EntityTypeInterface $entity_type) {
+function caas_entity_base_field_info(EntityTypeInterface $entity_type) {
   $fields = [];
   $base_table = $entity_type->getBaseTable();
 
@@ -148,7 +148,7 @@ function lecapi_entity_base_field_info(EntityTypeInterface $entity_type) {
   $original_class = $entity_type->getOriginalClass();
 
   if (!empty($base_table) && $original_class == 'Drupal\file\Entity\File') {
-    $fields['image_style_uri'] = BaseFieldDefinition::create('lecapi_image_style_uri')
+    $fields['image_style_uri'] = BaseFieldDefinition::create('caas_image_style_uri')
       ->setLabel(t('Entity image styles'))
       ->setDescription(t('Image styles of the file entity'))
       ->setComputed(TRUE)

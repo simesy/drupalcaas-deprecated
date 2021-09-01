@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\lecapi\Plugin\Field\FieldWidget;
+namespace Drupal\caas\Plugin\Field\FieldWidget;
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Field\FieldItemListInterface;
@@ -10,7 +10,7 @@ use Drupal\paragraphs\Plugin\Field\FieldWidget\ParagraphsWidget;
  * Plugin implementation of the 'entity_reference_revisions item_paragraphs' widget.
  *
  * @FieldWidget(
- *   id = "lecapi_paragraphs",
+ *   id = "caas_paragraphs",
  *   label = @Translation("Enhanced Paragraph Widget"),
  *   description = @Translation("Enhanced paragraph widget for the Lil Engine Content API site."),
  *   field_types = {
@@ -18,7 +18,7 @@ use Drupal\paragraphs\Plugin\Field\FieldWidget\ParagraphsWidget;
  *   }
  * )
  */
-class LecapiParagraphsWidget extends ParagraphsWidget {
+class CaasParagraphsWidget extends ParagraphsWidget {
 
   /**
    * {@inheritdoc}
@@ -28,7 +28,7 @@ class LecapiParagraphsWidget extends ParagraphsWidget {
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
     $element = parent::formElement($items, $delta, $element, $form, $form_state);
     // Add a class to show not just the paragraph type, but also the chosen display mode used in the widget settings.
-    $element['#attributes']['class'][] = 'lecapi-paragraphs-subform';
+    $element['#attributes']['class'][] = 'caas-paragraphs-subform';
     $element['#attributes']['class'][] = 'paragraph-form-' . $element['#paragraph_type'] . '-' . $this->getSetting('form_display_mode');
     return $element;
   }

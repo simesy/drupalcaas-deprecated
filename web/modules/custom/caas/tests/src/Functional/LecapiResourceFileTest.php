@@ -1,12 +1,12 @@
 <?php
 
-namespace Drupal\Tests\lecapi\Functional;
+namespace Drupal\Tests\caas\Functional;
 
 use Drupal\Component\Serialization\Json;
 use Drupal\Component\Utility\Random;
 use Drupal\Core\File\FileSystemInterface;
 use Drupal\Core\Url;
-use Drupal\Tests\lecapi\LecapiTestBase;
+use Drupal\Tests\caas\LecapiTestBase;
 use GuzzleHttp\RequestOptions;
 
 /**

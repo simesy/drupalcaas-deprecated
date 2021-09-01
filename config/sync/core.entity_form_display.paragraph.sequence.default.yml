@@ -8,7 +8,7 @@ dependencies:
     - field.field.paragraph.sequence.variant
     - paragraphs.paragraphs_type.sequence
   module:
-    - lecapi
+    - caas
 id: paragraph.sequence.default
 targetEntityType: paragraph
 bundle: sequence
@@ -31,7 +31,7 @@ content:
         collapse_edit_all: collapse_edit_all
         duplicate: duplicate
     third_party_settings: {  }
-    type: lecapi_paragraphs
+    type: caas_paragraphs
     region: content
   subtitle:
     weight: 1
@@ -50,7 +50,7 @@ content:
         collapse_edit_all: collapse_edit_all
         duplicate: duplicate
     third_party_settings: {  }
-    type: lecapi_paragraphs
+    type: caas_paragraphs
     region: content
   variant:
     weight: 0

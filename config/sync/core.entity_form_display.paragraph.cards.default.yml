@@ -8,7 +8,7 @@ dependencies:
     - field.field.paragraph.cards.variant
     - paragraphs.paragraphs_type.cards
   module:
-    - lecapi
+    - caas
 id: paragraph.cards.default
 targetEntityType: paragraph
 bundle: cards
@@ -31,10 +31,10 @@ content:
         collapse_edit_all: collapse_edit_all
         duplicate: duplicate
     third_party_settings: {  }
-    type: lecapi_paragraphs
+    type: caas_paragraphs
     region: content
   subtitle:
-    type: lecapi_paragraphs
+    type: caas_paragraphs
     weight: 1
     settings:
       title: Subtitle

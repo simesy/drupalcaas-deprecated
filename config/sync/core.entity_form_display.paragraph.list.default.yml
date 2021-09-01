@@ -8,7 +8,7 @@ dependencies:
     - field.field.paragraph.list.variant
     - paragraphs.paragraphs_type.list
   module:
-    - lecapi
+    - caas
 id: paragraph.list.default
 targetEntityType: paragraph
 bundle: list
@@ -31,7 +31,7 @@ content:
         collapse_edit_all: collapse_edit_all
         add_above: 0
     third_party_settings: {  }
-    type: lecapi_paragraphs
+    type: caas_paragraphs
     region: content
   subtitle:
     weight: 1
@@ -50,7 +50,7 @@ content:
         collapse_edit_all: collapse_edit_all
         duplicate: duplicate
     third_party_settings: {  }
-    type: lecapi_paragraphs
+    type: caas_paragraphs
     region: content
   variant:
     weight: 0

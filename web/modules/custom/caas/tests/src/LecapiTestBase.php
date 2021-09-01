@@ -1,8 +1,8 @@
 <?php
 
-namespace Drupal\Tests\lecapi;
+namespace Drupal\Tests\caas;
 
-use Drupal\lecapi\Ia;
+use Drupal\caas\Ia;
 use Drupal\taxonomy\Entity\Term;
 use Drupal\taxonomy\Entity\Vocabulary;
 use Drupal\Tests\jsonapi\Functional\JsonApiRequestTestTrait;

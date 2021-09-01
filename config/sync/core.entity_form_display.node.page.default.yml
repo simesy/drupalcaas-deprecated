@@ -14,7 +14,7 @@ dependencies:
   module:
     - chosen_field
     - field_group
-    - lecapi
+    - caas
     - media_library
     - path
     - text
@@ -88,7 +88,7 @@ bundle: page
 mode: default
 content:
   content:
-    type: lecapi_paragraphs
+    type: caas_paragraphs
     weight: 12
     settings:
       title: Content

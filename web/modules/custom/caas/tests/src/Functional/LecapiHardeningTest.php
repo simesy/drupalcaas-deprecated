@@ -1,8 +1,8 @@
 <?php
 
-namespace Drupal\Tests\lecapi\Functional;
+namespace Drupal\Tests\caas\Functional;
 
-use Drupal\Tests\lecapi\LecapiTestBase;
+use Drupal\Tests\caas\LecapiTestBase;
 use Drupal\user\Entity\Role;
 
 /**

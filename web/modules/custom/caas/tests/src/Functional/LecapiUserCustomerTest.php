@@ -1,10 +1,10 @@
 <?php
 
-namespace Drupal\Tests\lecapi\Functional;
+namespace Drupal\Tests\caas\Functional;
 
-use Drupal\lecapi\Ia;
+use Drupal\caas\Ia;
 use Drupal\node\Entity\NodeType;
-use Drupal\Tests\lecapi\LecapiTestBase;
+use Drupal\Tests\caas\LecapiTestBase;
 
 /**
  * Class define any test case for user.
