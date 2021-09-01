@@ -27,9 +27,11 @@ services:
     type: elasticsearch:7.9.3
     scanner: false
     portforward: true
+
 events:
-  pre-start:
+  post-start:
     - chmod 600 config/misc/dev-oauth/dev-public.key
+
 tooling:
 #  drush:
 #    service: appserver
