@@ -4,12 +4,12 @@ namespace Drupal\Tests\caas\Functional;
 
 use Drupal\caas\Ia;
 use Drupal\node\Entity\NodeType;
-use Drupal\Tests\caas\LecapiTestBase;
+use Drupal\Tests\caas\CaasTestBase;
 
 /**
  * Class define any test case for user.
  */
-class LecapiUserCustomerTest extends LecapiTestBase {
+class CaasUserCustomerTest extends CaasTestBase {
 
   /**
    * Test customer user not belong workbench section unable create content.

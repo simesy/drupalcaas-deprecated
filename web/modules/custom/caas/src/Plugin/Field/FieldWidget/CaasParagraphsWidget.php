@@ -10,7 +10,7 @@ use Drupal\paragraphs\Plugin\Field\FieldWidget\ParagraphsWidget;
  * Plugin implementation of the 'entity_reference_revisions item_paragraphs' widget.
  *
  * @FieldWidget(
- *   id = "caas_paragraphs",
+ *   id = "paragraphs",
  *   label = @Translation("Enhanced Paragraph Widget"),
  *   description = @Translation("Enhanced paragraph widget for the Lil Engine Content API site."),
  *   field_types = {

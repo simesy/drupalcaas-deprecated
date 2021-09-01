@@ -18,7 +18,7 @@ use weitzman\DrupalTestTraits\ScreenShotTrait;
 /**
  * A useful base class for functional tests.
  */
-class LecapiTestBase extends ExistingSiteBase {
+class CaasTestBase extends ExistingSiteBase {
   use NodeCreationTrait {
     getNodeByTitle as drupalGetNodeByTitle;
     createNode as drupalCreateNode;

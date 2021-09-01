@@ -13,148 +13,148 @@ use Drupal\Core\Session\AccountInterface;
 use Drupal\caas\Ia;
 use Drupal\node\NodeInterface;
 use Drupal\paragraphs\ParagraphInterface;
-
-/**
- * Implements hook_theme_suggestions_HOOK_alter().
- */
-function caas_theme_suggestions_container_alter(array &$suggestions, array &$variables) {
-  // Adds twig wrapper control, if needed, to the paragraphs subform container.
-  if (isset($variables['element']['#paragraph_type'])) {
-    array_unshift($suggestions, 'container__paragraphs_subform');
-  }
-}
-
-/**
- * Implements hook_theme_suggestions_HOOK_alter().
- */
-function caas_theme_suggestions_paragraph_alter(array &$suggestions, array &$variables) {
-  $paragraph = isset($variables['elements']['#paragraph']) ? $variables['elements']['#paragraph'] : FALSE;
-  if (!($paragraph instanceof ParagraphInterface)) {
-    return;
-  }
-
-  // Reset all paragraph suggestions.
-  $suggestions = [];
-  $mode = strtr($variables['elements']['#view_mode'], '.', '_');
-
-  // Add default twigs for all types, with display mode and variant alternatives - ignoring anything "default".
-  $suggestions[] = 'paragraph__' . $paragraph->bundle();
-  if ($mode != 'default') {
-    $suggestions[] = 'paragraph__' . $paragraph->bundle() . '_' . $mode;
-  }
-  if ($paragraph->hasField(Ia::FIELD_VARIANT) && $variant = $paragraph->variant->value) {
-    if ($variant != 'default') {
-      $suggestions[] = 'paragraph__' . $paragraph->bundle() . '__' . $variant;
-      if ($mode != 'default') {
-        $suggestions[] = 'paragraph__' . $paragraph->bundle() . '_' . $mode . '__' . $variant;
-      }
-    }
-  }
-}
-
-/**
- * Implements template_preprocess_paragraph().
- */
-function legin_preprocess_paragraph(&$variables) {
-  $paragraph = $variables['paragraph'];
-
-  // Surface `items` paragraphs (with associated _heading, _markup, etc).
-  $variables['sub_items'] = [];
-  if ($paragraph->hasField(Ia::FIELD_ITEMS)) {
-    /** @var \Drupal\paragraphs\Entity\Paragraph $item */
-    foreach ($paragraph->get(Ia::FIELD_ITEMS)->referencedEntities() as $item) {
-      $sub_item = [];
-      foreach ($item->getFieldDefinitions() as $field_name => $definition) {
-        $sub_item[$field_name] = $item->get($field_name)->view('default');
-      }
-      // Quickedit attributes for when using individual fields.
-      $sub_item['attributes'] = new Attribute(['data-quickedit-entity-id' => $item->getEntityTypeId() . '/' . $item->id()]);
-      $variables['sub_items'][] = $sub_item;
-    }
-  }
-
-  // Add useful classes and variant information.
-  $variables['classes'] = [
-    'paragraph',
-    'bundle-' . Html::cleanCssIdentifier($paragraph->bundle()),
-  ];
-  $variables['bundle'] = $paragraph->bundle();
-  if ($paragraph->hasField(Ia::FIELD_VARIANT) && $variant = $paragraph->get(Ia::FIELD_VARIANT)->value) {
-    $variables['variant'] = $variant;
-    $variables['classes'][] = 'variant-' . $variant;
-  }
-  else {
-    $variables['variant'] = 'default';
-  }
-}
-
-/**
- * Implements hook_node_access_records().
- */
-function caas_node_access_records(NodeInterface $node) {
-  $records = [];
-
-  // One record for the site that the node belongs to, the GID is the term ID of the Site.
-  foreach ($node->get(Ia::FIELD_SITE) as $site) {
-    $records[] = [
-      'realm' => 'caas',
-      'gid' => $site->target_id,
-      'grant_view' => 1,
-      'grant_update' => 0,
-      'grant_delete' => 0,
-      'langcode' => 'en',
-    ];
-  }
-
-  return $records;
-}
-
-/**
- * Implements hook_node_grants().
- */
-function caas_node_grants(AccountInterface $account, $op) {
-  $grants = [];
-
-  if ($op == 'view') {
-    if ($account->hasPermission('caas bypass view access control')) {
-      // @todo dynamically load all taxonomy terms? I haven't decided how to manage this for API access.
-      $grants = [1, 2, 3, 4];
-    }
-    else {
-      // Grant access to editors based on workbench sections.
-      /** @var \Drupal\workbench_access\UserSectionStorage $user_section_storage */
-      $user_section_storage = \Drupal::service('workbench_access.user_section_storage');
-      /** @var \Drupal\workbench_access\RoleSectionStorage $role_section_storage */
-      $role_section_storage = \Drupal::service('workbench_access.role_section_storage');
-      $scheme = \Drupal::service('entity_type.manager')->getStorage('access_scheme')->load(Ia::FIELD_SITE);
-
-      $user_sections = $user_section_storage->getUserSections($scheme, $account, FALSE);
-      $role_sections = $role_section_storage->getRoleSections($scheme, $account);
-      $grants = array_unique($user_sections + $role_sections);
-    }
-  }
-
-  return ['caas' => $grants];
-}
-
-/**
- * Implements hook_entity_base_field_info().
- */
-function caas_entity_base_field_info(EntityTypeInterface $entity_type) {
-  $fields = [];
-  $base_table = $entity_type->getBaseTable();
-
-  // Certain classes are just not supported.
-  $original_class = $entity_type->getOriginalClass();
-
-  if (!empty($base_table) && $original_class == 'Drupal\file\Entity\File') {
-    $fields['image_style_uri'] = BaseFieldDefinition::create('caas_image_style_uri')
-      ->setLabel(t('Entity image styles'))
-      ->setDescription(t('Image styles of the file entity'))
-      ->setComputed(TRUE)
-      ->setCardinality(1)
-      ->setTranslatable(TRUE);
-  }
-
-  return $fields;
-}
+//
+///**
+// * Implements hook_theme_suggestions_HOOK_alter().
+// */
+//function caas_theme_suggestions_container_alter(array &$suggestions, array &$variables) {
+//  // Adds twig wrapper control, if needed, to the paragraphs subform container.
+//  if (isset($variables['element']['#paragraph_type'])) {
+//    array_unshift($suggestions, 'container__paragraphs_subform');
+//  }
+//}
+//
+///**
+// * Implements hook_theme_suggestions_HOOK_alter().
+// */
+//function caas_theme_suggestions_paragraph_alter(array &$suggestions, array &$variables) {
+//  $paragraph = isset($variables['elements']['#paragraph']) ? $variables['elements']['#paragraph'] : FALSE;
+//  if (!($paragraph instanceof ParagraphInterface)) {
+//    return;
+//  }
+//
+//  // Reset all paragraph suggestions.
+//  $suggestions = [];
+//  $mode = strtr($variables['elements']['#view_mode'], '.', '_');
+//
+//  // Add default twigs for all types, with display mode and variant alternatives - ignoring anything "default".
+//  $suggestions[] = 'paragraph__' . $paragraph->bundle();
+//  if ($mode != 'default') {
+//    $suggestions[] = 'paragraph__' . $paragraph->bundle() . '_' . $mode;
+//  }
+//  if ($paragraph->hasField(Ia::FIELD_VARIANT) && $variant = $paragraph->variant->value) {
+//    if ($variant != 'default') {
+//      $suggestions[] = 'paragraph__' . $paragraph->bundle() . '__' . $variant;
+//      if ($mode != 'default') {
+//        $suggestions[] = 'paragraph__' . $paragraph->bundle() . '_' . $mode . '__' . $variant;
+//      }
+//    }
+//  }
+//}
+//
+///**
+// * Implements template_preprocess_paragraph().
+// */
+//function legin_preprocess_paragraph(&$variables) {
+//  $paragraph = $variables['paragraph'];
+//
+//  // Surface `items` paragraphs (with associated _heading, _markup, etc).
+//  $variables['sub_items'] = [];
+//  if ($paragraph->hasField(Ia::FIELD_ITEMS)) {
+//    /** @var \Drupal\paragraphs\Entity\Paragraph $item */
+//    foreach ($paragraph->get(Ia::FIELD_ITEMS)->referencedEntities() as $item) {
+//      $sub_item = [];
+//      foreach ($item->getFieldDefinitions() as $field_name => $definition) {
+//        $sub_item[$field_name] = $item->get($field_name)->view('default');
+//      }
+//      // Quickedit attributes for when using individual fields.
+//      $sub_item['attributes'] = new Attribute(['data-quickedit-entity-id' => $item->getEntityTypeId() . '/' . $item->id()]);
+//      $variables['sub_items'][] = $sub_item;
+//    }
+//  }
+//
+//  // Add useful classes and variant information.
+//  $variables['classes'] = [
+//    'paragraph',
+//    'bundle-' . Html::cleanCssIdentifier($paragraph->bundle()),
+//  ];
+//  $variables['bundle'] = $paragraph->bundle();
+//  if ($paragraph->hasField(Ia::FIELD_VARIANT) && $variant = $paragraph->get(Ia::FIELD_VARIANT)->value) {
+//    $variables['variant'] = $variant;
+//    $variables['classes'][] = 'variant-' . $variant;
+//  }
+//  else {
+//    $variables['variant'] = 'default';
+//  }
+//}
+//
+///**
+// * Implements hook_node_access_records().
+// */
+//function caas_node_access_records(NodeInterface $node) {
+//  $records = [];
+//
+//  // One record for the site that the node belongs to, the GID is the term ID of the Site.
+//  foreach ($node->get(Ia::FIELD_SITE) as $site) {
+//    $records[] = [
+//      'realm' => 'caas',
+//      'gid' => $site->target_id,
+//      'grant_view' => 1,
+//      'grant_update' => 0,
+//      'grant_delete' => 0,
+//      'langcode' => 'en',
+//    ];
+//  }
+//
+//  return $records;
+//}
+//
+///**
+// * Implements hook_node_grants().
+// */
+//function caas_node_grants(AccountInterface $account, $op) {
+//  $grants = [];
+//
+//  if ($op == 'view') {
+//    if ($account->hasPermission('caas bypass view access control')) {
+//      // @todo dynamically load all taxonomy terms? I haven't decided how to manage this for API access.
+//      $grants = [1, 2, 3, 4];
+//    }
+//    else {
+//      // Grant access to editors based on workbench sections.
+//      /** @var \Drupal\workbench_access\UserSectionStorage $user_section_storage */
+//      $user_section_storage = \Drupal::service('workbench_access.user_section_storage');
+//      /** @var \Drupal\workbench_access\RoleSectionStorage $role_section_storage */
+//      $role_section_storage = \Drupal::service('workbench_access.role_section_storage');
+//      $scheme = \Drupal::service('entity_type.manager')->getStorage('access_scheme')->load(Ia::FIELD_SITE);
+//
+//      $user_sections = $user_section_storage->getUserSections($scheme, $account, FALSE);
+//      $role_sections = $role_section_storage->getRoleSections($scheme, $account);
+//      $grants = array_unique($user_sections + $role_sections);
+//    }
+//  }
+//
+//  return ['caas' => $grants];
+//}
+//
+///**
+// * Implements hook_entity_base_field_info().
+// */
+//function caas_entity_base_field_info(EntityTypeInterface $entity_type) {
+//  $fields = [];
+//  $base_table = $entity_type->getBaseTable();
+//
+//  // Certain classes are just not supported.
+//  $original_class = $entity_type->getOriginalClass();
+//
+//  if (!empty($base_table) && $original_class == 'Drupal\file\Entity\File') {
+//    $fields['image_style_uri'] = BaseFieldDefinition::create('caas_image_style_uri')
+//      ->setLabel(t('Entity image styles'))
+//      ->setDescription(t('Image styles of the file entity'))
+//      ->setComputed(TRUE)
+//      ->setCardinality(1)
+//      ->setTranslatable(TRUE);
+//  }
+//
+//  return $fields;
+//}

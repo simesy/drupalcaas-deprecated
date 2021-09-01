@@ -14,7 +14,6 @@ dependencies:
   module:
     - chosen_field
     - field_group
-    - caas
     - media_library
     - path
     - text
@@ -88,7 +87,7 @@ bundle: page
 mode: default
 content:
   content:
-    type: caas_paragraphs
+    type: paragraphs
     weight: 12
     settings:
       title: Content

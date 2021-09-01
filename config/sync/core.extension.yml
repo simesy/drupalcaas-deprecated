@@ -8,6 +8,7 @@ module:
   block: 0
   block_content: 0
   breakpoint: 0
+  caas: 0
   chosen: 0
   chosen_field: 0
   chosen_lib: 0
@@ -39,8 +40,6 @@ module:
   graphql_search_api: 0
   image: 0
   language: 0
-  caas: 0
-  caas_admin: 0
   link: 0
   media: 0
   media_library: 0

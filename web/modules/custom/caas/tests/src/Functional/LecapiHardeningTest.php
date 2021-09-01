@@ -2,13 +2,13 @@
 
 namespace Drupal\Tests\caas\Functional;
 
-use Drupal\Tests\caas\LecapiTestBase;
+use Drupal\Tests\caas\CaasTestBase;
 use Drupal\user\Entity\Role;
 
 /**
  * Tests for messaging related to API hardening.
  */
-class LecapiHardeningTest extends LecapiTestBase {
+class CaasHardeningTest extends CaasTestBase {
 
   /**
    * Ensure warnings when authenticated and anonymous users are given permissions.

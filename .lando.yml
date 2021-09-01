@@ -3,14 +3,36 @@ recipe: drupal9
 config:
   webroot: web
   # Off by default for performance. Set to `true` and run `lando rebuild` (will not reset database).
-  xdebug: true
+  xdebug: false
 keys:
   - id_rsa
+services:
+  solr:
+    type: solr:7.7
+    portforward: true
+    scanner: false
+    core: drupal
+    config:
+      dir: .platform/configsets/solr7
+    phpmyadmin:
+      type: phpmyadmin
+      hosts:
+        - database
+  node:
+    type: node
+    scanner: false
+    globals:
+      gulp-cli: latest
+  elasticsearch:
+    type: elasticsearch:7.9.3
+    scanner: false
+    portforward: true
+events:
+  pre-start:
+    - chmod 600 config/misc/dev-oauth/dev-public.key
 tooling:
-  drush:
-    # Override .lando.upstream.yml
-    service: appserver
-  # @see docs/backend.md.
+#  drush:
+#    service: appserver
   sync-prod:
     service: appserver
     description: Syncs prod database and files to local.
@@ -34,24 +56,3 @@ tooling:
     description: Watch the theme.
     dir: /app/web/themes/custom/legin
     cmd: gulp sass
-services:
-  solr:
-    type: solr:7.7
-    portforward: true
-    scanner: false
-    core: drupal
-    config:
-      dir: .platform/configsets/solr7
-    phpmyadmin:
-      type: phpmyadmin
-      hosts:
-        - database
-  node:
-    type: node
-    scanner: false
-    globals:
-      gulp-cli: latest
-  elasticsearch:
-    type: elasticsearch:7.9.3
-    scanner: false
-    portforward: true

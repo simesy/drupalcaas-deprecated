@@ -4,7 +4,7 @@
 $databases['default']['default'] = array (
   'database' => 'default',
   'username' => 'root',
-  'password' => 'lilengine',
+  'password' => 'password',
   'host' => '127.0.0.1',
   'driver' => 'mysql',
 );

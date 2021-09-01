@@ -6,13 +6,13 @@ use Drupal\Component\Serialization\Json;
 use Drupal\Component\Utility\Random;
 use Drupal\Core\File\FileSystemInterface;
 use Drupal\Core\Url;
-use Drupal\Tests\caas\LecapiTestBase;
+use Drupal\Tests\caas\CaasTestBase;
 use GuzzleHttp\RequestOptions;
 
 /**
  * Test file resource jsonapi.
  */
-class LecapiResourceFileTest extends LecapiTestBase {
+class CaasResourceFileTest extends CaasTestBase {
 
   /**
    * Test uri.absolute of file entity.

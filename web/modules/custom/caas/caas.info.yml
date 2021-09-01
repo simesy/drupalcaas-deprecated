@@ -1,6 +1,6 @@
-name: "L'e Content API"
+name: "Drupal CaaS"
 type: module
-description: Generic code for the platform.
+description: General code for the application.
 package: caas
 core_version_requirement: ^9.0
-php: 7.3
+php: 7.4

@@ -9,7 +9,7 @@ executors:
       - image: mysql:5.7
         environment:
           MYSQL_DATABASE: default
-          MYSQL_ROOT_PASSWORD: lilengine
+          MYSQL_ROOT_PASSWORD: password
       - image: selenium/standalone-chrome
 commands:
   prepare_environment:

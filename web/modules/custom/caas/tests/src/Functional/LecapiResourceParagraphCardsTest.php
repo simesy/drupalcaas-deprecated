@@ -5,13 +5,13 @@ namespace Drupal\Tests\caas\Functional;
 use Drupal\Component\Serialization\Json;
 use Drupal\Core\Url;
 use Drupal\caas\Ia;
-use Drupal\Tests\caas\LecapiTestBase;
+use Drupal\Tests\caas\CaasTestBase;
 use GuzzleHttp\RequestOptions;
 
 /**
  * Test case for Cards paragraph.
  */
-class LecapiResourceParagraphCardsTest extends LecapiTestBase {
+class CaasResourceParagraphCardsTest extends CaasTestBase {
 
   /**
    * Tests GETting an individual resource.

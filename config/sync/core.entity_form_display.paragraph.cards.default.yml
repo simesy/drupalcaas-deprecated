@@ -31,10 +31,10 @@ content:
         collapse_edit_all: collapse_edit_all
         duplicate: duplicate
     third_party_settings: {  }
-    type: caas_paragraphs
+    type: paragraphs
     region: content
   subtitle:
-    type: caas_paragraphs
+    type: paragraphs
     weight: 1
     settings:
       title: Subtitle
