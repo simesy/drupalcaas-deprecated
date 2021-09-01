@@ -1,0 +1,5 @@
+name: Content model
+type: module
+description: Controls the content model for this site.
+core_version_requirement: ^9.0
+php: 7.4

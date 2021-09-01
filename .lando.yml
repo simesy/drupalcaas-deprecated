@@ -2,7 +2,6 @@ name: caas
 recipe: drupal9
 config:
   webroot: web
-  # Off by default for performance. Set to `true` and run `lando rebuild` (will not reset database).
   xdebug: false
 keys:
   - id_rsa
