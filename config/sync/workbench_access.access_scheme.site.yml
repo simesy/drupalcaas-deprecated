@@ -8,8 +8,8 @@ dependencies:
     - field.field.node.page.site
     - taxonomy.vocabulary.site
 id: site
-label: Site
 plural_label: Sites
+label: Site
 scheme: taxonomy
 scheme_settings:
   vocabularies:

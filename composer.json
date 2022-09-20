@@ -50,7 +50,6 @@
         "drupal/core-composer-scaffold": "^9",
         "drupal/core-recommended": "^9",
         "drupal/diff": "^1",
-        "drupal/druxt": "^0.4.1",
         "drupal/elasticsearch_connector": "^7.0@alpha",
         "drupal/field_group": "^3",
         "drupal/geofield": "^1",
@@ -59,10 +58,6 @@
         "drupal/gin_login": "^1.0@RC",
         "drupal/graphql": "^4",
         "drupal/graphql_search_api": "^1",
-        "drupal/jsonapi_extras": "^3",
-        "drupal/jsonapi_image_styles": "^2.0@beta",
-        "drupal/jsonapi_search_api": "^1",
-        "drupal/jsonapi_views": "1.x-dev",
         "drupal/metatag": "^1",
         "drupal/openapi": "^2",
         "drupal/paragraphs": "^1.12",
@@ -99,7 +94,16 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "cweagans/composer-patches": true,
+            "drupal/core-composer-scaffold": true,
+            "grasmash/drupal-security-warning": true,
+            "composer/installers": true,
+            "zaporylie/composer-drupal-optimizations": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "oomphinc/composer-installers-extender": true
+        }
     },
     "extra": {
         "drupal-scaffold": {

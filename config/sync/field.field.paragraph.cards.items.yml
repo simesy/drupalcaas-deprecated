@@ -21,9 +21,9 @@ default_value_callback: ''
 settings:
   handler: 'default:paragraph'
   handler_settings:
-    negate: 0
     target_bundles:
       item: item
+    negate: 0
     target_bundles_drag_drop:
       cards:
         weight: 8
@@ -32,8 +32,8 @@ settings:
         weight: 9
         enabled: false
       item:
-        enabled: true
         weight: 11
+        enabled: true
       list:
         weight: 10
         enabled: false

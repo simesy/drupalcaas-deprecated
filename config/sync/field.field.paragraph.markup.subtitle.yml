@@ -21,9 +21,9 @@ default_value_callback: ''
 settings:
   handler: 'default:paragraph'
   handler_settings:
-    negate: 0
     target_bundles:
       subtitle: subtitle
+    negate: 0
     target_bundles_drag_drop:
       cards:
         weight: 8
@@ -44,6 +44,6 @@ settings:
         weight: 13
         enabled: false
       subtitle:
-        enabled: true
         weight: 14
+        enabled: true
 field_type: entity_reference_revisions

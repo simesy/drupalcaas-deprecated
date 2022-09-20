@@ -15,12 +15,14 @@ bundle: image
 mode: default
 content:
   media_image:
+    type: image
     label: visually_hidden
     settings:
-      image_style: ''
       image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
     third_party_settings: {  }
-    type: image
     weight: 1
     region: content
 hidden:

@@ -23,61 +23,61 @@ third_party_settings:
       children:
         - site
         - related
+      label: 'Workflow and IA'
+      region: content
       parent_name: ''
       weight: 10
       format_type: details_sidebar
-      region: content
       format_settings:
-        description: ''
-        weight: 0
-        required_fields: true
-        id: ''
         classes: ''
+        id: ''
         open: false
-      label: 'Workflow and IA'
+        description: ''
+        required_fields: true
+        weight: 0
     group_tab:
       children:
         - group_content
         - group_other
+      label: Tab
+      region: content
       parent_name: ''
       weight: 11
       format_type: tabs
-      region: content
       format_settings:
-        direction: horizontal
-        id: ''
         classes: ''
-      label: Tab
+        id: ''
+        direction: horizontal
     group_content:
       children:
         - deck
         - content
+      label: Content
+      region: content
       parent_name: group_tab
       weight: 12
       format_type: tab
-      region: content
       format_settings:
-        id: ''
         classes: ''
-        description: ''
+        id: ''
         formatter: closed
+        description: ''
         required_fields: true
-      label: Content
     group_other:
       children:
         - media
         - hero
+      label: Other
+      region: content
       parent_name: group_tab
       weight: 13
       format_type: tab
-      region: content
       format_settings:
-        id: ''
         classes: ''
-        description: ''
+        id: ''
         formatter: closed
+        description: ''
         required_fields: true
-      label: Other
 _core:
   default_config_hash: 6VUXB1jTUjK5zjkfMa2Kd2WW4sFUlgfBlfJSx01qLpU
 id: node.article.default
@@ -86,7 +86,9 @@ bundle: article
 mode: default
 content:
   content:
+    type: lecapi_paragraphs
     weight: 5
+    region: content
     settings:
       title: Content
       title_plural: Content
@@ -102,8 +104,6 @@ content:
         collapse_edit_all: collapse_edit_all
         add_above: 0
     third_party_settings: {  }
-    type: lecapi_paragraphs
-    region: content
   created:
     type: datetime_timestamp
     weight: 4
@@ -111,20 +111,20 @@ content:
     settings: {  }
     third_party_settings: {  }
   deck:
+    type: text_textarea
     weight: 4
+    region: content
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
-    type: text_textarea
-    region: content
   hero:
     type: media_library_widget
     weight: 5
+    region: content
     settings:
       media_types: {  }
     third_party_settings: {  }
-    region: content
   langcode:
     type: language_select
     weight: 1
@@ -135,10 +135,10 @@ content:
   media:
     type: media_library_widget
     weight: 3
+    region: content
     settings:
       media_types: {  }
     third_party_settings: {  }
-    region: content
   path:
     type: path
     weight: 7
@@ -147,40 +147,40 @@ content:
     third_party_settings: {  }
   promote:
     type: boolean_checkbox
-    settings:
-      display_label: true
     weight: 5
     region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   related:
+    type: entity_reference_autocomplete
     weight: 29
+    region: content
     settings:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
   site:
+    type: chosen_select
     weight: 28
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: chosen_select
-    region: content
   status:
     type: boolean_checkbox
-    settings:
-      display_label: true
     weight: 9
     region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
-    settings:
-      display_label: true
     weight: 6
     region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   title:
     type: string_textfield

@@ -2,34 +2,31 @@ uuid: 0d8f66a7-db2f-451c-ab9e-9179874bca80
 langcode: en
 status: true
 dependencies:
-  module:
-    - search_api_solr
-    - node
-    - taxonomy
-    - search_api
   config:
     - field.storage.node.site
     - field.storage.taxonomy_term._key
     - search_api.server.solr
     - core.entity_view_mode.node.search_index
+  module:
+    - search_api_solr
+    - node
+    - taxonomy
+    - search_api
 third_party_settings:
   search_api_solr:
     finalize: false
     commit_before_finalize: false
     commit_after_finalize: false
-    multilingual:
-      limit_to_content_language: false
-      include_language_independent: true
     highlighter:
       maxAnalyzedChars: 51200
       fragmenter: gap
+      usePhraseHighlighter: true
+      highlightMultiTerm: true
+      preserveMulti: false
       regex:
         slop: 0.5
         pattern: blank
         maxAnalyzedChars: 10000
-      usePhraseHighlighter: true
-      highlightMultiTerm: true
-      preserveMulti: false
       highlight:
         mergeContiguous: false
         requireFieldMatch: false
@@ -50,6 +47,9 @@ third_party_settings:
       index_prefix: ''
       collection: ''
       timezone: ''
+    multilingual:
+      limit_to_content_language: false
+      include_language_independent: true
 id: content
 name: Content
 description: ''
@@ -85,7 +85,7 @@ field_settings:
     type: text
     configuration:
       roles:
-        anonymous: anonymous
+        - anonymous
       view_mode:
         'entity:node':
           article: search_index
@@ -150,6 +150,7 @@ tracker_settings:
   default:
     indexing_order: fifo
 options:
-  index_directly: true
   cron_limit: 50
+  index_directly: true
+  track_changes_in_references: true
 server: solr

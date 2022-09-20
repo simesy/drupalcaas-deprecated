@@ -14,12 +14,12 @@ mode: default
 content:
   content:
     type: entity_reference_revisions_entity_view
-    weight: 1
     label: above
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
+    weight: 1
     region: content
 hidden:
   langcode: true

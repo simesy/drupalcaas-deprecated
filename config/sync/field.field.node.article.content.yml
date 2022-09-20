@@ -25,32 +25,32 @@ default_value_callback: ''
 settings:
   handler: 'default:paragraph'
   handler_settings:
-    negate: 0
     target_bundles:
       markup: markup
       cards: cards
       list: list
       sequence: sequence
       cta: cta
+    negate: 0
     target_bundles_drag_drop:
       cards:
-        enabled: true
         weight: -14
-      cta:
         enabled: true
+      cta:
         weight: -11
+        enabled: true
       item:
         weight: -10
         enabled: false
       list:
-        enabled: true
         weight: -13
+        enabled: true
       markup:
-        enabled: true
         weight: -15
-      sequence:
         enabled: true
+      sequence:
         weight: -12
+        enabled: true
       subtitle:
         weight: -9
         enabled: false

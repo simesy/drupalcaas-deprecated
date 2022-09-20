@@ -19,21 +19,21 @@ bundle: cta
 mode: default
 content:
   _heading:
+    type: string_textfield
     weight: 1
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   _link:
+    type: link_default
     weight: 2
+    region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
-    type: link_default
-    region: content
   _markup:
     type: text_textarea
     weight: 4
@@ -50,11 +50,11 @@ content:
       media_types: {  }
     third_party_settings: {  }
   variant:
+    type: options_select
     weight: 0
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
 hidden:
   created: true
   status: true

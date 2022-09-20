@@ -15,7 +15,9 @@ bundle: cards
 mode: default
 content:
   items:
+    type: lecapi_paragraphs
     weight: 2
+    region: content
     settings:
       title: Item
       title_plural: Items
@@ -31,11 +33,10 @@ content:
         collapse_edit_all: collapse_edit_all
         duplicate: duplicate
     third_party_settings: {  }
-    type: lecapi_paragraphs
-    region: content
   subtitle:
     type: lecapi_paragraphs
     weight: 1
+    region: content
     settings:
       title: Subtitle
       title_plural: Subtitles
@@ -51,13 +52,12 @@ content:
         collapse_edit_all: collapse_edit_all
         duplicate: duplicate
     third_party_settings: {  }
-    region: content
   variant:
+    type: options_select
     weight: 0
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
 hidden:
   created: true
   status: true
