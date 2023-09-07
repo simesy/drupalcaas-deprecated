@@ -6,7 +6,8 @@
 /web/themes/contrib/
 /web/profiles/contrib/
 /web/libraries/
-console/
+/.editorconfig
+/.gitattributes
 /.csslintrc
 /.eslintignore
 /.eslintrc.json
@@ -20,23 +21,21 @@ console/
 /robots.txt
 /update.php
 /web.config
+default.services.yml
+default.settings.php
 
 # Assets.
 web/sites/default/files
 
-# Development.
-local.settings.php
-local.services.yml
+# Development or per platform.
+override.settings.php
+override.services.yml
 local
 tmp
 private
 .drush
 drush-backups
 .console
-/.editorconfig
-/.gitattributes
-default.services.yml
-default.settings.php
 /web/sites/simpletest
 /.idea/
 /.env
