@@ -1,0 +1,8 @@
+lecapi.api.breadcrumb:
+  path: '/lecapi/api/breadcrumb'
+  defaults:
+    _controller: '\Drupal\lecapi\Controller\ApiBreadcrumb::index'
+    _title: 'index'
+  requirements:
+    _permission: 'access content'
+    _format: json

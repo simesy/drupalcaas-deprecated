@@ -1,0 +1,5 @@
+services:
+  lecapi.event_listener:
+    class: Drupal\lecapi\EventListener
+    tags:
+      - { name: event_subscriber }
