@@ -1,4 +1,0 @@
-# This project has no www.
-"https://{default}/":
-    type: upstream
-    upstream: "app:http"

@@ -1,6 +1,0 @@
-name: Lecapi admin
-type: module
-description: Tweaks to the editor experience.
-package: lecapi
-core_version_requirement: ^9.0
-php: 7.3

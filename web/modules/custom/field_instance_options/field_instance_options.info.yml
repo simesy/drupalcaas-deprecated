@@ -1,5 +1,0 @@
-name: Field Instance Options
-type: module
-description: Moves allowed values configuration per field instance.
-core_version_requirement: ^9.0
-php: 7.3

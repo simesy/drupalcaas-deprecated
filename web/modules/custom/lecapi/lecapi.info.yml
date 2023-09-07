@@ -1,6 +1,0 @@
-name: "L'e Content API"
-type: module
-description: Generic code for the platform.
-package: lecapi
-core_version_requirement: ^9.0
-php: 7.3
