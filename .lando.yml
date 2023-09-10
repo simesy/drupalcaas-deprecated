@@ -1,0 +1,14 @@
+name: drupalcaas
+recipe: drupal10
+config:
+  webroot: web
+  php: "8.1"
+  via: nginx
+  build:
+    - composer install
+
+# To be discussed later.
+# tooling:
+#   drush:
+#     env:
+#       DRUSH_OPTIONS_URI: "http://drupalcaas.lndo.site"
