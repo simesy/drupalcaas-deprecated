@@ -7,8 +7,8 @@ config:
   build:
     - composer install
 
-# To be discussed later.
-# tooling:
-#   drush:
-#     env:
-#       DRUSH_OPTIONS_URI: "http://drupalcaas.lndo.site"
+# Tell Drush what URL we want.
+tooling:
+  drush:
+    env:
+      DRUSH_OPTIONS_URI: "https://drupalcaas.lndo.site"

@@ -12,6 +12,17 @@ if (getenv('LANDO') === 'ON') {
   ];
 }
 
+if (getenv('IS_DDEV_PROJECT') == 'true') {
+  $databases['default']['default'] = [
+    'driver' => 'mysql',
+    'database' => 'db',
+    'username' => 'db',
+    'password' => 'db',
+    'host' => 'db',
+    'port' => 3306,
+  ];
+}
+
 $settings['container_yamls'][] = DRUPAL_ROOT . '/sites/default/local.services.yml';
 
 $settings['twig_debug'] = TRUE;

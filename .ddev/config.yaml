@@ -1,0 +1,18 @@
+name: drupalcaas
+type: drupal10
+docroot: web
+php_version: "8.1"
+webserver_type: nginx-fpm
+
+# We're being picky about our settings.php setup, so ask ddev to refrain from editing it.
+disable_settings_management: true
+
+# DEV will default to 80 and 443, so only required for running with Lando at
+# the same time and we'll probably remove this later as this wouldn't be normal.
+router_http_port: 8080
+router_https_port: 8443
+
+# Tell drush what URL we want of the ones DDEV provides.
+# Only needed when disable_settings_management is used.
+web_environment:
+- DRUSH_OPTIONS_URI=https://drupalcaas.ddev.site:8443
