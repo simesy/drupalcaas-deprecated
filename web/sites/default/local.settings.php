@@ -32,6 +32,3 @@ ini_set('display_startup_errors', TRUE);
 $settings['update_free_access'] = FALSE;
 $settings['rebuild_access'] = FALSE;
 $settings['skip_permissions_hardening'] = TRUE;
-
-$settings['trusted_host_patterns'] = ['^.+\.lndo\.site$', '^localhost$'];
-$config['media.settings']['iframe_domain'] = '';
