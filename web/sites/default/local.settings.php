@@ -25,6 +25,18 @@ if (getenv('IS_DDEV_PROJECT') == 'true') {
   ];
 }
 
+// 3. Native Docker Compose users.
+if (getenv('FREE_AS_IN_SAUCE') == 'true') {
+  $databases['default']['default'] = [
+    'driver' => 'mysql',
+    'database' => 'drupal',
+    'username' => 'drupal',
+    'password' => 'drupal',
+    'host' => 'mariadb',
+    'port' => 3306,
+  ];
+}
+
 $settings['container_yamls'][] = DRUPAL_ROOT . '/sites/default/local.services.yml';
 
 $settings['twig_debug'] = TRUE;

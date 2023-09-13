@@ -19,8 +19,8 @@ $settings['trusted_host_patterns'] = ['.*']; // Best practice for Platform.sh.
 // Platform.sh
 // TODO
 
-//
-if (getenv('LANDO') == 'ON' || getenv('IS_DDEV_PROJECT') == 'true') {
+// Pick a dev environment.
+if (getenv('LANDO') == 'ON' || getenv('IS_DDEV_PROJECT') == 'true' || getenv('FREE_AS_IN_SAUCE') == 'true') {
   include_once $app_root . '/' . $site_path . '/local.settings.php';
 }
 
