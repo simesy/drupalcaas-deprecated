@@ -1,5 +1,6 @@
 <?php
 
+// 1. Lando users.
 if (getenv('LANDO') === 'ON') {
   $lando_info = json_decode(getenv('LANDO_INFO'), TRUE);
   $databases['default']['default'] = [
@@ -12,6 +13,7 @@ if (getenv('LANDO') === 'ON') {
   ];
 }
 
+// 2. DDEV users.
 if (getenv('IS_DDEV_PROJECT') == 'true') {
   $databases['default']['default'] = [
     'driver' => 'mysql',
