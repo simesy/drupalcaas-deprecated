@@ -1,12 +1,19 @@
-# Drupal Content As A Service (CAAS)
 
-This is a Free Sauce demonstration project build in progress. You can build it from scratch
-over on the [Freesauce playlist](https://www.youtube.com/playlist?list=PLxbpGX8IrZNqRyzN5F98h1NCpJXjwDO3g).
+# Drupal Content-as-a-Service Demo
+
+A Drupal site build demonstrated in video tutorials, presented by Free Sauce.
+
+This is a demonstration project where everything added to this repository has been
+described in a video. You can build it from scratch yourself, over on the
+[Freesauce playlist](https://www.youtube.com/playlist?list=PLxbpGX8IrZNqRyzN5F98h1NCpJXjwDO3g).
 
 ## Local development
 
-Multiple ways to run it locally but they are very minimal examples. They all use
-port 80/443 so you would only run one at a time.
+Two ways are available to run locally: Lando and DDEV. They both use
+port 80/443 so you would only run one at any time.
+
+(There was also a bonus video where I looked at adding native docker compose based
+on Docker4Drupal @see [video](https://youtu.be/wihnEBTKGQc) and [tag v0.1.6](https://github.com/simesy/drupalcaas/tree/v0.1.6)).
 
 ### Lando
 

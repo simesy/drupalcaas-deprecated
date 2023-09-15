@@ -14,6 +14,7 @@ $settings['file_scan_ignore_directories'] = ['node_modules', 'bower_components',
 $settings['entity_update_batch_size'] = 50;
 $settings['entity_update_backup'] = TRUE;
 $settings['config_sync_directory'] = '../config/sync';
+$settings['skip_permissions_hardening'] = TRUE;
 $settings['trusted_host_patterns'] = ['.*']; // Best practice for Platform.sh.
 
 // Platform.sh
