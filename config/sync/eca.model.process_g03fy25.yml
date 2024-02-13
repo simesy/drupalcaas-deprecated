@@ -1,0 +1,159 @@
+uuid: dd861b45-517c-4397-a687-f705568c4325
+langcode: en
+status: true
+dependencies:
+  config:
+    - eca.eca.process_g03fy25
+id: process_g03fy25
+label: 'Workflow transition'
+tags:
+  - untagged
+documentation: ''
+filename: ''
+modeldata: |
+  <?xml version="1.0" encoding="UTF-8"?>
+  <bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:qa="http://some-company/schema/bpmn/qa" id="sample-diagram" targetNamespace="http://bpmn.io/schema/bpmn" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd">
+    <bpmn2:process id="Process_g03fy25" name="Workflow transition" isExecutable="true">
+      <bpmn2:startEvent id="Event_01f6vu2" camunda:modelerTemplate="org.drupal.event.workflow:transition">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="workflow:transition" />
+          </camunda:properties>
+          <camunda:field name="type">
+            <camunda:string>node page</camunda:string>
+          </camunda:field>
+          <camunda:field name="from_state">
+            <camunda:string>unpublished</camunda:string>
+          </camunda:field>
+          <camunda:field name="to_state">
+            <camunda:string>published</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:outgoing>Flow_15kkayu</bpmn2:outgoing>
+      </bpmn2:startEvent>
+      <bpmn2:startEvent id="Event_0bwqw9z" camunda:modelerTemplate="org.drupal.event.workflow:transition">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="workflow:transition" />
+          </camunda:properties>
+          <camunda:field name="type">
+            <camunda:string>node page</camunda:string>
+          </camunda:field>
+          <camunda:field name="from_state">
+            <camunda:string>draft</camunda:string>
+          </camunda:field>
+          <camunda:field name="to_state">
+            <camunda:string>published</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:outgoing>Flow_0nz2y6f</bpmn2:outgoing>
+      </bpmn2:startEvent>
+      <bpmn2:task id="Activity_04g1dpj" name="Log message" camunda:modelerTemplate="org.drupal.action.eca_write_log_message">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_write_log_message" />
+          </camunda:properties>
+          <camunda:field name="channel">
+            <camunda:string>foo</camunda:string>
+          </camunda:field>
+          <camunda:field name="severity">
+            <camunda:string>5</camunda:string>
+          </camunda:field>
+          <camunda:field name="message">
+            <camunda:string>Page [node:title] is now published. 🎉</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_1a4y8ek</bpmn2:incoming>
+      </bpmn2:task>
+      <bpmn2:sequenceFlow id="Flow_15kkayu" sourceRef="Event_01f6vu2" targetRef="Gateway_0xmaamm" />
+      <bpmn2:sequenceFlow id="Flow_0nz2y6f" sourceRef="Event_0bwqw9z" targetRef="Gateway_0xmaamm" />
+      <bpmn2:task id="Activity_0ioht0k" name="Show Message" camunda:modelerTemplate="org.drupal.action.action_message_action">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="action_message_action" />
+          </camunda:properties>
+          <camunda:field name="message">
+            <camunda:string>[node:title] is now published 🎉</camunda:string>
+          </camunda:field>
+          <camunda:field name="replace_tokens">
+            <camunda:string>no</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_0o3y9zz</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_1a4y8ek</bpmn2:outgoing>
+      </bpmn2:task>
+      <bpmn2:exclusiveGateway id="Gateway_0xmaamm">
+        <bpmn2:incoming>Flow_15kkayu</bpmn2:incoming>
+        <bpmn2:incoming>Flow_0nz2y6f</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_0o3y9zz</bpmn2:outgoing>
+      </bpmn2:exclusiveGateway>
+      <bpmn2:sequenceFlow id="Flow_0o3y9zz" sourceRef="Gateway_0xmaamm" targetRef="Activity_0ioht0k" />
+      <bpmn2:sequenceFlow id="Flow_1a4y8ek" sourceRef="Activity_0ioht0k" targetRef="Activity_04g1dpj" />
+      <bpmn2:textAnnotation id="TextAnnotation_0x50yzg">
+        <bpmn2:text>From unpublished to published</bpmn2:text>
+      </bpmn2:textAnnotation>
+      <bpmn2:association id="Association_04nw2io" sourceRef="Event_01f6vu2" targetRef="TextAnnotation_0x50yzg" />
+      <bpmn2:textAnnotation id="TextAnnotation_0oiy4b3">
+        <bpmn2:text>From Draft to published</bpmn2:text>
+      </bpmn2:textAnnotation>
+      <bpmn2:association id="Association_0bpwudh" sourceRef="Event_0bwqw9z" targetRef="TextAnnotation_0oiy4b3" />
+    </bpmn2:process>
+    <bpmndi:BPMNDiagram id="sid-afb76f69-9fb8-4083-a181-dabd8169802b">
+      <bpmndi:BPMNPlane id="sid-8dbd47a1-142b-467a-a3c8-5d44c118bc04" bpmnElement="Process_g03fy25">
+        <bpmndi:BPMNShape id="TextAnnotation_0x50yzg_di" bpmnElement="TextAnnotation_0x50yzg">
+          <dc:Bounds x="220" y="30" width="100" height="55" />
+          <bpmndi:BPMNLabel />
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="TextAnnotation_0oiy4b3_di" bpmnElement="TextAnnotation_0oiy4b3">
+          <dc:Bounds x="220" y="310" width="100" height="41" />
+          <bpmndi:BPMNLabel />
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Event_01f6vu2_di" bpmnElement="Event_01f6vu2">
+          <dc:Bounds x="182" y="112" width="36" height="36" />
+          <bpmndi:BPMNLabel>
+            <dc:Bounds x="188" y="155" width="26" height="14" />
+          </bpmndi:BPMNLabel>
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Event_0bwqw9z_di" bpmnElement="Event_0bwqw9z">
+          <dc:Bounds x="182" y="222" width="36" height="36" />
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Gateway_0xmaamm_di" bpmnElement="Gateway_0xmaamm" isMarkerVisible="true">
+          <dc:Bounds x="445" y="105" width="50" height="50" />
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Activity_0ioht0k_di" bpmnElement="Activity_0ioht0k">
+          <dc:Bounds x="640" y="90" width="100" height="80" />
+          <bpmndi:BPMNLabel />
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Activity_04g1dpj_di" bpmnElement="Activity_04g1dpj">
+          <dc:Bounds x="840" y="90" width="100" height="80" />
+          <bpmndi:BPMNLabel />
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNEdge id="Association_04nw2io_di" bpmnElement="Association_04nw2io">
+          <di:waypoint x="211" y="116" />
+          <di:waypoint x="237" y="85" />
+        </bpmndi:BPMNEdge>
+        <bpmndi:BPMNEdge id="Association_0bpwudh_di" bpmnElement="Association_0bpwudh">
+          <di:waypoint x="211" y="254" />
+          <di:waypoint x="258" y="310" />
+        </bpmndi:BPMNEdge>
+        <bpmndi:BPMNEdge id="Flow_15kkayu_di" bpmnElement="Flow_15kkayu">
+          <di:waypoint x="218" y="130" />
+          <di:waypoint x="445" y="130" />
+        </bpmndi:BPMNEdge>
+        <bpmndi:BPMNEdge id="Flow_0nz2y6f_di" bpmnElement="Flow_0nz2y6f">
+          <di:waypoint x="218" y="240" />
+          <di:waypoint x="344" y="240" />
+          <di:waypoint x="344" y="130" />
+          <di:waypoint x="445" y="130" />
+        </bpmndi:BPMNEdge>
+        <bpmndi:BPMNEdge id="Flow_0o3y9zz_di" bpmnElement="Flow_0o3y9zz">
+          <di:waypoint x="495" y="130" />
+          <di:waypoint x="640" y="130" />
+        </bpmndi:BPMNEdge>
+        <bpmndi:BPMNEdge id="Flow_1a4y8ek_di" bpmnElement="Flow_1a4y8ek">
+          <di:waypoint x="740" y="130" />
+          <di:waypoint x="840" y="130" />
+        </bpmndi:BPMNEdge>
+      </bpmndi:BPMNPlane>
+    </bpmndi:BPMNDiagram>
+  </bpmn2:definitions>

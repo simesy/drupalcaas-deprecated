@@ -3,14 +3,30 @@ _core:
 module:
   admin_toolbar: 0
   block: 0
+  bpmn_io: 0
   breakpoint: 0
   content_moderation: 0
   dblog: 0
   dynamic_page_cache: 0
   eca: 0
+  eca_access: 0
+  eca_base: 0
+  eca_cache: 0
+  eca_config: 0
+  eca_content: 0
+  eca_form: 0
+  eca_log: 0
+  eca_migrate: 0
+  eca_misc: 0
+  eca_modeller_bpmn: 0
+  eca_render: 0
   eca_ui: 0
+  eca_user: 0
+  eca_views: 0
+  eca_workflow: 0
   field: 0
   filter: 0
+  migrate: 0
   mysql: 0
   node: 0
   page_cache: 0

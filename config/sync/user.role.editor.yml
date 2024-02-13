@@ -1,0 +1,9 @@
+uuid: 48b81610-8447-4d01-a8e6-f36fc17db297
+langcode: en
+status: true
+dependencies: {  }
+id: editor
+label: Editor
+weight: 2
+is_admin: null
+permissions: {  }

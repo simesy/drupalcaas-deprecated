@@ -1,0 +1,116 @@
+uuid: 645b5739-c3b0-4353-9afa-751c85b3b344
+langcode: en
+status: true
+dependencies:
+  config:
+    - eca.eca.process_l7camtn
+id: process_l7camtn
+label: 'Theme switching'
+tags:
+  - untagged
+documentation: ''
+filename: ''
+modeldata: |
+  <?xml version="1.0" encoding="UTF-8"?>
+  <bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:qa="http://some-company/schema/bpmn/qa" id="sample-diagram" targetNamespace="http://bpmn.io/schema/bpmn" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd">
+    <bpmn2:process id="Process_l7CamtN" name="Theme switching" isExecutable="true">
+      <bpmn2:startEvent id="Event_134vqch" camunda:modelerTemplate="org.drupal.event.kernel:request">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="kernel:request" />
+          </camunda:properties>
+        </bpmn2:extensionElements>
+        <bpmn2:outgoing>Flow_0r518p2</bpmn2:outgoing>
+        <bpmn2:outgoing>Flow_1glshxw</bpmn2:outgoing>
+      </bpmn2:startEvent>
+      <bpmn2:task id="Activity_0ywz2gg" name="Switch to Frontend theme" camunda:modelerTemplate="org.drupal.action.eca_set_active_theme">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_set_active_theme" />
+          </camunda:properties>
+          <camunda:field name="theme_name">
+            <camunda:string>claro</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_0r518p2</bpmn2:incoming>
+        <bpmn2:incoming>Flow_1glshxw</bpmn2:incoming>
+      </bpmn2:task>
+      <bpmn2:sequenceFlow id="Flow_0r518p2" name="Path is node revisions" camunda:modelerTemplate="org.drupal.condition.eca_route_match" sourceRef="Event_134vqch" targetRef="Activity_0ywz2gg">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_route_match" />
+          </camunda:properties>
+          <camunda:field name="request">
+            <camunda:string>2</camunda:string>
+          </camunda:field>
+          <camunda:field name="operator">
+            <camunda:string>equal</camunda:string>
+          </camunda:field>
+          <camunda:field name="route">
+            <camunda:string>entity.node.version_history</camunda:string>
+          </camunda:field>
+          <camunda:field name="type">
+            <camunda:string>value</camunda:string>
+          </camunda:field>
+          <camunda:field name="case">
+            <camunda:string>no</camunda:string>
+          </camunda:field>
+          <camunda:field name="negate">
+            <camunda:string>no</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+      </bpmn2:sequenceFlow>
+      <bpmn2:sequenceFlow id="Flow_1glshxw" name="User edit form" camunda:modelerTemplate="org.drupal.condition.eca_route_match" sourceRef="Event_134vqch" targetRef="Activity_0ywz2gg">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_route_match" />
+          </camunda:properties>
+          <camunda:field name="request">
+            <camunda:string>2</camunda:string>
+          </camunda:field>
+          <camunda:field name="operator">
+            <camunda:string>equal</camunda:string>
+          </camunda:field>
+          <camunda:field name="route">
+            <camunda:string>entity.user.edit_form</camunda:string>
+          </camunda:field>
+          <camunda:field name="type">
+            <camunda:string>value</camunda:string>
+          </camunda:field>
+          <camunda:field name="case">
+            <camunda:string>no</camunda:string>
+          </camunda:field>
+          <camunda:field name="negate">
+            <camunda:string>no</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+      </bpmn2:sequenceFlow>
+    </bpmn2:process>
+    <bpmndi:BPMNDiagram id="sid-2c741dc7-eea8-4a0a-8be3-4892fb272393">
+      <bpmndi:BPMNPlane id="sid-19498417-184d-420c-9cb9-a109f58e4291" bpmnElement="Process_l7CamtN">
+        <bpmndi:BPMNShape id="Event_134vqch_di" bpmnElement="Event_134vqch">
+          <dc:Bounds x="252" y="112" width="36" height="36" />
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Activity_0ywz2gg_di" bpmnElement="Activity_0ywz2gg">
+          <dc:Bounds x="690" y="310" width="100" height="80" />
+          <bpmndi:BPMNLabel />
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNEdge id="Flow_0r518p2_di" bpmnElement="Flow_0r518p2">
+          <di:waypoint x="288" y="130" />
+          <di:waypoint x="489" y="130" />
+          <di:waypoint x="697" y="311" />
+          <bpmndi:BPMNLabel>
+            <dc:Bounds x="439" y="156" width="62" height="27" />
+          </bpmndi:BPMNLabel>
+        </bpmndi:BPMNEdge>
+        <bpmndi:BPMNEdge id="Flow_1glshxw_di" bpmnElement="Flow_1glshxw">
+          <di:waypoint x="288" y="130" />
+          <di:waypoint x="520" y="130" />
+          <di:waypoint x="728" y="310" />
+          <bpmndi:BPMNLabel>
+            <dc:Bounds x="525" y="113" width="70" height="14" />
+          </bpmndi:BPMNLabel>
+        </bpmndi:BPMNEdge>
+      </bpmndi:BPMNPlane>
+    </bpmndi:BPMNDiagram>
+  </bpmn2:definitions>

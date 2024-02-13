@@ -1,0 +1,53 @@
+uuid: d9f6f75d-d880-4551-8509-a42f1eb62bdd
+langcode: en
+status: true
+dependencies:
+  module:
+    - eca_misc
+    - eca_render
+  theme:
+    - claro
+id: process_l7camtn
+modeller: bpmn_io
+label: 'Theme switching'
+version: ''
+weight: null
+events:
+  Event_134vqch:
+    plugin: 'kernel:request'
+    label: Event_134vqch
+    configuration: {  }
+    successors:
+      -
+        id: Activity_0ywz2gg
+        condition: Flow_0r518p2
+      -
+        id: Activity_0ywz2gg
+        condition: Flow_1glshxw
+conditions:
+  Flow_0r518p2:
+    plugin: eca_route_match
+    configuration:
+      negate: false
+      case: false
+      request: '2'
+      route: entity.node.version_history
+      operator: equal
+      type: value
+  Flow_1glshxw:
+    plugin: eca_route_match
+    configuration:
+      negate: false
+      case: false
+      request: '2'
+      route: entity.user.edit_form
+      operator: equal
+      type: value
+gateways: {  }
+actions:
+  Activity_0ywz2gg:
+    plugin: eca_set_active_theme
+    label: 'Switch to Frontend theme'
+    configuration:
+      theme_name: claro
+    successors: {  }

@@ -1,0 +1,95 @@
+uuid: 2d8e8728-3ed1-43b5-ba53-f297e4abf895
+langcode: en
+status: true
+dependencies:
+  module:
+    - eca_base
+    - eca_user
+id: process_ypz9ifk
+modeller: bpmn_io
+label: 'Login redirect'
+version: ''
+weight: null
+events:
+  Event_19q0o96:
+    plugin: 'user:login'
+    label: Event_19q0o96
+    configuration: {  }
+    successors:
+      -
+        id: Gateway_0fp5aw0
+        condition: ''
+conditions:
+  Flow_0y5xucn:
+    plugin: eca_scalar
+    configuration:
+      case: false
+      left: '[current-page:query:destination]'
+      right: '0'
+      operator: greaterthan
+      type: count
+      negate: true
+  Flow_02ng0do:
+    plugin: eca_current_user_role
+    configuration:
+      negate: false
+      role: editor
+  Flow_1y3coz3:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[current-page:query:destination]'
+      right: '0'
+      operator: greaterthan
+      type: count
+  Flow_1tx65ye:
+    plugin: eca_current_user_role
+    configuration:
+      role: editor
+      negate: true
+gateways:
+  Gateway_0fp5aw0:
+    type: 0
+    successors:
+      -
+        id: Gateway_0s4ma8j
+        condition: Flow_0y5xucn
+      -
+        id: Activity_10spb8u
+        condition: Flow_1y3coz3
+  Gateway_0s4ma8j:
+    type: 0
+    successors:
+      -
+        id: Activity_0pynhue
+        condition: Flow_02ng0do
+      -
+        id: Activity_1vowckw
+        condition: Flow_1tx65ye
+actions:
+  Activity_10spb8u:
+    plugin: eca_token_set_value
+    label: 'Get Query Destination as token'
+    configuration:
+      token_name: foo-destination
+      token_value: '[current-page:query:destination]'
+      use_yaml: false
+    successors:
+      -
+        id: Activity_0zvwwdi
+        condition: ''
+  Activity_1vowckw:
+    plugin: action_goto_action
+    label: 'Redirect to somewhere'
+    configuration:
+      replace_tokens: false
+      url: /node/1
+    successors: {  }
+  Activity_0zvwwdi:
+    plugin: action_message_action
+    label: 'Display message'
+    configuration:
+      replace_tokens: false
+      message: 'You already had a desintation [foo-destination]'
+    successors: {  }

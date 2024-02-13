@@ -1,0 +1,61 @@
+uuid: 269561af-68ba-4423-8cfe-52f17c7608fd
+langcode: en
+status: true
+dependencies:
+  module:
+    - eca_content
+    - eca_log
+    - eca_user
+id: process_tpjnzhi
+modeller: bpmn_io
+label: 'User events'
+version: ''
+weight: null
+events:
+  Event_0zwca5o:
+    plugin: 'user:cancel'
+    label: 'User cancelled'
+    configuration: {  }
+    successors:
+      -
+        id: Activity_0kvqeog
+        condition: ''
+  Event_0u9614m:
+    plugin: 'content_entity:update'
+    label: 'User edited'
+    configuration:
+      type: 'user _all'
+    successors:
+      -
+        id: Gateway_1fspx6p
+        condition: ''
+conditions:
+  Flow_10ik4iy:
+    plugin: eca_entity_field_value
+    configuration:
+      negate: false
+      case: false
+      expected_value: '1'
+      field_name: status
+      operator: equal
+      type: value
+      entity: ''
+gateways:
+  Gateway_1fspx6p:
+    type: 0
+    successors:
+      -
+        id: Activity_0apticc
+        condition: Flow_10ik4iy
+      -
+        id: Activity_0do04pv
+        condition: ''
+actions:
+  Activity_0kvqeog:
+    plugin: eca_write_log_message
+    label: 'Log that user was cancelled'
+    configuration:
+      channel: foo
+      severity: '3'
+      message: ''
+    successors: {  }

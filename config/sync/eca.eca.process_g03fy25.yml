@@ -1,0 +1,64 @@
+uuid: d96043bb-d4fe-431b-a40f-59b981c38eb6
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.page
+  module:
+    - eca_log
+    - eca_workflow
+id: process_g03fy25
+modeller: bpmn_io
+label: 'Workflow transition'
+version: ''
+weight: null
+events:
+  Event_01f6vu2:
+    plugin: 'workflow:transition'
+    label: Event_01f6vu2
+    configuration:
+      type: 'node page'
+      from_state: unpublished
+      to_state: published
+    successors:
+      -
+        id: Gateway_0xmaamm
+        condition: ''
+  Event_0bwqw9z:
+    plugin: 'workflow:transition'
+    label: Event_0bwqw9z
+    configuration:
+      type: 'node page'
+      from_state: draft
+      to_state: published
+    successors:
+      -
+        id: Gateway_0xmaamm
+        condition: ''
+conditions: {  }
+gateways:
+  Gateway_0xmaamm:
+    type: 0
+    successors:
+      -
+        id: Activity_0ioht0k
+        condition: ''
+actions:
+  Activity_04g1dpj:
+    plugin: eca_write_log_message
+    label: 'Log message'
+    configuration:
+      channel: foo
+      severity: '5'
+      message: 'Page [node:title] is now published. 🎉'
+    successors: {  }
+  Activity_0ioht0k:
+    plugin: action_message_action
+    label: 'Show Message'
+    configuration:
+      replace_tokens: false
+      message: '[node:title] is now published 🎉'
+    successors:
+      -
+        id: Activity_04g1dpj
+        condition: ''
