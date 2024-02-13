@@ -12,6 +12,7 @@
         "php": ">=8.1",
         "composer/installers": "^2.1",
         "cweagans/composer-patches": "^1.7",
+        "drupal/admin_toolbar": "^3.4",
         "drupal/adminimal_theme": "^1.7",
         "drupal/bpmn_io": "^1.1",
         "drupal/config_ignore": "^3.2",

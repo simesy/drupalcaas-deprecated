@@ -1,20 +1,34 @@
 _core:
   default_config_hash: R4IF-ClDHXxblLcG0L7MgsLvfBIMAvi_skumNFQwkDc
 module:
+  admin_toolbar: 0
   block: 0
+  breakpoint: 0
+  content_moderation: 0
   dblog: 0
   dynamic_page_cache: 0
+  eca: 0
+  eca_ui: 0
   field: 0
   filter: 0
   mysql: 0
   node: 0
   page_cache: 0
   path_alias: 0
+  symfony_mailer: 0
   system: 0
   text: 0
+  token: 0
+  toolbar: 0
   update: 0
   user: 0
+  views_ui: 0
+  workbench_email: 0
+  workflow_buttons: 0
+  workflows: 0
+  views: 10
   minimal: 1000
 theme:
   stark: 0
+  claro: 0
 profile: minimal
