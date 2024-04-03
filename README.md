@@ -1,6 +1,8 @@
 
 # Drupal Content-as-a-Service Demo
 
+NOTE: This is effectively replaced by https://github.com/frees-au/ce which is used to demonostrate similar concepts.
+
 A Drupal site build demonstrated in video tutorials, presented by Free Sauce.
 
 This is a demonstration project where everything added to this repository has been
